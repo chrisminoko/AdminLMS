@@ -1,0 +1,440 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>AccademyGO</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Admindek Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="colorlib" />
+
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="https://demo.dashboardpack.com/admindek-html/files/assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="~/Dashboard_ Assets/files/bower_components/bootstrap/css/bootstrap.min.css">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="~/Dashboard_ Assets/files/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <!-- feather icon -->
+    <link rel="stylesheet" type="text/css" href="~/Dashboard_ Assets/files/assets/icon/feather/css/feather.css">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="~/Dashboard_ Assets/files/assets/css/font-awesome-n.min.css">
+    <!-- Chartlist chart css -->
+    <link rel="stylesheet" href="~/Dashboard_ Assets/files/bower_components/chartist/css/chartist.css" type="text/css" media="all">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/Dashboard_ Assets/files/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Dashboard_ Assets/files/assets/css/widget.css">
+</head>
+
+<body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-bar"></div>
+    </div>
+    <!-- [ Pre-loader ] end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <!-- [ Header ] start -->
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+                    <div class="navbar-logo">
+                        <a href="">
+                            <img class="img-fluid" src="~/Dashboard_ Assets/files/assets/images/logo.png" alt="Theme-Logo" />
+                        </a>
+                        <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu icon-toggle-right"></i>
+                        </a>
+                        <a class="mobile-options waves-effect waves-light">
+                            <i class="feather icon-more-horizontal"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend search-close">
+                                            <i class="feather icon-x input-group-text"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Enter Keyword">
+                                        <span class="input-group-append search-btn">
+                                            <i class="feather icon-search input-group-text"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
+                                    <i class="full-screen feather icon-maximize"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <ul class="nav-right">
+                                <li class="header-notification">
+                                    <div class="dropdown-primary dropdown">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="feather icon-bell"></i>
+                                            <span class="badge bg-c-red">5</span>
+                                        </div>
+                                        <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                            <li>
+                                                <h6>Notifications</h6>
+                                                <label class="label label-danger">New</label>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <img class="img-radius" src="~/Dashboard_ Assets/files/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                                    <div class="media-body">
+                                                        <h5 class="notification-user">John Doe</h5>
+                                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                        <span class="notification-time">30 minutes ago</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <img class="img-radius" src="~/Dashboard_ Assets/files/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                                    <div class="media-body">
+                                                        <h5 class="notification-user">Joseph William</h5>
+                                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                        <span class="notification-time">30 minutes ago</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <img class="img-radius" src="~/Dashboard_ Assets/files/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                                    <div class="media-body">
+                                                        <h5 class="notification-user">Sara Soudein</h5>
+                                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                        <span class="notification-time">30 minutes ago</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="header-notification">
+                                    @*<div class="dropdown-primary dropdown">
+                        <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-message-square"></i>
+                            <span class="badge bg-c-green">3</span>
+                        </div>
+                    </div>*@
+                                </li>
+                                <li class="user-profile header-notification">
+
+                                    <div class="dropdown-primary dropdown">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="~/Dashboard_ Assets/files/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+
+                                            <span>@User.Identity.GetUserName()</span>
+                                            <i class="feather icon-chevron-down"></i>
+                                        </div>
+                                        <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+
+                                            <li>
+                                                <a href="@Url.Action("Index", "Manage")">
+                                                    <i class="feather icon-settings"></i> Settings
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="feather icon-user"></i> Profile
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="email-inbox.html">
+                                                    <i class="feather icon-mail"></i> My Messages
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="auth-lock-screen.html">
+                                                    <i class="feather icon-lock"></i> Lock Screen
+
+                                                </a>
+                                                @*@Html.Partial("_LoginPartial")*@
+                                            </li>
+                                            <li>
+
+
+                                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { role = "form" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-warning feather icon-log-out">Logout</button>
+
+                                                }
+
+
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                        }
+
+                    </div>
+                </div>
+            </nav>
+            <!-- [ chat user list ] start -->
+       
+            <!-- [ chat user list ] end -->
+            <!-- [ chat message ] start -->
+            <div class="showChat_inner">
+                <div class="media chat-inner-header">
+                    <a class="back_chatBox">
+                        <i class="feather icon-x"></i> Josephin Doe
+                    </a>
+                </div>
+                <div class="main-friend-chat">
+                    <div class="media chat-messages">
+                        <a class="media-left photo-table" href="#!">
+                            <img class="media-object img-radius img-radius m-t-5" src="~/Dashboard_ Assets/files/assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                        </a>
+                        <div class="media-body chat-menu-content">
+                            <div class="">
+                                <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            </div>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                    <div class="media chat-messages">
+                        <div class="media-body chat-menu-reply">
+                            <div class="">
+                                <p class="chat-cont">Ohh! very nice</p>
+                            </div>
+                            <p class="chat-time">8:22 a.m.</p>
+                        </div>
+                    </div>
+                    <div class="media chat-messages">
+                        <a class="media-left photo-table" href="#!">
+                            <img class="media-object img-radius img-radius m-t-5" src="~/Dashboard_ Assets/files/assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                        </a>
+                        <div class="media-body chat-menu-content">
+                            <div class="">
+                                <p class="chat-cont">can you come with me?</p>
+                            </div>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-reply-box">
+                    <div class="right-icon-control">
+                        <div class="input-group input-group-button">
+                            <input type="text" class="form-control" placeholder="Write hear . . ">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary waves-effect waves-light" type="button"><i class="feather icon-message-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ chat message ] end -->
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <!-- [ navigation menu ] start -->
+                    <nav class="pcoded-navbar">
+                        <div class="nav-list">
+                            <div class="pcoded-inner-navbar main-menu">
+                                <div class="pcoded-navigation-label">Navigation</div>
+                                <ul class="pcoded-item pcoded-left-item">
+                                    <li class="pcoded-hasmenu active pcoded-trigger">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                            <span class="pcoded-mtext">Dashboard</span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="https://demo.dashboardpack.com/admindek-html/index.html" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Default</span>
+                                                </a>
+                                            </li>
+                                        
+                                        </ul>
+                                    </li>
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
+                                            <span class="pcoded-mtext">Page layouts</span>
+                                            <span class="pcoded-badge label label-warning">NEW</span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class=" pcoded-hasmenu">
+                                                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Vertical</span>
+                                                </a>
+                                                <ul class="pcoded-submenu">
+                                                    <li class="">
+                                                        <a href="menu-static.html" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Static Layout</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="menu-header-fixed.html" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Header Fixed</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="menu-compact.html" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Compact</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="menu-sidebar.html" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Sidebar Fixed</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class=" pcoded-hasmenu">
+                                                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Horizontal</span>
+                                                </a>
+                                                <ul class="pcoded-submenu">
+                                                    <li class="">
+                                                        <a href="menu-horizontal-static.html" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Static Layout</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="menu-horizontal-fixed.html" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Fixed layout</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="menu-horizontal-icon.html" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Static With Icon</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="menu-horizontal-icon-fixed.html" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Fixed With Icon</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="">
+                                                <a href="menu-bottom.html" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Bottom Menu</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                               
+                                </ul>
+                      
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- [ navigation menu ] end -->
+                    <div class="pcoded-content">
+                        <!-- [ breadcrumb ] start -->
+                        <div class="page-header card">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <i class="feather icon-home bg-c-blue"></i>
+                                        <div class="d-inline">
+                                            <h5>Dashboard CRM</h5>
+                                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class=" breadcrumb breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="https://demo.dashboardpack.com/admindek-html/index.html"><i class="feather icon-home"></i></a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Dashboard CRM</a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [ breadcrumb ] end -->
+
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <!-- [ page content ] start -->
+                                        <div class="row">
+
+                                            @RenderBody()
+
+                                        </div>
+                                        <!-- [ page content ] end -->
+                                    </div>
+                                    <footer>
+                                        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ style Customizer ] start -->
+                    <div id="styleSelector">
+                    </div>
+                    <!-- [ style Customizer ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/jquery/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/popper.js/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- waves js -->
+    <script src="~/Dashboard_ Assets/files/assets/pages/waves/js/waves.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- Float Chart js -->
+    <script src="~/Dashboard_ Assets/files/assets/pages/chart/float/jquery.flot.js"></script>
+    <script src="~/Dashboard_ Assets/files/assets/pages/chart/float/jquery.flot.categories.js"></script>
+    <script src="~/Dashboard_ Assets/files/assets/pages/chart/float/curvedLines.js"></script>
+    <script src="~/Dashboard_ Assets/files/assets/pages/chart/float/jquery.flot.tooltip.min.js"></script>
+    <!-- amchart js -->
+    <script src="~/Dashboard_ Assets/files/assets/pages/widget/amchart/amcharts.js"></script>
+    <script src="~/Dashboard_ Assets/files/assets/pages/widget/amchart/serial.js"></script>
+    <script src="~/Dashboard_ Assets/files/assets/pages/widget/amchart/light.js"></script>
+    <!-- Google map js -->
+    <script src="../../../developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/pages/google-maps/gmaps.js"></script>
+
+    <!-- Custom js -->
+    <script src="~/Dashboard_ Assets/files/assets/js/pcoded.min.js"></script>
+    <script src="~/Dashboard_ Assets/files/assets/js/vertical/vertical-layout.min.js"></script>
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/pages/dashboard/crm-dashboard.min.js"></script>
+    <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/js/script.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+
+
+</html>
