@@ -4,13 +4,22 @@
     Layout = null;
 }
 
+    <script type="text/javascript">
+        function hide() {
+            //alert('hh')
+            document.getElementById("medinfo").style.display = 'none';
+        }
+        function show() {
+            document.getElementById("medinfo").style.display = 'block';
+        }
+    </script>
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from demo.dashboardpack.com/admindek-html/default/auth-sign-up-social.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 Jul 2020 21:51:58 GMT -->
-<!-- Added by HTTrack -->
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <title>Sign Up</title>
@@ -109,11 +118,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new{
-  @class = "form-horizontal",
-    role = "form",
-    enctype = "multipart/form-data"
-}))
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new
+                    {
+                        @class = "form-horizontal",
+                        role = "form",
+                        enctype = "multipart/form-data"
+                    }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -137,11 +147,26 @@
                                 </div>
                                 <p class="text-muted text-center p-b-5">Sign up with your regular account</p>
                                 <div class="form-group form-primary">
-                                    
+
+                                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                                    <span class="form-bar"></span>
+
+                                </div>
+
+                                <div class="form-group form-primary">
+
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone Number" })
+                                    <span class="form-bar"></span>
+
+                                </div>
+
+                                <div class="form-group form-primary">
+
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
                                     <span class="form-bar"></span>
-                                 
+
                                 </div>
+
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
@@ -166,6 +191,8 @@
 
                                         </div>
                                     </div>
+
+
                                 </div>
                                 <div class="row m-t-25 text-left">
                                     <div class="col-md-12">
@@ -185,6 +212,29 @@
                                                 <span class="text-inverse">Send me the <a href="#">Newsletter</a> weekly.</span>
                                             </label>
                                         </div>
+
+                                        <div class="col-md-10">
+                                            Institution
+                                            <input id="idd" name="Type" value="Institution" type="radio" onclick="show()">
+                                            Individual
+                                            <input id="idd" name="Type" value="Individual" type="radio" onclick="hide()">
+                                        </div>
+
+                                        <div id="medinfo">
+                                            <div>
+                                                <div class="form-group form-primary">
+                                                    <input type="file" name="files" />
+                                                    <span class="form-bar"></span>
+                                                    @Html.ValidationMessageFor(m => m.FileContent, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+
+
                                     </div>
                                 </div>
                                 <div class="row m-t-30">
@@ -198,7 +248,7 @@
                                         <p class="text-inverse text-left m-b-0">Thank you.</p>
                                         <p class="text-inverse text-left"><a href="https://demo.dashboardpack.com/admindek-html/index.html"><b>Back to website</b></a></p>
                                         <p class="text-inverse text-left"><a href="@Url.Action("Login", "Account")"><b>Sign In</b></a></p>
-                                      
+
                                     </div>
                                     <div class="col-md-2">
                                         <img src="~/Dashboard_ Assets/files/assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
@@ -216,6 +266,8 @@
         </div>
         <!-- end of container-fluid -->
     </section>
+
+
 
     <!-- Required Jquery -->
     <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/jquery/js/jquery.min.js"></script>
@@ -235,8 +287,9 @@
     <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="~/Dashboard_ Assets/files/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
     <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/js/common-pages.js"></script>
+
+
 </body>
 
 
-<!-- Mirrored from demo.dashboardpack.com/admindek-html/default/auth-sign-up-social.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 Jul 2020 21:51:58 GMT -->
 </html>

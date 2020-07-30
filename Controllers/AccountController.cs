@@ -143,12 +143,18 @@ namespace BackEnd.Controllers
             return View();
         }
 
+        public byte[] ConvertToBytes(HttpPostedFileBase files)
+        {
+
+            BinaryReader reader = new BinaryReader(files.InputStream);
+            return reader.ReadBytes(files.ContentLength);
+        }
         //
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register([Bind(Exclude = "UserPhoto")]RegisterViewModel model)
+        public async Task<ActionResult> Register([Bind(Exclude = "UserPhoto")]RegisterViewModel model, HttpPostedFileBase files)
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
@@ -164,28 +170,67 @@ namespace BackEnd.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                     }
                 }
-
-
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 user.UserPhoto = imageData;
                 var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    //Activate It once you have an internet connection with no filters
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
 
-                    return RedirectToAction("ConfirmEmail","Home");
-                    //return RedirectToAction("Home");
+                if (model.Type == "Institution")
+                {
+       
+                    if (files != null && files.ContentLength > 0)
+                    {
+                        model.FileName = files.FileName;
+                        string[] bits = model.FileName.Split('\\');
+                        model.FileContent = ConvertToBytes(files);
+                    }
+
+                    Institution institution = new Institution();
+
+                    institution.FullName = model.FullName;
+                    institution.Email = model.Email;
+                    institution.Phone = model.Phone;
+                    institution.Type = model.Type;
+                    institution.Status = "Awaiting Approval";
+                    institution.UserId = user.Id;
+                    institution.FileContent = model.FileContent;
+                    institution.FileName = model.FileName;
+                    institution.UserPhoto = imageData;
+                    db.Institutions.Add(institution);
+                    db.SaveChanges();
+
+                   
+                    if (result.Succeeded)
+                    {
+                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        //Activate It once you have an internet connection with no filters
+                        //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        //await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
+
+                        //return RedirectToAction("ConfirmEmail","Home");
+                        return RedirectToAction("Login", "Account");
+                    }
+                    AddErrors(result);
+                }else if (model.Type=="Individual")
+                {
+                    Individual individual = new Individual();
+                    individual.UserId = user.Id;
+                    individual.FullName = model.FullName;
+                    individual.Phone = model.Phone;
+                    individual.Email = user.UserName;
+                    individual.UserPhoto = imageData;
+                    db.Individuals.Add(individual);
+                    db.SaveChanges();
+                    UserManager.AddToRole(user.Id, "Individual");
                 }
-                AddErrors(result);
+              
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
 
         //
         // GET: /Account/ConfirmEmail

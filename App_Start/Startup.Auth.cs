@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using BackEnd.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Linq;
 
 namespace BackEnd
 {
@@ -63,6 +65,70 @@ namespace BackEnd
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+
+        }
+
+        public void CreateRolesAdmin()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+            //creating role
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Admin";
+                roleManager.Create(role);
+            }
+
+            Admin ad = context.Admins.ToList().Find(x => x.Email == "Admin@gmail.com");
+            if (ad == null)
+            {
+                Admin newAdmin = new Admin
+                {
+                    AdminID = Guid.NewGuid().ToString(),
+                    FirstName = "Administrator",
+                    LastName = "Admin",
+                    Email = "Admin@gmail.com",
+                    Status = "Approved"
+
+                };
+                context.Admins.Add(newAdmin);
+                context.SaveChanges();
+
+                var user = new ApplicationUser();
+                user.UserName = newAdmin.Email;
+                user.Email = newAdmin.Email;
+                string password = "Password@12";
+
+                var User = userManager.Create(user, password);
+                if (User.Succeeded)
+                    userManager.AddToRole(user.Id, "Admin");
+            }
+            //populating initial roles
+
+
+            //creating other roles
+            if (!roleManager.RoleExists("Institution"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Institution";
+                roleManager.Create(role);
+            }
+            if (!roleManager.RoleExists("Manager"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Manager";
+                roleManager.Create(role);
+            }
+            if (!roleManager.RoleExists("Individual"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Individual";
+                roleManager.Create(role);
+            }
         }
     }
 }

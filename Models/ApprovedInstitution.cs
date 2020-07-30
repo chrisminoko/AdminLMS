@@ -6,10 +6,11 @@ using System.Web;
 
 namespace BackEnd.Models
 {
-    public class Individual
+    public class ApprovedInstitution
     {
+
         [Key]
-        public int IndividualID { get; set; }
+        public int InstitutionID { get; set; }
         [Required]
         [RegularExpression(pattern: @"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Numbers and special characters are not allowed.")]
         [StringLength(maximumLength: 228, ErrorMessage = "Full Name must be atleast 3 characters long", MinimumLength = 3)]

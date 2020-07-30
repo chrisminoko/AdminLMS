@@ -65,6 +65,21 @@ namespace BackEnd.Models
     public class RegisterViewModel
     {
         [Required]
+        [RegularExpression(pattern: @"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Numbers and special characters are not allowed.")]
+        [StringLength(maximumLength: 228, ErrorMessage = "Full Name must be atleast 3 characters long", MinimumLength = 3)]
+        public string FullName { get; set; }
+        public string Type { get; set; }
+        public string Status { get; set; }
+        [Required]
+        [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        public string Phone { get; set; }
+        public string UserId { get; set; }
+        [Display(Name = "Uploaded File")]
+        public string FileName { get; set; }
+        public byte[] FileContent { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

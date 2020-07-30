@@ -11,7 +11,6 @@ namespace BackEnd.Migrations
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "BackEnd.Models.ApplicationDbContext";
         }
 
         protected override void Seed(BackEnd.Models.ApplicationDbContext context)

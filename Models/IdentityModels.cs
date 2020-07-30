@@ -25,10 +25,14 @@ namespace BackEnd.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Institution> Institutions { get; set; }
+        public DbSet<Individual> Individuals { get; set; }
+        public DbSet<ApprovedInstitution> ApprovedInstitutions { get; set; }
+   
     }
 }
