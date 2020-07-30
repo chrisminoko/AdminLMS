@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BackEnd.Models;
+using System.IO;
 
 namespace BackEnd.Controllers
 {
@@ -147,22 +148,37 @@ namespace BackEnd.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register([Bind(Exclude = "UserPhoto")]RegisterViewModel model)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
+
             if (ModelState.IsValid)
             {
+                byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+
+                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+                }
+
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                user.UserPhoto = imageData;
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    // Activate It once you have an internet connection with no filters
-                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    //Activate It once you have an internet connection with no filters
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
 
-                    //return RedirectToAction("EmailConfirmation");
-                    return RedirectToAction("Home");
+                    return RedirectToAction("ConfirmEmail","Home");
+                    //return RedirectToAction("Home");
                 }
                 AddErrors(result);
             }
@@ -181,7 +197,7 @@ namespace BackEnd.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            return View(result.Succeeded ? "Login" : "Error");
         }
 
         //

@@ -109,7 +109,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "md-float-material form-material", role = "form" }))
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new{
+  @class = "form-horizontal",
+    role = "form",
+    enctype = "multipart/form-data"
+}))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -142,16 +146,24 @@
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
 
-                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" , placeholder = "Password" })
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
                                             <span class="form-bar"></span>
-                                        
+
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" , placeholder = "Confirm Password"})
+                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
                                             <span class="form-bar"></span>
-                                          
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-primary">
+                                            <input type="file" name="UserPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+                                            <span class="form-bar"></span>
+
                                         </div>
                                     </div>
                                 </div>

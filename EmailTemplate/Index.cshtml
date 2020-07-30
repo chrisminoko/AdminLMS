@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
+﻿﻿
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,8 +9,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Email Confirmation</title>
     <style>
+
         html,
         body {
             margin: 0 auto !important;
@@ -18,15 +19,18 @@
             height: 100% !important;
             width: 100% !important;
         }
+
         /* What it does: Stops email clients resizing small text. */
         * {
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: 100%;
         }
+
         /* What it does: Centers email on Android 4.4 */
         div[style*="margin: 16px 0"] {
             margin: 0 !important;
         }
+
         /* What it does: Stops Outlook from adding extra spacing to tables. */
         table,
         td {
@@ -73,20 +77,20 @@
         img.g-img + div {
             display: none !important;
         }
+
         /* What it does: Prevents underlining the button text in Windows 10 */
         .button-link {
             text-decoration: none !important;
         }
 
-        media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-            .email-container
-
-        {
-            min-width: 375px !important;
-        }
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            .email-container {
+                min-width: 375px !important;
+            }
         }
     </style>
     <style>
+
         .button-td,
         .button-a {
             transition: all 100ms ease-in;
@@ -97,65 +101,65 @@
                 background: #555555 !important;
                 border-color: #555555 !important;
             }
+
         /* Media Queries */
-        media screen and (max-width: 480px) {
-            .fluid
+        @media screen and (max-width: 480px) {
+            .fluid {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
 
-        {
-            width: 100% !important;
-            max-width: 100% !important;
-            height: auto !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
 
-        .stack-column,
-        .stack-column-center {
-            display: block !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            direction: ltr !important;
-        }
-        /* And center justify these ones. */
-        .stack-column-center {
-            text-align: center !important;
-        }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
 
-        .center-on-narrow {
-            text-align: center !important;
-            display: block !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            float: none !important;
-        }
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
 
-        table.center-on-narrow {
-            display: inline-block !important;
-        }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
 
-        .email-container p {
-            font-size: 17px !important;
-            line-height: 22px !important;
-        }
+            .email-container p {
+                font-size: 17px !important;
+                line-height: 22px !important;
+            }
         }
     </style>
 </head>
 <body width="100%" bgcolor="#F1F1F1" style="margin: 0; mso-line-height-rule: exactly;">
     <center style="width: 100%; background: #F1F1F1; text-align: left;">
-        <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;"> (Optional) This text will appear in the inbox preview, but not the email body. </div>
+        <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;"> </div>
         <div style="max-width: 680px; margin: auto;" class="email-container">
             <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;" class="email-container">
                 <tr>
                     <td bgcolor="#333333">
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
-                                <td style="padding: 30px 40px 30px 40px; text-align: center;"> <span style="color:#fff; font-size: 30px">Student Portal</span> </td>
+                                <td style="padding: 30px 40px 30px 40px; text-align: center;"> <span style="color:#fff; font-size: 30px">AccademyGO</span> </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td background="https://res.cloudinary.com/dxfq3iotg/image/upload/v1556165136/switzerland-862870_1920.jpg" bgcolor="#222222" align="center" valign="top" style="text-align: center; background-position: center center !important; background-size: cover !important;">
+                    <td background="https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1309&q=80" bgcolor="#222222" align="center" valign="top" style="text-align: center; background-position: center center !important; background-size: cover !important;">
                         <div>
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:500px; margin: auto;">
                                 <tr>
@@ -166,12 +170,12 @@
                                         <table>
                                             <tr>
                                                 <td valign="top" style="text-align: center; padding: 60px 0 10px 20px;">
-                                                    <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 30px; line-height: 36px; color: #ffffff; font-weight: bold;">@Html.Label(User.Identity.GetUserName()),</h1>
+                                                    <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 30px; line-height: 36px; color: #ffffff; font-weight: bold;">WELCOME</h1>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td valign="top" style="text-align: center; padding: 10px 20px 15px 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #fff;">
-                                                    <p style="margin: 0;">For what reason would it be advisable for me to think about business content? That might be little bit risky to have crew member like them.</p>
+                                                    <!-- <p style="color: orange; font: bold; text-transform: capitalize;" style="margin: 0;">For what reason would it be advisable for me to think about business content? That might be little bit risky to have crew member like them.</p> -->
                                                 </td>
                                             </tr>
                                             <tr>
@@ -179,7 +183,7 @@
                                                     <center>
                                                         <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="text-align: center;">
                                                             <tr>
-                                                                <td style="border-radius: 50px; background: #26a4d3; text-align: center;" class="button-td"> <a href="http://www.google.com" style="background: #26a4d3; border: 15px solid #26a4d3; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a"> <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;ACCESS ACCOUNT&nbsp;&nbsp;&nbsp;&nbsp;</span> </a> </td>
+                                                                <td style="border-radius: 50px; background: #26a4d3; text-align: center;" class="button-td"> <a href="change this link here" style="background: #26a4d3; border: 15px solid #26a4d3; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a"> <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;ACTIVATE ACCOUNT&nbsp;&nbsp;&nbsp;&nbsp;</span> </a> </td>
                                                             </tr>
                                                         </table>
                                                     </center>
@@ -200,7 +204,7 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 40px 40px 20px 40px; text-align: left;">
-                                    <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 20px; line-height: 26px; color: #333333; font-weight: bold;">YOUR ACCOUNT IS NOW ACTIVE</h1>
+                                    <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 20px; line-height: 26px; color: #333333; font-weight: bold;">YOUR ACCOUNT IS ALMOST  ACTIVE</h1>
                                 </td>
                             </tr>
                             <tr>
@@ -210,7 +214,7 @@
                             </tr>
                             <tr>
                                 <td style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:normal;">
-                                    <p style="margin: 0;">For what reason would it be advisable for me to think about business content? That might be little bit risky to have crew member like them. For what reason would it be advisable for me to think about business content?<br><br>change this link here</p>
+                                    <p style="margin: 0;">We offer your business a world class learning platform that is mobile friendly and enriched with features that will take your institution to the next level.<br><br></p>
                                 </td>
                             </tr>
                         </table>
@@ -222,12 +226,12 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 40px 40px 5px 40px; text-align: center;">
-                                    <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 20px; line-height: 24px; color: #ffffff; font-weight: bold;">YOUR FEEDBACK MOTIVATE US TO MOVE AHEAD</h1>
+                                    <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 20px; line-height: 24px; color: #ffffff; font-weight: bold;">SUBSCRIBE TO GET THE LATEST PRODUCT INFO</h1>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 17px; line-height: 23px; color: #aad4ea; text-align: center; font-weight:normal;">
-                                    <p style="margin: 0;">Let us know what you think of our product</p>
+                                    <p style="margin: 0;">We will keep you posted and on the loop with the current products offerings</p>
                                 </td>
                             </tr>
                             <tr>
@@ -235,7 +239,7 @@
                                     <!-- Button : BEGIN -->
                                     <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow">
                                         <tr>
-                                            <td style="border-radius: 50px; background: #ffffff; text-align: center;" class="button-td"> <a href="http://www.google.com" style="background: #ffffff; border: 15px solid #ffffff; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a"> <span style="color:#26a4d3;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;GIVE FEEDBACK&nbsp;&nbsp;&nbsp;&nbsp;</span> </a> </td>
+                                            <td style="border-radius: 50px; background: #ffffff; text-align: center;" class="button-td"> <a href="http://www.google.com" style="background: #ffffff; border: 15px solid #ffffff; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a"> <span style="color:#26a4d3;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;SUBSCRIBE&nbsp;&nbsp;&nbsp;&nbsp;</span> </a> </td>
                                         </tr>
                                     </table>
                                 </td>
@@ -252,17 +256,17 @@
                             </tr>
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px; padding: 5px 0 10px 0;">
-                                    <p style="font-size: 14px; font-weight: 800; line-height: 18px; color: #333333;"> BBBootstrap.com<br> Street, NJ,USA </p>
+                                    <p style="font-size: 14px; font-weight: 800; line-height: 18px; color: #333333;"> Durban<br> South Africa, Kzn,4001 </p>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding: 0px 40px 10px 40px; font-family: sans-serif; font-size: 12px; line-height: 18px; color: #666666; text-align: center; font-weight:normal;">
-                                    <p style="margin: 0;">This email was sent to you from contact@bbbootstrap.com</p>
+                                    <p style="margin: 0;">This email was sent to you from contact@accademygo</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding: 0px 40px 40px 40px; font-family: sans-serif; font-size: 12px; line-height: 18px; color: #666666; text-align: center; font-weight:normal;">
-                                    <p style="margin: 0;">Copyright &copy; 2018-2019 <b>BBBootstrap.com</b>, All Rights Reserved.</p>
+                                    <p style="margin: 0;">Copyright &copy; 2020 <b>AccademyGO</b>, All Rights Reserved.</p>
                                 </td>
                             </tr>
                         </table>
