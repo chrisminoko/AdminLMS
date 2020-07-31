@@ -2,75 +2,156 @@
 
 @{
     ViewBag.Title = "Index";
+    var message = TempData["AlertMessage"] ?? string.Empty;
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-    
-        <th>
-            @Html.DisplayNameFor(model => model.FileName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserPhoto)
-        </th>
-        <th></th>
-    </tr>
+<script>
+    var msg = '@message';
+    if (msg)
+        alert(msg);
+</script>
 
-@foreach (var item in Model) {
-    <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileName)
-        </td>
-   
-        <td>
-            @if (item.UserPhoto != null)
+
+
+
+<div class="pcoded-inner-content">
+    <!-- Main-body start -->
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Pending Applications</h5>
+                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                    </div>
+                    <div class="card-block col-md-12">
+
+                        <table class="table" id="my_list">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FullName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Type)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Phone)
+                                </th>
+
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FileName)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserPhoto)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Type)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FileName)
+                                    </td>
+
+                                    <td>
+                                        @if (item.UserPhoto != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.UserPhoto);
+                                            var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
+                                            <img src="@ImgSource" width="100" height="100" />
+                                        }
+                                    </td>
+
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+
+            @if (item.FileContent != null)
             {
-                var base64 = Convert.ToBase64String(item.UserPhoto);
-                var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
-                <img src="@ImgSource" width="100" height="100" />
+                int Id = item.InstitutionID;
+                string url = "https://localhost:44360/Institutions/Download/"+ Id;
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="@url" allowfullscreen></iframe>
+                </div>
             }
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.InstitutionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.InstitutionID })*@
+
+        </div>
+    </div>
+</div>
+
+                                    <td>
+                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.InstitutionID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.InstitutionID })*@
+
+                             
+                                        @Html.ActionLink("Downlaod File", "Download", new { id = item.InstitutionID })<br />
+                                        <a href="@Url.Action("Approve", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Approve, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Approve" class="btn btn-success btn-simple btn-xs"><i class="fa fa-check-square-o"></i></a>
+                                        <a href="@Url.Action("Reject", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Reject, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Page-body end -->
+        </div>
+    </div>
+    <!-- Main-body end -->
+    <div id="styleSelector">
+
+    </div>
+</div>
 
 
-            @Html.ActionLink("Downlaod File", "DownLoadFile", new { id = item.InstitutionID })<br />
-            <a href="@Url.Action("Approve", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Approve, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Approve" class="btn btn-success btn-simple btn-xs"><i class="fa fa-check-square-o"></i></a>
-            <a href="@Url.Action("Reject", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Reject, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="glyphicon glyphicon-remove"></i></a>
-        </td>
-    </tr>
-}
 
-</table>
+
+
+
+
+
+
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+@*<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://localhost:44360/Institutions/Download/6" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>*@
+

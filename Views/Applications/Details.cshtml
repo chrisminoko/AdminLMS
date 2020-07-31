@@ -1,0 +1,82 @@
+﻿@model BackEnd.Models.Application
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Application</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Package.Storage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Package.Storage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ApplicationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

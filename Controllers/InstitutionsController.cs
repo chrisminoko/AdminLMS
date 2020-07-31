@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -84,6 +85,21 @@ namespace BackEnd.Controllers
 
                 return RedirectToAction("AdminIndex");
             }
+        }
+
+        public ActionResult Download(int? id)
+        {
+            MemoryStream ms = null;
+
+            var item = db.Institutions.FirstOrDefault(x => x.InstitutionID == id);
+            if (item != null)
+            {
+                ms = new MemoryStream(item.FileContent);
+            }
+            return new FileStreamResult(ms, item.FileName);
+
+
+            //return RedirectToAction("Download");
         }
 
         // GET: Institutions/Details/5
@@ -189,5 +205,6 @@ namespace BackEnd.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BackEnd.Models.Application>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Package.Storage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiryDateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Package.Storage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiryDateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApplicationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationID })
+        </td>
+    </tr>
+}
+
+</table>

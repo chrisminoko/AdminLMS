@@ -14,7 +14,7 @@
     <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="colorlib" />
 
-
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Favicon icon -->
     <link rel="icon" href="https://demo.dashboardpack.com/admindek-html/files/assets/images/favicon.ico" type="image/x-icon">
     <!-- Google font-->
@@ -128,11 +128,11 @@
                                 </li>
                                 <li class="header-notification">
                                     @*<div class="dropdown-primary dropdown">
-                        <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
-                            <i class="feather icon-message-square"></i>
-                            <span class="badge bg-c-green">3</span>
-                        </div>
-                    </div>*@
+                                            <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
+                                                <i class="feather icon-message-square"></i>
+                                                <span class="badge bg-c-green">3</span>
+                                            </div>
+                                        </div>*@
                                 </li>
                                 <li class="user-profile header-notification">
 
@@ -196,7 +196,6 @@
                 </div>
             </nav>
             <!-- [ chat user list ] start -->
-       
             <!-- [ chat user list ] end -->
             <!-- [ chat message ] start -->
             <div class="showChat_inner">
@@ -266,84 +265,77 @@
                                         </a>
                                         <ul class="pcoded-submenu">
                                             <li class="">
-                                                <a href="https://demo.dashboardpack.com/admindek-html/index.html" class="waves-effect waves-dark">
-                                                    <span class="pcoded-mtext">Default</span>
+                                                <a href="" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">CRM</span>
                                                 </a>
                                             </li>
-                                        
+
                                         </ul>
                                     </li>
                                     <li class="pcoded-hasmenu">
                                         <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                                            <span class="pcoded-mtext">Page layouts</span>
+                                            <span class="pcoded-mtext">Applications</span>
                                             <span class="pcoded-badge label label-warning">NEW</span>
                                         </a>
                                         <ul class="pcoded-submenu">
                                             <li class=" pcoded-hasmenu">
                                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                                    <span class="pcoded-mtext">Vertical</span>
+                                                    <span class="pcoded-mtext"> Applications</span>
                                                 </a>
                                                 <ul class="pcoded-submenu">
                                                     <li class="">
-                                                        <a href="menu-static.html" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Static Layout</span>
+                                                        <a href="@Url.Action("Index", "Institutions")" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Pending Applications</span>
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="menu-header-fixed.html" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Header Fixed</span>
+                                                        <a href="@Url.Action("Index", "ApprovedInstitutions")" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Approved Applications</span>
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="menu-compact.html" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Compact</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a href="menu-sidebar.html" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Sidebar Fixed</span>
+                                                        <a href="@Url.Action("Index", "ApprovedInstitutions")" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Rejected Applications</span>
                                                         </a>
                                                     </li>
                                                 </ul>
-                                            </li>
-                                            <li class=" pcoded-hasmenu">
-                                                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                                    <span class="pcoded-mtext">Horizontal</span>
-                                                </a>
-                                                <ul class="pcoded-submenu">
-                                                    <li class="">
-                                                        <a href="menu-horizontal-static.html" target="_blank" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Static Layout</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a href="menu-horizontal-fixed.html" target="_blank" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Fixed layout</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a href="menu-horizontal-icon.html" target="_blank" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Static With Icon</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a href="menu-horizontal-icon-fixed.html" target="_blank" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Fixed With Icon</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="">
-                                                <a href="menu-bottom.html" class="waves-effect waves-dark">
-                                                    <span class="pcoded-mtext">Bottom Menu</span>
-                                                </a>
                                             </li>
                                         </ul>
                                     </li>
-                               
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
+                                            <span class="pcoded-mtext">Finances</span>
+                                            <span class="pcoded-badge label label-primary">NEW</span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class=" pcoded-hasmenu">
+                                                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Deposits</span>
+                                                </a>
+                                                <ul class="pcoded-submenu">
+                                                    <li class="">
+                                                        <a href="" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Payments</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Approved Deposits</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Rejected Deposits</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
-                      
+
                             </div>
                         </div>
                     </nav>
@@ -432,6 +424,7 @@
     <script src="~/Dashboard_ Assets/files/assets/js/vertical/vertical-layout.min.js"></script>
     <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/pages/dashboard/crm-dashboard.min.js"></script>
     <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/js/script.min.js"></script>
+    <script src="https://use.fontawesome.com/0f75fc2005.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 

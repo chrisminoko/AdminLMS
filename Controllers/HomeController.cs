@@ -37,6 +37,7 @@ namespace BackEnd.Controllers
 
         public FileContentResult UserPhotos()
         {
+
             if (User.Identity.IsAuthenticated)
             {
                 String userId = User.Identity.GetUserId();
@@ -61,7 +62,8 @@ namespace BackEnd.Controllers
 
                 return new FileContentResult(userImage.UserPhoto, "image/jpeg");
             }
-            else
+        
+            else 
             {
                 string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
 
@@ -73,7 +75,7 @@ namespace BackEnd.Controllers
                 imageData = br.ReadBytes((int)imageFileLength);
                 return File(imageData, "image/png");
 
-            }
+            } 
         }
     }
 }

@@ -66,7 +66,7 @@ namespace BackEnd
             //    ClientSecret = ""
             //});
 
-
+            CreateRolesAdmin();
         }
 
         public void CreateRolesAdmin()

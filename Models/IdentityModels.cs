@@ -33,6 +33,12 @@ namespace BackEnd.Models
         public DbSet<Institution> Institutions { get; set; }
         public DbSet<Individual> Individuals { get; set; }
         public DbSet<ApprovedInstitution> ApprovedInstitutions { get; set; }
-   
+        public DbSet<Deposit> Deposits { get; set; }
+        public DbSet<ApprovedDeposit> ApprovedDeposits { get; set; }
+        public DbSet<Package> Packages { get; set; }
+        public DbSet<PackageType> PackageTypes { get; set; }
+        public DbSet<Application> Applications { get; set; }
+
+
     }
 }

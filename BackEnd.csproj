@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,9 +44,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SendGrid, Version=9.19.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>packages\SendGrid.9.19.0\lib\net452\SendGrid.dll</HintPath>
@@ -190,14 +186,19 @@
     <Compile Include="Contracts\IApprovedInstitution.cs" />
     <Compile Include="Contracts\IIndividual.cs" />
     <Compile Include="Contracts\IInstitution.cs" />
+    <Compile Include="Contracts\IPackageType.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\ApprovedInstitutionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\InstitutionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PackagesController.cs" />
+    <Compile Include="Controllers\PackageTypesController.cs" />
     <Compile Include="DataManager\EmailService.cs" />
     <Compile Include="DataManager\InstitutionDataManager.cs" />
+    <Compile Include="DataManager\PackageTypDataManager.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,13 +206,18 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Appointments.cs" />
+    <Compile Include="Models\ApprovedDeposit.cs" />
     <Compile Include="Models\ApprovedIndividual.cs" />
     <Compile Include="Models\ApprovedInstitution.cs" />
+    <Compile Include="Models\Deposit.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Individual.cs" />
     <Compile Include="Models\Institution.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Package.cs" />
+    <Compile Include="Models\PackageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IBaseRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -1190,6 +1196,21 @@
     <Content Include="Views\Individuals\Edit.cshtml" />
     <Content Include="Views\Individuals\Index.cshtml" />
     <Content Include="Views\Institutions\UserIndex.cshtml" />
+    <Content Include="Views\PackageTypes\Create.cshtml" />
+    <Content Include="Views\PackageTypes\Delete.cshtml" />
+    <Content Include="Views\PackageTypes\Details.cshtml" />
+    <Content Include="Views\PackageTypes\Edit.cshtml" />
+    <Content Include="Views\PackageTypes\Index.cshtml" />
+    <Content Include="Views\Packages\Create.cshtml" />
+    <Content Include="Views\Packages\Delete.cshtml" />
+    <Content Include="Views\Packages\Details.cshtml" />
+    <Content Include="Views\Packages\Edit.cshtml" />
+    <Content Include="Views\Packages\Index.cshtml" />
+    <Content Include="Views\Applications\Create.cshtml" />
+    <Content Include="Views\Applications\Delete.cshtml" />
+    <Content Include="Views\Applications\Details.cshtml" />
+    <Content Include="Views\Applications\Edit.cshtml" />
+    <Content Include="Views\Applications\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1235,12 +1256,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
