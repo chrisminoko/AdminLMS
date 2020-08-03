@@ -39,6 +39,7 @@ namespace BackEnd.Controllers
         }
         public ActionResult Approve(int? id)
         {
+            TempData["Message"] = "Your deposit " + id + "has been Saved Successfully ";
             Deposit deposit = db.Deposits.Where(p => p.DepositID == id).FirstOrDefault();
             int applicationID = deposit.ApplicationID;
             Application application = db.Applications.Where(a => a.ApplicationID == applicationID).FirstOrDefault();
@@ -103,6 +104,12 @@ namespace BackEnd.Controllers
 
                 return RedirectToAction("Index");
             }
+        }
+
+        public decimal Pay(int id ) 
+        {
+           return  ViewBag.price = db.Applications.Find(id).Amount;
+        
         }
         // GET: Deposits/Create
         public ActionResult Create()

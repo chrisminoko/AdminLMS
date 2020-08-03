@@ -52,6 +52,12 @@
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayFast, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PayFast.1.0.4\lib\net462\PayFast.dll</HintPath>
+    </Reference>
+    <Reference Include="PayFast.AspNet, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PayFast.AspNet.1.0.4\lib\net46\PayFast.AspNet.dll</HintPath>
+    </Reference>
     <Reference Include="SendGrid, Version=9.19.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>packages\SendGrid.9.19.0\lib\net452\SendGrid.dll</HintPath>
     </Reference>
@@ -200,6 +206,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PackagesController.cs" />
     <Compile Include="Controllers\PackageTypesController.cs" />
+    <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="DataManager\EmailService.cs" />
     <Compile Include="DataManager\InstitutionDataManager.cs" />
     <Compile Include="DataManager\PackageTypDataManager.cs" />
@@ -232,6 +239,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="Dashboard_ Assets\files\assets\css\component.css" />
     <Content Include="Dashboard_ Assets\files\assets\css\font-awesome-n.min.css" />
     <Content Include="Dashboard_ Assets\files\assets\css\pages.css" />
@@ -1469,6 +1480,11 @@
     <Content Include="HomePageAssets\wp-json\oembed\1.0\embedf863" />
     <Content Include="HomePageAssets\wp-json\oembed\1.0\embedfe72.json" />
     <Content Include="HomePageAssets\wp-json\oembed\1.0\embedfef9.json" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1561,6 +1577,7 @@
     <Content Include="Views\Packages\PackagesPage.cshtml" />
     <Content Include="Views\Packages\PackageTypes.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
