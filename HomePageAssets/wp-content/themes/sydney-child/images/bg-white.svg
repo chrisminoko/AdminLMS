@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1652px" viewBox="0 0 1440 1652" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>38C62F44-34BE-4CD4-9085-8C3EC4C48945</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M1414.58449,1651.29775 C1022.06394,1519.63782 601.886769,1448.29775 165.12,1448.29775 C109.824,1448.29775 54.7584,1449.44975 3.76006171e-12,1451.71535 L-2.27373675e-13,126.461591 C77.4983467,129.667584 155.431467,131.297751 233.690667,131.297751 C647.907382,131.297751 1051.58143,85.9677624 1440,0 L1440,1651.29775 L1414.58449,1651.29775 Z" id="path-1"></path>
+        <linearGradient x1="52.341594%" y1="60.6697558%" x2="16.5286218%" y2="3.27462414%" id="linearGradient-3">
+            <stop stop-color="#56567E" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="💻-Desktop---Pricing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ozow-Marketing-Site-Desktop-Pricing--Empty-page" transform="translate(0.000000, -756.000000)">
+            <g id="Group-2" transform="translate(0.000000, 756.000000)">
+                <g id="pattern" transform="translate(-0.000000, 0.702249)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+                    <polygon fill="url(#linearGradient-3)" opacity="0.246468" mask="url(#mask-2)" transform="translate(730.500000, 458.297751) scale(-1, 1) translate(-730.500000, -458.297751) " points="444.246426 24.2977505 1403 24.2977505 1034.26328 892.297751 58 875.676474"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

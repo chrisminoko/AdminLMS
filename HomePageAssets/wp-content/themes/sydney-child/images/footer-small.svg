@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="566px" viewBox="0 0 1440 566" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>1EA93993-FD08-4808-92EF-E0B63288B7C3</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="18.6010928%" y1="36.4021286%" x2="70.2394048%" y2="55.7079604%" id="linearGradient-1">
+            <stop stop-color="#2A2C30" offset="0%"></stop>
+            <stop stop-color="#131416" offset="58.4537572%"></stop>
+            <stop stop-color="#101012" offset="100%"></stop>
+        </linearGradient>
+        <path d="M1440,566 L-1.13686838e-13,566 L3.87374854e-12,3.4176 C54.7584,1.152 109.824,0 165.12,0 C611.328,0 1040.22144,74.4576 1440,211.6224 L1440,566 Z" id="path-2"></path>
+        <linearGradient x1="63.0292821%" y1="50%" x2="35.5169674%" y2="331.164257%" id="linearGradient-4">
+            <stop stop-color="#2A2A2B" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="52.341594%" y1="60.8191439%" x2="15.554283%" y2="1.03704577%" id="linearGradient-5">
+            <stop stop-color="#2A2A2B" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="💻-Desktop---Pricing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ozow-Marketing-Site-Desktop-Pricing--Empty-page" transform="translate(0.000000, -2205.000000)">
+            <g id="footer" transform="translate(0.000000, 2205.000000)">
+                <g id="background">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Fill-1" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    <path d="M-171.068793,-91.8434111 C-171.102312,-91.9142807 -171.135749,-91.9851878 -171.169106,-92.056132 C-195.662515,-144.150054 -172.811494,-206.014865 -120.129921,-230.235057 C-67.2944851,-254.525986 -4.54508942,-231.941738 20.1390114,-179.750612 L171.254254,139.761722 C171.287773,139.832592 171.32121,139.903499 171.354566,139.974443 C195.847976,192.068365 172.996955,253.933177 120.315382,278.153368 C67.4799459,302.444297 4.73055024,279.860049 -19.9535506,227.668923 L-171.068793,-91.8434111 Z" id="Rectangle-Copy-39" fill="url(#linearGradient-4)" opacity="0.353376" mask="url(#mask-3)"></path>
+                    <polygon id="Path-2" fill="url(#linearGradient-5)" opacity="0.353376" mask="url(#mask-3)" points="481.008281 -355 676.927499 114.79825 156.687436 114.79825 -46 -355"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

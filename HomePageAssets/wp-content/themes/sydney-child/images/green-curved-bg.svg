@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1472px" viewBox="0 0 1440 1472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>2E4D37BA-D8BC-4C35-B9B3-E408A9D41727</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="11.0406671%" y1="-2.84637936%" x2="103.147351%" y2="113.292868%" id="linearGradient-1">
+            <stop stop-color="#04D48F" offset="0%"></stop>
+            <stop stop-color="#03CF98" offset="27.7005058%"></stop>
+            <stop stop-color="#00C3B2" offset="100%"></stop>
+        </linearGradient>
+        <path d="M1440,1263.4176 C1385.2416,1261.152 1330.176,1260 1274.88,1260 C828.672,1260 399.77856,1334.4576 2.27373675e-13,1471.6224 L0,208.582219 C54.7584,210.847939 109.824,212 165.12,212 C611.328,212 1040.22144,137.538461 1440,0.366405965 L1440,1263.4176 Z" id="path-2"></path>
+        <linearGradient x1="52.341594%" y1="60.9452392%" x2="15.554283%" y2="0.466390675%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="19.1251608%" y1="50%" x2="79.4999302%" y2="55.8343282%" id="linearGradient-5">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.391641589" offset="53.7914098%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="💻-Desktop---Why-Ozow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ozow-Marketing-Site-Desktop-Why-Ozow--Empty-page" transform="translate(0.000000, -1598.000000)">
+            <g id="section-2" transform="translate(0.000000, 1598.000000)">
+                <g id="green-background">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Combined-Shape" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    <g id="patterns" mask="url(#mask-3)">
+                        <g transform="translate(56.000000, 41.000000)">
+                            <polygon id="Path-2-Copy-2" fill="url(#linearGradient-4)" opacity="0.353376" points="339.573166 0 1253 0 901.695952 819 0 819"></polygon>
+                            <path d="M1735.66764,428.707989 L1460.41081,1015.48308 C1427.30202,1086.06231 1343.08869,1116.63353 1272.15114,1083.82534 L1271.90847,1083.71311 C1201.05811,1050.94523 1170.29102,967.171917 1203.18826,896.600166 C1203.23617,896.49739 1203.2842,896.394672 1203.33236,896.292011 L1478.58919,309.516917 C1511.69798,238.937691 1595.91131,208.366467 1666.84886,241.174662 L1667.09153,241.286893 C1737.94189,274.054765 1768.70898,357.828083 1735.81174,428.399834 C1735.76383,428.50261 1735.7158,428.605328 1735.66764,428.707989 Z" id="Rectangle-Copy-38" fill="url(#linearGradient-5)" opacity="0.4" transform="translate(1469.500000, 662.500000) rotate(-180.000000) translate(-1469.500000, -662.500000) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

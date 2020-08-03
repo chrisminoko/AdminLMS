@@ -21,6 +21,22 @@ namespace BackEnd.Controllers
             return View(packages.ToList());
         }
 
+        public ActionResult HomePage()
+        {
+            return View();
+        }
+
+        public ActionResult PackagesPage() 
+        {
+            var packages = db.Packages.Include(p => p.PackageType);
+            return View(packages.ToList());
+        }
+
+        public ActionResult PackageTypes()
+        {
+            var packages = db.Packages.Include(p => p.PackageType);
+            return View(packages.ToList());
+        }
         // GET: Packages/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,7 +60,7 @@ namespace BackEnd.Controllers
         }
 
         // POST: Packages/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -78,7 +94,7 @@ namespace BackEnd.Controllers
         }
 
         // POST: Packages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

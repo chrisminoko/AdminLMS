@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -44,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SendGrid, Version=9.19.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>packages\SendGrid.9.19.0\lib\net452\SendGrid.dll</HintPath>
@@ -130,12 +137,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -189,7 +190,10 @@
     <Compile Include="Contracts\IPackageType.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationsController.cs" />
+    <Compile Include="Controllers\ApprovedDepositsController.cs" />
     <Compile Include="Controllers\ApprovedInstitutionsController.cs" />
+    <Compile Include="Controllers\DepositsController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\InstitutionsController.cs" />
@@ -212,6 +216,7 @@
     <Compile Include="Models\ApprovedInstitution.cs" />
     <Compile Include="Models\Deposit.cs" />
     <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Individual.cs" />
     <Compile Include="Models\Institution.cs" />
@@ -1117,6 +1122,257 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="HomePageAssets\wp-admin\css\forms.minc225.css" />
+    <Content Include="HomePageAssets\wp-admin\css\l10n.minc225.css" />
+    <Content Include="HomePageAssets\wp-admin\css\login.minc225.css" />
+    <Content Include="HomePageAssets\wp-admin\images\loading.gif" />
+    <Content Include="HomePageAssets\wp-admin\images\w-logo-blue7a53.png" />
+    <Content Include="HomePageAssets\wp-admin\images\wordpress-logo7d6b.svg" />
+    <Content Include="HomePageAssets\wp-admin\js\password-strength-meter.minc225.js" />
+    <Content Include="HomePageAssets\wp-admin\js\user-profile.minc225.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\contact-form-7\images\ajax-loader.gif" />
+    <Content Include="HomePageAssets\wp-content\plugins\contact-form-7\includes\css\styles38c6.css" />
+    <Content Include="HomePageAssets\wp-content\plugins\contact-form-7\includes\js\scripts38c6.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\css\frontend.min737b.css" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\js\frontend-modules.min737b.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\js\frontend.min737b.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\animations\animations.min737b.css" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\dialog\dialog.min6996.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\eicons\css\elementor-icons.minb2f9.css" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\eicons\fonts\eiconsc9e4.svg" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\font-awesome\css\font-awesome.min1849.css" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\font-awesome\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\swiper\swiper.min4f24.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\waypoints\waypoints.min05da.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\assets\coloredbg.png" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\assets\gridtile.png" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\assets\gridtile_3x3.png" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\assets\gridtile_3x3_white.png" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\assets\gridtile_white.png" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\assets\loader.gif" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\assets\transparent.png" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\css\closedhand.html" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\css\openhand.html" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\css\rs642c6.css" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\fonts\revicons\revicons90c6.svg" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\js\revolution.tools.minf049.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\js\rs6.min42c6.js" />
+    <Content Include="HomePageAssets\wp-content\plugins\sydney-toolbox\js\main5b5a.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\css\bootstrap.min.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\css\line-awesome.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\css\post.min.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\css\styles.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\glyphicons-halflings-regulard41d.html" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_bold_macroman\stylesheet.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_light_macroman\stylesheet.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_medium_macroman\stylesheet.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_regular_macroman\stylesheet.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\line-awesomeeb4f.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\bg-white.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\bg-whyozow.png" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\company-employees-working-in-office-zrnm-2-ta.jpg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\footer-large.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\footer-small.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\green-bg.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\green-curved-bg.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\image-of-two-successful-business-partners-working-3-gswu-8-d.jpg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\menu-black.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\menu-white.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\ozow-black.png" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\ozow-white.png" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\white-bg.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\images\white_large.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\bootstrap.min.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\jquery.counterup.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\jquery.touchSwipe.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\ozow-bamboohr.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\ozow.custom.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\ozow.form.validation.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\ozow.sliders.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\js\waypoints-min.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\oval-rectangle-copy-mask.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\style0817.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\css\bootstrap\bootstrap.min68b3.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\fonts\font-awesome.minc225.css" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\images\header.jpg" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\js\main-mina68c.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\js\scripts-minc225.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\js\skip-link-focus-fix08e0.js" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\stylec225.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\01\takealot.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\01\vodacom.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\1024-px-magento-svg%403x-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\any-device%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\big-commerce-logo-dark%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\Cellucity-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\Cellucity.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\combined-shape%403x-2.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\combined-shape-copy-4%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\dischem-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\dischem.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\drupal-grey.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\drupal.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\for-blog-logo%403x-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\for-blog-logo%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\girlbg%402x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\group-14%402x-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\group-26%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\group-35%402x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\group-37%402x-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\group-37%402x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\group-7%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\hirschs-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\hirschs.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\horizontal.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\icon1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\icon2.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\icon3.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\icon4.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\iconfinder-presta-shop-vertigal-logo-1012805%403x-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\iconfinder-presta-shop-vertigal-logo-1012805%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\integration-wp-ecommerce%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\j2store-grey.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\j2stores.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\logo-nop-commerce-maior%403x-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\logo-nop-commerce-maior%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\Loot-logo-big-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\Loot-logo-big.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\macbook-pro-01%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\magento-combined-shape%402x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\map.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\mono-colour%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\open-cart-logo%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\pci-seal.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\quick-and-easy%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\secure%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\secure-seal.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\shape%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\shopify-logo-default-cmyk%403x-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\shopify2%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\step-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\step-2.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\step-3.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\superbalist-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\superbalist.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\Virtue-Mart-grey.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\Virtue-Mart.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\whmcs-grey.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\whmcs.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\woo-combined-shape%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\02\xero-group%403x.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\company-employees-working-in-office-zrnm-2-ta.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\eCommerce-Picture.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\hwan2020.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\Invoice-Picture.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\Mobile-SMS-Picture.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\nikita-e1534437933279.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\qr-code.svg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\sandif-e153500583938.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\TokenQrCode.svg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\03\Wandile-20200616.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\Black-Friday.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\Emmanuel-Blog-Picture.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\ev ssl.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\Examining-Payment-Trends-for-2019.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\extra security.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\Identity theft.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\Lyle-Blog-Picture.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\Mitch-Blog-Picture.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\thawte certificate.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\Thomas-Blog-Picture.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\04\What-is-Ozow.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\exclusivebooks-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\exclusivebooks.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\hifi-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\hifi.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\hwb-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\hwb.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\mrd-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\mrD.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\wsb-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\07\wsb.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\annique-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\annique.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\coricraft-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\coricraft.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\dstv-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\dstv.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\flow-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\flow.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\hyperli-black.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\hyperli-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\le-creuset-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\le-creuset.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\national-lottery-2-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\national-lottery-2.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\nespresso-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\nespresso.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\Netflorist-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\Netflorist.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\paygenius-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\paygenius.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\peach-payments-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\peach-payments.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\sportingbet-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\sportingbet.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\tfg-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\tfg.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\travelstart-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\travelstart.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\Weylandts-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\Weylandts.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\zando-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\10\zando.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\12\betway-white.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2019\12\betway.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\05\icon1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\05\icon2.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\05\icon3.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\05\icon4.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\05\image-37.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\05\legal-header-image.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\06\blog3.html" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\06\blognew.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\06\green-bg-resize-1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\06\image3.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\06\plugins.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\2020\06\Tech-Gap2.html" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-1053966c.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-1648f66b.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-20741019.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-212cf2f.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-214dd42.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-218cfe1.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-220e115.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-22295ca.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-224a486.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-25420e08.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\css\post-574b6c.css" />
+    <Content Include="HomePageAssets\wp-content\uploads\elementor\thumbs\group-9%402x-o3whw9xj8s4ij82ckvieq8amm2f8qv3ot0pslpvlz2.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\revslider\youtube-hero\e.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\revslider\youtube-hero\f.jpg" />
+    <Content Include="HomePageAssets\wp-content\uploads\revslider\youtube-hero\ngo-phone1.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\revslider\youtube-hero\ngo-phone3.png" />
+    <Content Include="HomePageAssets\wp-content\uploads\revslider\youtube-hero\zerofeephone21.png" />
+    <Content Include="HomePageAssets\wp-includes\css\buttons.minc225.css" />
+    <Content Include="HomePageAssets\wp-includes\css\dashicons.minc225.css" />
+    <Content Include="HomePageAssets\wp-includes\css\dist\block-library\style.minc225.css" />
+    <Content Include="HomePageAssets\wp-includes\js\comment-reply.minc225.js" />
+    <Content Include="HomePageAssets\wp-includes\js\jquery\jquery-migrate.min330a.js" />
+    <Content Include="HomePageAssets\wp-includes\js\jquery\jquery4a5f.js" />
+    <Content Include="HomePageAssets\wp-includes\js\jquery\ui\position.mine899.js" />
+    <Content Include="HomePageAssets\wp-includes\js\underscore.min4511.js" />
+    <Content Include="HomePageAssets\wp-includes\js\wp-embed.minc225.js" />
+    <Content Include="HomePageAssets\wp-includes\js\wp-util.minc225.js" />
+    <Content Include="HomePageAssets\wp-includes\js\zxcvbn-async.min5152.js" />
+    <Content Include="HomePageAssets\wp-includes\wlwmanifest.xml" />
+    <Content Include="HomePageAssets\wp-json\index.html" />
     <Content Include="Images\noimg.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1133,6 +1389,86 @@
     <Content Include="Dashboard_ Assets\files\bower_components\datedropper\css\dd-icon\dd-icon.woff" />
     <Content Include="Dashboard_ Assets\files\bower_components\datedropper\css\dd-icon\dd-icond41d.eot" />
     <Content Include="EmailTemplate\Index.cshtml" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\eicons\fonts\eiconsc9e4.eot" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\eicons\fonts\eiconsc9e4.ttf" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\eicons\fonts\eiconsc9e4.woff" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\eicons\fonts\eiconsc9e4.woff2" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\font-awesome\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\font-awesome\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="HomePageAssets\wp-content\plugins\elementor\assets\lib\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\fonts\revicons\revicons90c6.eot" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\fonts\revicons\revicons90c6.ttf" />
+    <Content Include="HomePageAssets\wp-content\plugins\revslider\public\assets\fonts\revicons\revicons90c6.woff" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_bold_macroman\gordita-bold-webfont.woff" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_bold_macroman\gordita-bold-webfont.woff2" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_light_macroman\gordita-light-webfont.woff" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_light_macroman\gordita-light-webfont.woff2" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_medium_macroman\gordita-medium-webfont.woff" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_medium_macroman\gordita-medium-webfont.woff2" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_regular_macroman\gordita-regular-webfont.woff" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\gordita_regular_macroman\gordita-regular-webfont.woff2" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\line-awesome0176.eot" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\line-awesomeeb4f.eot" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\line-awesomeeb4f.ttf" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\line-awesomeeb4f.woff" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney-child\fonts\line-awesomeeb4f.woff2" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="HomePageAssets\wp-content\themes\sydney\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="HomePageAssets\wp-includes\fonts\dashicons2ce6.eot" />
+    <Content Include="HomePageAssets\wp-includes\fonts\dashicons2ce6.ttf" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed0b69.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed128c.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed1fc4.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed2ecc" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed3786.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed3a37" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed3da4" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed48fd" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed4e26" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed50b2" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed54af.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed60ba.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed6130.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed6422.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed6629" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed691f.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed7484" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed8850" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed89a8.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed8c35" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed8d7f.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed9198" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embed9b69.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embeda64a.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embeda949" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embeda958" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embeda9a2" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedac75" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedad5c.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedae6a.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedb237" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedbead" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedc3b2" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedd3ce.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedd73e.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embede33e" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embede478.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embede66e.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embede77c.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embede894" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embede9dc" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedf02c" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedf7b2.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedf863" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedfe72.json" />
+    <Content Include="HomePageAssets\wp-json\oembed\1.0\embedfef9.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1144,6 +1480,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\PackageTypes\Create.cshtml" />
+    <Content Include="Views\PackageTypes\Delete.cshtml" />
+    <Content Include="Views\PackageTypes\Details.cshtml" />
+    <Content Include="Views\PackageTypes\Edit.cshtml" />
+    <Content Include="Views\PackageTypes\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1196,21 +1537,30 @@
     <Content Include="Views\Individuals\Edit.cshtml" />
     <Content Include="Views\Individuals\Index.cshtml" />
     <Content Include="Views\Institutions\UserIndex.cshtml" />
-    <Content Include="Views\PackageTypes\Create.cshtml" />
-    <Content Include="Views\PackageTypes\Delete.cshtml" />
-    <Content Include="Views\PackageTypes\Details.cshtml" />
-    <Content Include="Views\PackageTypes\Edit.cshtml" />
-    <Content Include="Views\PackageTypes\Index.cshtml" />
-    <Content Include="Views\Packages\Create.cshtml" />
-    <Content Include="Views\Packages\Delete.cshtml" />
-    <Content Include="Views\Packages\Details.cshtml" />
-    <Content Include="Views\Packages\Edit.cshtml" />
-    <Content Include="Views\Packages\Index.cshtml" />
     <Content Include="Views\Applications\Create.cshtml" />
     <Content Include="Views\Applications\Delete.cshtml" />
     <Content Include="Views\Applications\Details.cshtml" />
     <Content Include="Views\Applications\Edit.cshtml" />
     <Content Include="Views\Applications\Index.cshtml" />
+    <Content Include="Views\Deposits\Create.cshtml" />
+    <Content Include="Views\Deposits\Delete.cshtml" />
+    <Content Include="Views\Deposits\Details.cshtml" />
+    <Content Include="Views\Deposits\Edit.cshtml" />
+    <Content Include="Views\Deposits\Index.cshtml" />
+    <Content Include="Views\Packages\Create.cshtml" />
+    <Content Include="Views\Packages\Delete.cshtml" />
+    <Content Include="Views\Packages\Details.cshtml" />
+    <Content Include="Views\Packages\Edit.cshtml" />
+    <Content Include="Views\Packages\Index.cshtml" />
+    <Content Include="Views\ApprovedDeposits\Create.cshtml" />
+    <Content Include="Views\ApprovedDeposits\Delete.cshtml" />
+    <Content Include="Views\ApprovedDeposits\Details.cshtml" />
+    <Content Include="Views\ApprovedDeposits\Edit.cshtml" />
+    <Content Include="Views\ApprovedDeposits\Index.cshtml" />
+    <Content Include="Views\Packages\HomePage.cshtml" />
+    <Content Include="Views\Packages\PackagesPage.cshtml" />
+    <Content Include="Views\Packages\PackageTypes.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1256,6 +1606,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

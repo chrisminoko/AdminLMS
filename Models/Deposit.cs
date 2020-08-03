@@ -12,6 +12,10 @@ namespace BackEnd.Models
         public int DepositID { get; set; }
         [Display(Name = "Name on Account")]
         public string NameOnAccount { get; set; }
+
+        [Display(Name = "Application")]
+        public int ApplicationID { get; set; }
+        public virtual Application Application { get; set; }
         [Display(Name = "Account Type")]
         public string AccountType { get; set; }
         [Display(Name = "Account Number")]

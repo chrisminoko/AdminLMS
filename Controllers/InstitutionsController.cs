@@ -5,8 +5,10 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using BackEnd.DataManager;
 using BackEnd.Models;
 using Microsoft.AspNet.Identity;
 
@@ -15,7 +17,7 @@ namespace BackEnd.Controllers
     public class InstitutionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-      
+       
         public ActionResult UserIndex()
         {
             var userName = User.Identity.GetUserName();
@@ -52,11 +54,27 @@ namespace BackEnd.Controllers
                 approvedInstitution.Status = "Approved";
                 db.ApprovedInstitutions.Add(approvedInstitution);
                 db.SaveChanges();
-               
+
 
                 //Send An Email After Approval with Activated User Roles and Moodle Credential
-                
-       
+                var mailTo = new List<MailAddress>();
+                mailTo.Add(new MailAddress(institution.Email, institution.FullName));
+                var body = $"Hello {institution.FullName}, Congratulations. We are glad to inform you that your application has been approved. You can now procced to adding your building details. You are required to pay the Subscription Fee in order for your building to be active to the Tenants <br/> Regards,<br/><br/> HomeLink <br/> .";
+
+                //Accommodation.Services.Implementation.EmailService emailService = new Accommodation.Services.Implementation.EmailService();
+                BackEnd.DataManager.EmailService emailService = new BackEnd.DataManager.EmailService();
+                emailService.SendEmail(new EmailContent()
+                {
+                    mailTo = mailTo,
+                    mailCc = new List<MailAddress>(),
+                    mailSubject = "Application Statement | Ref No.:" + institution.InstitutionID,
+                    mailBody = body,
+                    mailFooter = "<br/> Many Thanks, <br/> <b>Alliance</b>",
+                    mailPriority = MailPriority.High,
+                    mailAttachments = new List<Attachment>()
+
+                });
+
 
                 db.Institutions.Remove(institution);
                 db.SaveChanges();

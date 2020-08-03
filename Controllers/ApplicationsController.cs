@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BackEnd.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BackEnd.Controllers
 {
@@ -52,6 +53,18 @@ namespace BackEnd.Controllers
         {
             if (ModelState.IsValid)
             {
+                application.UserEmail = User.Identity.GetUserName();
+                application.ApplicationDate = DateTime.Parse(DateTime.Now.ToString("yyy.MM.dd")).Date;
+                application.Status = "Inactive";
+                application.PaymentStatus = "Awaiting Payment";
+                //application.StartDate = System.DateTime.Now;
+                //application.ExpiryDateDate = System.DateTime.Now.Date;
+
+                decimal amount = (from p in db.Packages
+                                  where p.PackageID == application.PackageID
+                                  select p.PackagePrice).FirstOrDefault();
+                application.Amount = amount;
+
                 db.Applications.Add(application);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,6 +72,11 @@ namespace BackEnd.Controllers
 
             ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "Storage", application.PackageID);
             return View(application);
+        }
+
+        public ActionResult Pay()
+        {
+            return null;
         }
 
         // GET: Applications/Edit/5

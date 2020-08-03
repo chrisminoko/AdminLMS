@@ -38,6 +38,7 @@ namespace BackEnd.Models
         public DbSet<Package> Packages { get; set; }
         public DbSet<PackageType> PackageTypes { get; set; }
         public DbSet<Application> Applications { get; set; }
+        public DbSet<Event>Events { get; set; }
 
 
     }

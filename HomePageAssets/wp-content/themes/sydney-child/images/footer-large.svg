@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="860px" viewBox="0 0 1440 860" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>A124748E-8837-4D27-9949-A6486F6F267D</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="18.6010928%" y1="18.6068518%" x2="70.2394048%" y2="63.1778599%" id="linearGradient-1">
+            <stop stop-color="#2A2C30" offset="0%"></stop>
+            <stop stop-color="#131416" offset="58.4537572%"></stop>
+            <stop stop-color="#101012" offset="100%"></stop>
+        </linearGradient>
+        <path d="M1440,859.9999 L-1.47792889e-12,859.9999 L2.50950649e-12,3.4176 C54.7584,1.152 109.824,5.68434189e-14 165.12,5.68434189e-14 C611.328,5.68434189e-14 1040.22144,74.4576 1440,211.6224 L1440,859.9999 Z" id="path-2"></path>
+        <linearGradient x1="63.0292821%" y1="50%" x2="35.5169674%" y2="331.164257%" id="linearGradient-4">
+            <stop stop-color="#2A2A2B" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="52.341594%" y1="60.8191439%" x2="15.554283%" y2="1.03704577%" id="linearGradient-5">
+            <stop stop-color="#2A2A2B" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="💻-Desktop---Why-Ozow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ozow-Marketing-Site-Desktop-Why-Ozow-State4-01a" transform="translate(0.000000, -5385.000000)">
+            <g id="footer" transform="translate(0.000000, 5385.000000)">
+                <g id="footer-background">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Fill-1" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    <path d="M-171.068793,249.156589 C-171.102312,249.085719 -171.135749,249.014812 -171.169106,248.943868 C-195.662515,196.849946 -172.811494,134.985135 -120.129921,110.764943 C-67.2944851,86.4740139 -4.54508942,109.058262 20.1390114,161.249388 L171.254254,480.761722 C171.287773,480.832592 171.32121,480.903499 171.354566,480.974443 C195.847976,533.068365 172.996955,594.933177 120.315382,619.153368 C67.4799459,643.444297 4.73055024,620.860049 -19.9535506,568.668923 L-171.068793,249.156589 Z" id="Rectangle-Copy-39" fill="url(#linearGradient-4)" opacity="0.353376" mask="url(#mask-3)"></path>
+                    <polygon id="Path-2" fill="url(#linearGradient-5)" opacity="0.353376" mask="url(#mask-3)" points="481.008281 -14 676.927499 455.79825 156.687436 455.79825 -46 -14"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

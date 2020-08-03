@@ -201,14 +201,14 @@ namespace BackEnd.Controllers
                    
                     if (result.Succeeded)
                     {
-                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         //Activate It once you have an internet connection with no filters
-                        //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        //await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
+                        string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
 
-                        //return RedirectToAction("ConfirmEmail","Home");
-                        return RedirectToAction("Login", "Account");
+                        return RedirectToAction("ConfirmEmail", "Home");
+                        //return RedirectToAction("Login", "Account");
                     }
                     AddErrors(result);
                 }else if (model.Type=="Individual")

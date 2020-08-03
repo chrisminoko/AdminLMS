@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1739px" viewBox="0 0 1440 1739" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>59A451C1-98C2-4FCE-9D76-127E3495E691</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="52.341594%" y1="54.0967757%" x2="16.5286218%" y2="32.0592534%" id="linearGradient-1">
+            <stop stop-color="#56567E" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="52.341594%" y1="54.103809%" x2="16.5286218%" y2="32.0284528%" id="linearGradient-2">
+            <stop stop-color="#56567E" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="💻-Desktop---Why-Ozow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ozow-Marketing-Site-Desktop-Why-Ozow--Empty-page" transform="translate(0.000000, -3858.000000)">
+            <g id="Group" transform="translate(-260.000000, 3858.000000)">
+                <path d="M1700,1738.6224 C1300.22144,1601.4576 871.328,1527 425.12,1527 C369.824,1527 314.7584,1528.152 260,1530.4176 L260,0 L1700,0 L1700,1738.6224 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                <g id="patterns" transform="translate(0.000000, 501.000000)" opacity="0.353376">
+                    <path d="M57.2195753,524.181546 L431.195519,524.564521 C499.816389,524.634793 555.431275,580.237509 555.516565,648.858362 L555.516693,648.96182 C555.601805,717.438914 500.159149,773.019563 431.682055,773.104674 C431.588362,773.104791 431.494668,773.104801 431.400975,773.104705 L57.4250315,772.72173 C-11.1958386,772.651458 -66.8107246,717.048743 -66.8960147,648.427889 L-66.8961433,648.324431 C-66.9812546,579.847337 -11.5385985,524.266688 56.9384953,524.181577 C57.0321886,524.18146 57.125882,524.18145 57.2195753,524.181546 Z" id="Rectangle-Copy-38" fill="url(#linearGradient-1)" transform="translate(244.310275, 648.643126) rotate(-245.000000) translate(-244.310275, -648.643126) "></path>
+                    <path d="M1410.64668,190.988306 L1749.48621,191.335596 C1811.81787,191.399483 1862.33553,241.906179 1862.41293,304.23783 L1862.41293,304.23783 C1862.49011,366.387129 1812.17072,416.831657 1750.02142,416.908838 C1749.93639,416.908943 1749.85136,416.908952 1749.76634,416.908865 L1410.92681,416.561575 C1348.59514,416.497688 1298.07749,365.990992 1298.00008,303.65934 L1298.00008,303.65934 C1297.9229,241.510042 1348.24229,191.065513 1410.39159,190.988333 C1410.47662,190.988228 1410.56165,190.988218 1410.64668,190.988306 Z" id="Rectangle-Copy-41" fill="url(#linearGradient-2)" transform="translate(1580.206507, 303.948585) rotate(-245.000000) translate(-1580.206507, -303.948585) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

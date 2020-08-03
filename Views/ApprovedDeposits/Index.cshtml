@@ -1,0 +1,99 @@
+﻿@model IEnumerable<BackEnd.Models.ApprovedDeposit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.NameOnAccount)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepositAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepositDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.DepositTraceCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileContent)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.NameOnAccount)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepositAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepositDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.DepositTraceCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileContent)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApprovedDepositID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApprovedDepositID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ApprovedDepositID })
+        </td>
+    </tr>
+}
+
+</table>

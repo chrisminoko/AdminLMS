@@ -33,6 +33,11 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="~/Dashboard_ Assets/files/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard_ Assets/files/assets/css/widget.css">
+
+
+
+
+
 </head>
 
 <body>
@@ -316,18 +321,18 @@
                                                 </a>
                                                 <ul class="pcoded-submenu">
                                                     <li class="">
-                                                        <a href="" target="_blank" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Payments</span>
+                                                        <a href="@Url.Action("Index", "Applications")" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Application</span>
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="" target="_blank" class="waves-effect waves-dark">
+                                                        <a href="@Url.Action("Index", "Deposits")" target="_blank" class="waves-effect waves-dark">
+                                                            <span class="pcoded-mtext">Deposit</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="@Url.Action("Index", "ApprovedDeposits")" target="_blank" class="waves-effect waves-dark">
                                                             <span class="pcoded-mtext">Approved Deposits</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a href="" target="_blank" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Rejected Deposits</span>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -425,6 +430,20 @@
     <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/pages/dashboard/crm-dashboard.min.js"></script>
     <script type="text/javascript" src="~/Dashboard_ Assets/files/assets/js/script.min.js"></script>
     <script src="https://use.fontawesome.com/0f75fc2005.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @RenderSection("scripts", required: false)
 </body>
 

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
+using System.Web.Hosting;
 
 namespace BackEnd.DataManager
 {
@@ -22,6 +24,13 @@ namespace BackEnd.DataManager
         }
         public void SendEmail(EmailContent emailContent)
         {
+            String line = "";
+            using (StreamReader sr = new StreamReader(HostingEnvironment.MapPath("~/EmailTemplate/Email.html")))
+            {
+                line = sr.ReadToEnd();
+
+            }
+
             MailMessage message = new MailMessage();
             message.From = mailFrom;
             foreach (MailAddress address in emailContent.mailTo)
@@ -30,7 +39,10 @@ namespace BackEnd.DataManager
                 message.CC.Add(address);
             message.Subject = emailContent.mailSubject;
             message.Priority = emailContent.mailPriority;
+           
             message.Body = emailContent.mailBody + "<br/<br/>" + emailContent.mailFooter;
+            line.Replace("change this link here", message.Body);
+            message.Body = line;
             message.IsBodyHtml = true;
             foreach (Attachment attachment in emailContent.mailAttachments)
                 message.Attachments.Add(attachment);

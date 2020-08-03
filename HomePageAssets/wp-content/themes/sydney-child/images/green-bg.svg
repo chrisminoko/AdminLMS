@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="2202px" viewBox="0 0 1440 2202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>C455F8F1-75C0-453B-9404-A9FA83D8058F</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="22.7340997%" y1="-2.84637936%" x2="87.1954616%" y2="113.292868%" id="linearGradient-1">
+            <stop stop-color="#04D48F" offset="0%"></stop>
+            <stop stop-color="#03CF98" offset="27.7005058%"></stop>
+            <stop stop-color="#00C3B2" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="52.341594%" y1="60.8191439%" x2="15.554283%" y2="1.03704577%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="25.4394996%" y1="-2.84637936%" x2="83.5048224%" y2="113.292868%" id="linearGradient-3">
+            <stop stop-color="#04D48F" offset="0%"></stop>
+            <stop stop-color="#03CF98" offset="27.7005058%"></stop>
+            <stop stop-color="#00C3B2" offset="100%"></stop>
+        </linearGradient>
+        <path d="M1440,1366 L1440,1990.3775 C1040.22144,2127.5423 611.328,2201.9999 165.12,2201.9999 C109.824,2201.9999 54.7584,2200.8479 -1.05290776e-13,2198.5823 L-4.09272616e-12,1366 L-1.43161705e-11,352.4176 C54.7584,350.152 109.824,349 165.12,349 C611.328,349 1040.22144,423.4576 1440,560.6224 L1440,1366 Z" id="path-4"></path>
+        <linearGradient x1="52.341594%" y1="60.9452392%" x2="15.554283%" y2="0.466390675%" id="linearGradient-6">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="19.1251608%" y1="50%" x2="79.4999302%" y2="55.8343282%" id="linearGradient-7">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.391641589" offset="53.7914098%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="💻-Desktop---Careers" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ozow-Marketing-Site-Desktop-Careers--Empty-page" transform="translate(0.000000, -1387.000000)">
+            <g id="Group-2" transform="translate(0.000000, 1387.000000)">
+                <g id="black-background" transform="translate(901.500000, 1101.000000) scale(-1, 1) translate(-901.500000, -1101.000000) ">
+                    <g id="Path-2-Copy-2" transform="translate(363.000000, 349.000000)"></g>
+                    <polygon id="Path-2" fill="url(#linearGradient-2)" opacity="0.353376" points="844.676348 0 1040.86768 470.450748 519.905057 470.450748 316.936111 0"></polygon>
+                </g>
+                <mask id="mask-5" fill="white">
+                    <use xlink:href="#path-4"></use>
+                </mask>
+                <use id="Mask" fill="url(#linearGradient-3)" transform="translate(720.000000, 1275.499950) scale(-1, 1) translate(-720.000000, -1275.499950) " xlink:href="#path-4"></use>
+                <polygon id="Path-2-Copy-2" fill="url(#linearGradient-6)" opacity="0.353376" mask="url(#mask-5)" points="277.573166 432 1191 432 839.695952 1251 -62 1251"></polygon>
+                <path d="M1789.66764,1127.70799 L1514.41081,1714.48308 C1481.30202,1785.06231 1397.08869,1815.63353 1326.15114,1782.82534 L1325.90847,1782.71311 C1255.05811,1749.94523 1224.29102,1666.17192 1257.18826,1595.60017 C1257.23617,1595.49739 1257.2842,1595.39467 1257.33236,1595.29201 L1532.58919,1008.51692 C1565.69798,937.937691 1649.91131,907.366467 1720.84886,940.174662 L1721.09153,940.286893 C1791.94189,973.054765 1822.70898,1056.82808 1789.81174,1127.39983 C1789.76383,1127.50261 1789.7158,1127.60533 1789.66764,1127.70799 Z" id="Rectangle-Copy-38" fill="url(#linearGradient-7)" opacity="0.4" mask="url(#mask-5)" transform="translate(1523.500000, 1361.500000) rotate(-180.000000) translate(-1523.500000, -1361.500000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>
