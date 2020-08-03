@@ -1,75 +1,108 @@
 ﻿@model IEnumerable<BackEnd.Models.Application>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+<a href="@Url.Action("Create", "Applications")" button class="btn"><i class="fa fa-plus-circle"></i> Add New</a>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Package.Storage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExpiryDateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Package.Storage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpiryDateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationID })
-        </td>
-    </tr>
-}
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Zero config.table start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Applications</h5>
 
-</table>
+                </div>
+                <div class="card-block">
+                    <div class="dt-responsive table-responsive">
+                        <table class="table table-striped table-bordered nowrap">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Package.Storage)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserEmail)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ApplicationDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StartDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ExpiryDateDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentStatus)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Amount)
+                                </th>
+                              
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Package.Storage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ApplicationDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ExpiryDateDate)
+                            </td>
+                            @if (item.Status == "Active")
+                            {
+                                <td class="bg-success">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="bg-danger">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                            }
+
+                            @if (item.PaymentStatus == "Approved")
+                            {
+                                <td class="bg-info">
+                                    @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                </td>
+                            }
+                            else if(item.PaymentStatus == "Awaiting Payment")
+                            {
+                                <td class="bg-warning">
+                                    @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                </td>
+                            }
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ApplicationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationID })
+        </td>*@
+                        </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>

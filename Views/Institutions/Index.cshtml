@@ -89,22 +89,6 @@
                                         }
                                     </td>
 
-                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" >
-        <div class="modal-content">
-
-            @if (item.FileContent != null)
-            {
-                int Id = item.InstitutionID;
-                string url = "https://localhost:44360/Institutions/Download/"+ Id;
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="@url" allowfullscreen></iframe>
-                </div>
-            }
-
-        </div>
-    </div>
-</div>
 
                                     <td>
                                         @*@Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID }) |
@@ -141,17 +125,4 @@
 
 
 
-<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-@*<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" >
-        <div class="modal-content">
-
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://localhost:44360/Institutions/Download/6" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</div>*@
 

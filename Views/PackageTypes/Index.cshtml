@@ -4,30 +4,43 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Zero config.table start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Package Types</h5>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PackageName)
-        </th>
-        <th></th>
-    </tr>
+                </div>
+                <div class="card-block">
+                    <div class="dt-responsive table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                   Package Type Name
+                                </th>
+                                <th></th>
+                            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PackageName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PackageTypeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PackageTypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PackageTypeID })
-        </td>
-    </tr>
-}
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PackageName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.PackageTypeID }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.PackageTypeID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.PackageTypeID })
+                                    </td>
+                                </tr>
+                            }
 
-</table>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
