@@ -152,7 +152,6 @@ namespace BackEnd.Controllers
         #region Methods
 
 
-
         public ActionResult Recurring()
         {
 
@@ -189,8 +188,6 @@ namespace BackEnd.Controllers
 
             return Redirect(redirectUrl);
         }
-
-
 
         public ActionResult OnceOff(double tot)
         {
@@ -254,10 +251,7 @@ namespace BackEnd.Controllers
             var redirectUrl = $"{this.payFastSettings.ProcessUrl}{adHocRequest.ToString()}";
 
             return Redirect(redirectUrl);
-        }
-
-
-
+           }
 
         public ActionResult OnceOff()
         {

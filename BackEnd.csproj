@@ -1563,21 +1563,18 @@
     <Content Include="Views\Deposits\Details.cshtml" />
     <Content Include="Views\Deposits\Edit.cshtml" />
     <Content Include="Views\Deposits\Index.cshtml" />
-    <Content Include="Views\Packages\Create.cshtml" />
-    <Content Include="Views\Packages\Delete.cshtml" />
-    <Content Include="Views\Packages\Details.cshtml" />
-    <Content Include="Views\Packages\Edit.cshtml" />
-    <Content Include="Views\Packages\Index.cshtml" />
     <Content Include="Views\ApprovedDeposits\Create.cshtml" />
     <Content Include="Views\ApprovedDeposits\Delete.cshtml" />
     <Content Include="Views\ApprovedDeposits\Details.cshtml" />
     <Content Include="Views\ApprovedDeposits\Edit.cshtml" />
     <Content Include="Views\ApprovedDeposits\Index.cshtml" />
-    <Content Include="Views\Packages\HomePage.cshtml" />
-    <Content Include="Views\Packages\PackagesPage.cshtml" />
-    <Content Include="Views\Packages\PackageTypes.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\Packages\Create.cshtml" />
+    <Content Include="Views\Packages\Delete.cshtml" />
+    <Content Include="Views\Packages\Details.cshtml" />
+    <Content Include="Views\Packages\Edit.cshtml" />
+    <Content Include="Views\Packages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
