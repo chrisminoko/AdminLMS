@@ -7,20 +7,24 @@ using System.Web.Mvc;
 using BackEnd.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
+
 namespace BackEnd.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
             return View();
         }
         public ActionResult CRM()
         {
+            ViewBag.TotalStudents = db.Packages.Count();
             return View();
 
         }
-
+    
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -39,7 +43,30 @@ namespace BackEnd.Controllers
 
             return View();
         }
+     
+      
+        public PartialViewResult Graph() 
+        {
+            return PartialView("_graph");
+        }
+        public ActionResult BarGraph()
+        {
+            try
+            {
+                ViewBag.DataPoints = JsonConvert.SerializeObject(db.dbDataPoints.ToList(), _jsonSetting);
 
+                return View();
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                return View("Error");
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                return View("Error");
+            }
+        }
+        JsonSerializerSettings _jsonSetting = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
         public FileContentResult UserPhotos()
         {
 

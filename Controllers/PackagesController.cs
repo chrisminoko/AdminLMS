@@ -15,6 +15,7 @@ namespace BackEnd.Controllers
 {
     public class PackagesController : Controller
     {
+            
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Packages
@@ -93,7 +94,16 @@ namespace BackEnd.Controllers
                 return HttpNotFound();
             }
             ViewBag.PackageTypeID = new SelectList(db.PackageTypes, "PackageTypeID", "PackageName", package.PackageTypeID);
+
             return View(package);
+            //TempData["PackageID"] = id;
+            //return RedirectToAction("Register", "Account");
+        }
+
+        public ActionResult Apply(int? id) 
+        {
+            TempData["PackageID"] = id;
+            return RedirectToAction("Register", "Account");
         }
 
         // POST: Packages/Edit/5

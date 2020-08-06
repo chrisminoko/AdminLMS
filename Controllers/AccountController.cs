@@ -16,6 +16,7 @@ namespace BackEnd.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        public int PackageID = 0;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -140,6 +141,8 @@ namespace BackEnd.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var data = TempData["PackageID"];
+            PackageID = Convert.ToInt32(data);
             return View();
         }
 
@@ -157,7 +160,7 @@ namespace BackEnd.Controllers
         public async Task<ActionResult> Register([Bind(Exclude = "UserPhoto")]RegisterViewModel model, HttpPostedFileBase files)
         {
             ApplicationDbContext db = new ApplicationDbContext();
-
+            int num = PackageID;
             if (ModelState.IsValid)
             {
                 byte[] imageData = null;

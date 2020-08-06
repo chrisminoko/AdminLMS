@@ -18,6 +18,7 @@ namespace BackEnd.Controllers
         // GET: DbDataPoints
         public ActionResult Index()
         {
+            InformationRequestHub.NotifyInformationRequestToClient();
             return View(db.dbDataPoints.ToList());
         }
        
@@ -76,6 +77,7 @@ namespace BackEnd.Controllers
             {
                 db.dbDataPoints.Add(dbDataPoint);
                 db.SaveChanges();
+                InformationRequestHub.NotifyInformationRequestToClient();
                 return RedirectToAction("Index");
             }
 

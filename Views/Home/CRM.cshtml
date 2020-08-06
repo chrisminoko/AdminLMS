@@ -1,206 +1,227 @@
-﻿
+﻿@{
+    ViewBag.Title = "About";
+}
 
-
-    <div class="page-header card">
-        <div class="row align-items-end">
-            <div class="col-lg-12">
-                <div class="page-header-title">
-                    <i class="feather icon-home bg-c-blue"></i>
-                    <div class="d-inline">
-                        <h5>Dashboard CRM</h5>
-                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-                    </div>
+<div class="page-header card">
+    <div class="row align-items-end">
+        <div class="col-lg-12">
+            <div class="page-header-title">
+                <i class="feather icon-home bg-c-blue"></i>
+                <div class="d-inline">
+                    <h5>Dashboard CRM</h5>
+                    <span style="color:white">lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-xl-3 col-md-6">
-            <div class="card prod-p-card card-red">
-                <div class="card-body">
-                    <div class="row align-items-center m-b-30">
-                        <div class="col">
-                            <h6 class="m-b-5 text-white">Total Profit</h6>
-                            <h3 class="m-b-0 f-w-700 text-white">$1,783</h3>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-money-bill-alt text-c-red f-18"></i>
-                        </div>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card prod-p-card card-red">
+            <div class="card-body">
+                <div class="row align-items-center m-b-30">
+                    <div class="col">
+                        <h6 class="m-b-5 text-white">Total Profit</h6>
+                        <h3 class="m-b-0 f-w-700 text-white">$@ViewBag.TotalStudents</h3>
                     </div>
-                    <p class="m-b-0 text-white"><span class="label label-danger m-r-10">+11%</span>From Previous Month</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card prod-p-card card-blue">
-                <div class="card-body">
-                    <div class="row align-items-center m-b-30">
-                        <div class="col">
-                            <h6 class="m-b-5 text-white">Total Orders</h6>
-                            <h3 class="m-b-0 f-w-700 text-white">15,830</h3>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-database text-c-blue f-18"></i>
-                        </div>
+                    <div class="col-auto">
+                        <i class="fas fa-money-bill-alt text-c-red f-18"></i>
                     </div>
-                    <p class="m-b-0 text-white"><span class="label label-primary m-r-10">+12%</span>From Previous Month</p>
                 </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card prod-p-card card-green">
-                <div class="card-body">
-                    <div class="row align-items-center m-b-30">
-                        <div class="col">
-                            <h6 class="m-b-5 text-white">Average Price</h6>
-                            <h3 class="m-b-0 f-w-700 text-white">$6,780</h3>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign text-c-green f-18"></i>
-                        </div>
-                    </div>
-                    <p class="m-b-0 text-white"><span class="label label-success m-r-10">+52%</span>From Previous Month</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card prod-p-card card-yellow">
-                <div class="card-body">
-                    <div class="row align-items-center m-b-30">
-                        <div class="col">
-                            <h6 class="m-b-5 text-white">Packages Sold</h6>
-                            <h3 class="m-b-0 f-w-700 text-white">6,784</h3>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-tags text-c-yellow f-18"></i>
-                        </div>
-                    </div>
-                    <p class="m-b-0 text-white"><span class="label label-warning m-r-10">+52%</span>From Previous Month</p>
-                </div>
+                <p class="m-b-0 text-white"><span class="label label-danger m-r-10">+11%</span>From Previous Month</p>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-    <div class="col-md-12">
-        <div class="card table-card">
-            <div class="card-header">
-                <h5>New Products</h5>
-                <div class="card-header-right">
-                    <ul class="list-unstyled card-option">
-                        <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
-                        <li><i class="feather icon-maximize full-card"></i></li>
-                        <li><i class="feather icon-minus minimize-card"></i></li>
-                        <li><i class="feather icon-refresh-cw reload-card"></i></li>
-                        <li><i class="feather icon-trash close-card"></i></li>
-                        <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                    </ul>
+    <div class="col-xl-3 col-md-6">
+        <div class="card prod-p-card card-blue">
+            <div class="card-body">
+                <div class="row align-items-center m-b-30">
+                    <div class="col">
+                        <h6 class="m-b-5 text-white">Total Orders</h6>
+                        <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-database text-c-blue f-18"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="card-block p-b-0">
-                <div class="table-responsive">
-                    <table class="table table-hover m-b-0">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Product Code</th>
-                                <th>Customer</th>
-                                <th>Status</th>
-                                <th>Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sofa</td>
-                                <td>#PHD001</td>
-                                <td>abc@gmail.com</td>
-                                <td><label class="label label-danger">Out Stock</label></td>
-                                <td>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Computer</td>
-                                <td>#PHD002</td>
-                                <td>cdc@gmail.com</td>
-                                <td><label class="label label-success">In Stock</label></td>
-                                <td>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mobile</td>
-                                <td>#PHD003</td>
-                                <td>pqr@gmail.com</td>
-                                <td><label class="label label-danger">Out Stock</label></td>
-                                <td>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Coat</td>
-                                <td>#PHD004</td>
-                                <td>bcs@gmail.com</td>
-                                <td><label class="label label-success">In Stock</label></td>
-                                <td>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Watch</td>
-                                <td>#PHD005</td>
-                                <td>cdc@gmail.com</td>
-                                <td><label class="label label-success">In Stock</label></td>
-                                <td>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Shoes</td>
-                                <td>#PHD006</td>
-                                <td>pqr@gmail.com</td>
-                                <td><label class="label label-danger">Out Stock</label></td>
-                                <td>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p class="m-b-0 text-white"><span class="label label-primary m-r-10">+12%</span>From Previous Month</p>
             </div>
         </div>
     </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card prod-p-card card-green">
+            <div class="card-body">
+                <div class="row align-items-center m-b-30">
+                    <div class="col">
+                        <h6 class="m-b-5 text-white">Average Price</h6>
+                        <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign text-c-green f-18"></i>
+                    </div>
+                </div>
+                <p class="m-b-0 text-white"><span class="label label-success m-r-10">+52%</span>From Previous Month</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card prod-p-card card-yellow">
+            <div class="card-body">
+                <div class="row align-items-center m-b-30">
+                    <div class="col">
+                        <h6 class="m-b-5 text-white">Packages Sold</h6>
+                        <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-tags text-c-yellow f-18"></i>
+                    </div>
+                </div>
+                <p class="m-b-0 text-white"><span class="label label-warning m-r-10">+52%</span>From Previous Month</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-12">
+    <div class="card table-card">
+        <div class="card-header">
+            <h5>New Products</h5>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                    <li><i class="feather icon-maximize full-card"></i></li>
+                    <li><i class="feather icon-minus minimize-card"></i></li>
+                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                    <li><i class="feather icon-trash close-card"></i></li>
+                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block p-b-0">
+            <div class="table-responsive">
+                <table class="table table-hover m-b-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Product Code</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sofa</td>
+                            <td>#PHD001</td>
+                            <td>abc@gmail.com</td>
+                            <td><label class="label label-danger">Out Stock</label></td>
+                            <td>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Computer</td>
+                            <td>#PHD002</td>
+                            <td>cdc@gmail.com</td>
+                            <td><label class="label label-success">In Stock</label></td>
+                            <td>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mobile</td>
+                            <td>#PHD003</td>
+                            <td>pqr@gmail.com</td>
+                            <td><label class="label label-danger">Out Stock</label></td>
+                            <td>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Coat</td>
+                            <td>#PHD004</td>
+                            <td>bcs@gmail.com</td>
+                            <td><label class="label label-success">In Stock</label></td>
+                            <td>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Watch</td>
+                            <td>#PHD005</td>
+                            <td>cdc@gmail.com</td>
+                            <td><label class="label label-success">In Stock</label></td>
+                            <td>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Shoes</td>
+                            <td>#PHD006</td>
+                            <td>pqr@gmail.com</td>
+                            <td><label class="label label-danger">Out Stock</label></td>
+                            <td>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-6">
+    @{
+        Html.RenderAction("BarGraph");
+    }
+</div>
+
+
+<div class="col-md-6">
+    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+    <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+    <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+</div>
+
+
+
