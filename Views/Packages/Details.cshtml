@@ -1,0 +1,82 @@
+﻿@model BackEnd.Models.Package
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Package</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageType.PackageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageType.PackageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Storage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Storage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumTeachers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumTeachers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumStudents)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumStudents)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumEmails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumEmails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackagePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackagePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPhoto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PackageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
