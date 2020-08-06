@@ -1,75 +1,87 @@
 ﻿@model IEnumerable<BackEnd.Models.Package>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PackageType.PackageName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Storage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumTeachers)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumStudents)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumEmails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PackageDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PackagePrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserPhoto)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PackageType.PackageName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Storage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumTeachers)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumStudents)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumEmails)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PackageDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PackagePrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserPhoto)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PackageID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PackageID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PackageID })
-        </td>
-    </tr>
-}
+<div class="col-md-12">
+    <div class="card table-card">
+        <div class="card-header">
+            <h5>Packages</h5>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                    <li><i class="feather icon-maximize full-card"></i></li>
+                    <li><i class="feather icon-minus minimize-card"></i></li>
+                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                    <li><i class="feather icon-trash close-card"></i></li>
+                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block p-b-0">
+            <div class="table-responsive">
+                <table class="table table-hover m-b-0">
+                    <thead>
+                        <tr>
+                            <th>Package Name</th>
+                            <th>Storage</th>
+                            <th>Number of Teacher</th>
+                            <th>Number of Students</th>
+                            <th>Number of Emails</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                            <th>Ratings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
 
-</table>
+                            @foreach (var item in Model)
+                            {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PackageType.PackageName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Storage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumTeachers)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumStudents)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumEmails)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PackageDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PackagePrice)
+                            </td>
+                            <td><label class="label label-danger">Out Stock</label></td>
+                            <td class="">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.PackageID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.PackageID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.PackageID })
+                            </td>
+                            <td>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                            </td>
+
+                        </tr>
+                        }
+                        
+
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

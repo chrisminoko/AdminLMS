@@ -198,6 +198,8 @@
     <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\ApprovedDepositsController.cs" />
     <Compile Include="Controllers\ApprovedInstitutionsController.cs" />
+    <Compile Include="Controllers\DbDataPointsController.cs" />
+    <Compile Include="Models\DbDataPoint.cs" />
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -221,6 +223,7 @@
     <Compile Include="Models\ApprovedDeposit.cs" />
     <Compile Include="Models\ApprovedIndividual.cs" />
     <Compile Include="Models\ApprovedInstitution.cs" />
+    <Compile Include="Models\DataPoint.cs" />
     <Compile Include="Models\Deposit.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Event.cs" />
@@ -1133,6 +1136,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="HomePageAssets\ozow-white.ico" />
     <Content Include="HomePageAssets\wp-admin\css\forms.minc225.css" />
     <Content Include="HomePageAssets\wp-admin\css\l10n.minc225.css" />
     <Content Include="HomePageAssets\wp-admin\css\login.minc225.css" />
@@ -1569,12 +1573,21 @@
     <Content Include="Views\ApprovedDeposits\Edit.cshtml" />
     <Content Include="Views\ApprovedDeposits\Index.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\Packages\Create.cshtml" />
     <Content Include="Views\Packages\Delete.cshtml" />
     <Content Include="Views\Packages\Details.cshtml" />
     <Content Include="Views\Packages\Edit.cshtml" />
     <Content Include="Views\Packages\Index.cshtml" />
+    <Content Include="Views\Packages\HomePage.cshtml" />
+    <Content Include="Views\Packages\PackageTypes.cshtml" />
+    <Content Include="Views\Home\CRM.cshtml" />
+    <Content Include="Views\Sweet\Index.cshtml" />
+    <Content Include="Views\DbDataPoints\Create.cshtml" />
+    <Content Include="Views\DbDataPoints\Delete.cshtml" />
+    <Content Include="Views\DbDataPoints\Details.cshtml" />
+    <Content Include="Views\DbDataPoints\Edit.cshtml" />
+    <Content Include="Views\DbDataPoints\Index.cshtml" />
+    <Content Include="Views\DbDataPoints\BarGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

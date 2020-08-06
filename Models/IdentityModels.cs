@@ -40,6 +40,7 @@ namespace BackEnd.Models
         public DbSet<Application> Applications { get; set; }
         public DbSet<Event>Events { get; set; }
 
+        public DbSet<DbDataPoint> dbDataPoints { get; set; }
 
     }
 }

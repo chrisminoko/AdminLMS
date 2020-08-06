@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light2",
+	animationEnabled: true,
+	title: {
+		text: "Power Produced by a Wind Turbine"
+	},
+	axisX: {
+		title: "Wind Speed (in m/s)"
+	},
+	axisY: {
+		title: "Instantaneous Power (in kW)"
+	},
+	data: [{
+		type: "area",
+		color: "#0BB5FF",
+		markerSize: 0,
+		toolTipContent: "Wind Speed: {x} m/s<br>Ins. Power: {y} kW",
+		dataPoints: @Html.Raw(ViewBag.DataPoints)
+	}]
+});
+chart.render();
+
+}
+    </script>
+</head>
+<body>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>   

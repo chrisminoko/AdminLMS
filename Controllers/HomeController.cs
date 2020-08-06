@@ -15,6 +15,11 @@ namespace BackEnd.Controllers
         {
             return View();
         }
+        public ActionResult CRM()
+        {
+            return View();
+
+        }
 
         public ActionResult About()
         {
