@@ -14,3 +14,5 @@ Backend system to manage all applications for the moodle LMS system
 ![image](https://user-images.githubusercontent.com/42572223/88814165-0e2a5900-d1ba-11ea-8967-e32bea74168d.png)
 ![image](https://user-images.githubusercontent.com/42572223/88814173-11bde000-d1ba-11ea-9cdc-8b88744dcb53.png)
 ![image](https://user-images.githubusercontent.com/42572223/88856975-4e81db00-d1aa-11ea-98e6-4bf4a3fcf140.png)
+![image](https://user-images.githubusercontent.com/42572223/89535828-3f78d980-d7f7-11ea-9118-94f50e11bf71.png)
+![image](https://user-images.githubusercontent.com/42572223/89535831-43a4f700-d7f7-11ea-962f-28b025a07694.png)
