@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         public int PackageID = 0;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
         }
@@ -135,6 +135,15 @@ namespace BackEnd.Controllers
                     return View(model);
             }
         }
+        public Package GetSelectedPackage(int id) 
+        {
+               var SelectedPackage = db.Packages.Find(PackageID);
+                if (SelectedPackage!=null) 
+                {
+                    return SelectedPackage;
+                }
+                throw new HttpException(404, "Your error message");//RedirectTo NoFoundPage
+        }
 
         //
         // GET: /Account/Register
@@ -142,10 +151,11 @@ namespace BackEnd.Controllers
         public ActionResult Register()
         {
             var data = TempData["PackageID"];
-            PackageID = Convert.ToInt32(data);
+            this.PackageID = Convert.ToInt32(data);
             return View();
         }
 
+     
         public byte[] ConvertToBytes(HttpPostedFileBase files)
         {
 
@@ -158,9 +168,10 @@ namespace BackEnd.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register([Bind(Exclude = "UserPhoto")]RegisterViewModel model, HttpPostedFileBase files)
-        {
+        { 
+            var results= GetSelectedPackage(this.PackageID);
             ApplicationDbContext db = new ApplicationDbContext();
-            int num = PackageID;
+            
             if (ModelState.IsValid)
             {
                 byte[] imageData = null;
