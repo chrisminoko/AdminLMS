@@ -16,7 +16,7 @@ namespace BackEnd.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public int PackageID = 0;
+        public static int PackageID = 0;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         ApplicationDbContext db = new ApplicationDbContext();
@@ -151,7 +151,7 @@ namespace BackEnd.Controllers
         public ActionResult Register()
         {
             var data = TempData["PackageID"];
-            this.PackageID = Convert.ToInt32(data);
+            PackageID = Convert.ToInt32(data);
             return View();
         }
 
@@ -169,9 +169,9 @@ namespace BackEnd.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register([Bind(Exclude = "UserPhoto")]RegisterViewModel model, HttpPostedFileBase files)
         { 
-            var results= GetSelectedPackage(this.PackageID);
+            var results= GetSelectedPackage(PackageID);
             ApplicationDbContext db = new ApplicationDbContext();
-            
+           
             if (ModelState.IsValid)
             {
                 byte[] imageData = null;
@@ -199,6 +199,22 @@ namespace BackEnd.Controllers
                     }
 
                     Institution institution = new Institution();
+                    Application application = new Application();
+
+                    application.UserEmail = model.Email;
+                    application.PackageID = PackageID;
+                    application.ApplicationDate = DateTime.Parse(DateTime.Now.ToString("yyy.MM.dd")).Date;
+                    application.Status = "Inactive";
+                    application.PaymentStatus = "Awaiting Payment";
+
+
+                    decimal amount = (from p in db.Packages
+                                      where p.PackageID == PackageID
+                                      select p.PackagePrice).FirstOrDefault();
+
+                    
+
+                    application.Amount = amount;
 
                     institution.FullName = model.FullName;
                     institution.Email = model.Email;
@@ -209,10 +225,14 @@ namespace BackEnd.Controllers
                     institution.FileContent = model.FileContent;
                     institution.FileName = model.FileName;
                     institution.UserPhoto = imageData;
+                    db.Applications.Add(application);
                     db.Institutions.Add(institution);
-                    db.SaveChanges();
-
                    
+
+                    db.SaveChanges();
+                    
+
+
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

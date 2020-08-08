@@ -57,8 +57,7 @@ namespace BackEnd.Controllers
                 application.ApplicationDate = DateTime.Parse(DateTime.Now.ToString("yyy.MM.dd")).Date;
                 application.Status = "Inactive";
                 application.PaymentStatus = "Awaiting Payment";
-                //application.StartDate = System.DateTime.Now;
-                //application.ExpiryDateDate = System.DateTime.Now.Date;
+           
 
                 decimal amount = (from p in db.Packages
                                   where p.PackageID == application.PackageID
