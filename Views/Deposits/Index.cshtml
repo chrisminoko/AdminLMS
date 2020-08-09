@@ -8,7 +8,7 @@
 <div class="page-body">
     <div class="row">
         <div class="col-sm-12">
-            <!-- Zero config.table start -->
+         
             <div class="card">
                 <div class="card-header">
                     <h5>Deposits</h5>
@@ -18,9 +18,7 @@
                     <div class="dt-responsive table-responsive">
                         <table id="myTable" class="table table-striped table-bordered nowrap">
                             <tr>
-                                @*<th>
-                                        @Html.DisplayNameFor(model => model.Application.UserEmail)
-                                    </th>*@
+                          
                                 <th>
                                     @Html.DisplayNameFor(model => model.NameOnAccount)
                                 </th>
@@ -36,73 +34,54 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.DepositDate)
                                 </th>
-                                @*<th>
-                                        @Html.DisplayNameFor(model => model.UserEmail)
-                                    </th>*@
-                                @*<th>
-                                        @Html.DisplayNameFor(model => model.ID)
-                                    </th>*@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
                                 </th>
-                                @*<th>
-                                        @Html.DisplayNameFor(model => model.DepositTraceCode)
-                                    </th>*@
-                                @*<th>
-                                        @Html.DisplayNameFor(model => model.FileName)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.FileContent)
-                                    </th>*@
+                            
+                                <th>
+                                   @Html.DisplayNameFor(model => model.FileName)
+                                </th>
+                                 
                                 <th></th>
                             </tr>
 
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    @*<td>
-                                            @Html.DisplayFor(modelItem => item.Application.UserEmail)
-                                        </td>*@
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.NameOnAccount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AccountType)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AccountNumber)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DepositAmount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DepositDate)
-                                    </td>
-                                    @*<td>
-                                            @Html.DisplayFor(modelItem => item.UserEmail)
-                                        </td>*@
-                                    @*<td>
-                                            @Html.DisplayFor(modelItem => item.ID)
-                                        </td>*@
-                                    <td class="bg-success">
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    @*<td>
-                                            @Html.DisplayFor(modelItem => item.DepositTraceCode)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FileName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FileContent)
-                                        </td>*@
-                                    <td>
-                                        @Html.ActionLink("Approve", "Approve", new { id = item.DepositID }) |
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.DepositID }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.DepositID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.DepositID })
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NameOnAccount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AccountNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepositAmount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepositDate)
+                            </td>
+                            @if (item.Status=="Approved")
+                            {
+                                <td><label class="label label-success">Approved</label></td>
+
+                            }
+                            else
+                            {
+                                <td><label class="label label-danger">Not Approved</label></td>
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileName)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Approve", "Approve", new { id = item.DepositID }) |
+                                @Html.ActionLink("Downlaod File", "Download", new { id = item.ApplicationID })<br />
+
+                            </td>
+                        </tr>
                             }
 
                         </table>

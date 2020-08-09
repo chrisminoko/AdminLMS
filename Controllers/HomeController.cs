@@ -20,7 +20,13 @@ namespace BackEnd.Controllers
         }
         public ActionResult CRM()
         {
+
+            ViewBag.TotalSales = (from i in db.Applications
+                              where i.PaymentStatus == "Approved"
+                              select i.Amount).Sum();
+
             ViewBag.TotalStudents = db.Packages.Count();
+
             return View();
 
         }
@@ -84,21 +90,17 @@ namespace BackEnd.Controllers
                     FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                     BinaryReader br = new BinaryReader(fs);
                     imageData = br.ReadBytes((int)imageFileLength);
-
                     return File(imageData, "image/png");
-
                 }
                 // to get the user details to load user Image    
                 var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
                 var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
-
                 return new FileContentResult(userImage.UserPhoto, "image/jpeg");
             }
         
             else 
             {
                 string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
-
                 byte[] imageData = null;
                 FileInfo fileInfo = new FileInfo(fileName);
                 long imageFileLength = fileInfo.Length;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -17,6 +18,27 @@ namespace BackEnd.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Deposits
+
+        public byte[] ConvertToBytes(HttpPostedFileBase files)
+        {
+
+            BinaryReader reader = new BinaryReader(files.InputStream);
+            return reader.ReadBytes(files.ContentLength);
+        }
+        public ActionResult Download(int? id)
+        {
+            MemoryStream ms = null;
+
+            var item = db.Institutions.FirstOrDefault(x => x.InstitutionID == id);
+            if (item != null)
+            {
+                ms = new MemoryStream(item.FileContent);
+            }
+            return new FileStreamResult(ms, item.FileName);
+
+
+            //return RedirectToAction("Download");
+        }
         public ActionResult Index()
         {
             var deposits = db.Deposits.Include(d => d.Application);
@@ -123,10 +145,17 @@ namespace BackEnd.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DepositID,NameOnAccount,ApplicationID,AccountType,AccountNumber,DepositAmount,DepositDate,UserEmail,ID,Status,DepositTraceCode,FileName,FileContent")] Deposit deposit)
+        public ActionResult Create([Bind(Include = "DepositID,NameOnAccount,ApplicationID,AccountType,AccountNumber,DepositAmount,DepositDate,UserEmail,ID,Status,DepositTraceCode,FileName,FileContent")] Deposit deposit, HttpPostedFileBase files)
         {
             if (ModelState.IsValid)
             {
+                if (files != null && files.ContentLength > 0)
+                {
+                    deposit.FileName = files.FileName;
+                    string[] bits = deposit.FileName.Split('\\');
+                    deposit.FileContent = ConvertToBytes(files);
+                }
+
                 deposit.UserEmail = User.Identity.GetUserName();
                 db.Deposits.Add(deposit);
                 db.SaveChanges();
