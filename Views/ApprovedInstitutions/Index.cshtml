@@ -73,9 +73,10 @@
                                         }
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.InstitutionID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.InstitutionID })
+
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID } , new { @class = "glyphicon glyphicon-trash" }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.InstitutionID } , new { @class = "glyphicon glyphicon-trash" }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.InstitutionID } , new { @class = "glyphicon glyphicon-trash" })
                                     </td>
                                 </tr>
                             }
