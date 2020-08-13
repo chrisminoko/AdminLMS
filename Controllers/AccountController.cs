@@ -240,7 +240,7 @@ namespace BackEnd.Controllers
                         string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
-
+                        UserManager.AddToRole(user.Id, "Institution");
                         return RedirectToAction("ConfirmEmail", "Home");
                         //return RedirectToAction("Login", "Account");
                     }
@@ -254,8 +254,9 @@ namespace BackEnd.Controllers
                     individual.Email = user.UserName;
                     individual.UserPhoto = imageData;
                     db.Individuals.Add(individual);
-                    db.SaveChanges();
                     UserManager.AddToRole(user.Id, "Individual");
+                    db.SaveChanges();
+                   
                 }
               
             }

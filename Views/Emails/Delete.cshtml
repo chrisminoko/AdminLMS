@@ -1,0 +1,48 @@
+﻿@model BackEnd.Models.Email
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Email</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FromName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FromEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

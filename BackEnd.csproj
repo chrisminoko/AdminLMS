@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ApprovedDepositsController.cs" />
     <Compile Include="Controllers\ApprovedInstitutionsController.cs" />
     <Compile Include="Controllers\DbDataPointsController.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Models\DbDataPoint.cs" />
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -1601,6 +1602,12 @@
     <Content Include="Views\Home\BarGraph.cshtml" />
     <Content Include="Views\Home\_graph.cshtml" />
     <Content Include="Views\Packages\Apply.cshtml" />
+    <Content Include="Views\Emails\Create.cshtml" />
+    <Content Include="Views\Emails\Delete.cshtml" />
+    <Content Include="Views\Emails\Details.cshtml" />
+    <Content Include="Views\Emails\Edit.cshtml" />
+    <Content Include="Views\Emails\Index.cshtml" />
+    <Content Include="Views\Emails\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

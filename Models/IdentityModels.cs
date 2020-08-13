@@ -41,6 +41,7 @@ namespace BackEnd.Models
         public DbSet<Event>Events { get; set; }
 
         public DbSet<DbDataPoint> dbDataPoints { get; set; }
+        public DbSet<Email> Emails { get; set; }
 
     }
 }

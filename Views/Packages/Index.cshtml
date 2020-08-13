@@ -31,7 +31,6 @@
                             <th>Description</th>
                             <th>Price</th>
                             <th>Actions</th>
-                            <th>Ratings</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,24 +60,14 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.PackagePrice)
                             </td>
-                            <td><label class="label label-danger">Out Stock</label></td>
+                            @*<td><label class="label label-danger">Out Stock</label></td>*@
                             <td class="">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.PackageID }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.PackageID }) |
                                 @Html.ActionLink("Delete", "Delete", new { id = item.PackageID })
                             </td>
-                            <td>
-                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
-                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                                <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
-                            </td>
-
                         </tr>
                         }
-                        
-
                         </tbody>
                 </table>
             </div>
