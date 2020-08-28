@@ -20,10 +20,19 @@ namespace BackEnd.Controllers
         }
         public ActionResult CRM()
         {
-
-            ViewBag.TotalSales = (from i in db.Applications
-                              where i.PaymentStatus == "Approved"
-                              select i.Amount).Sum();
+             var amount= (from i in db.Applications
+                          where i.PaymentStatus == "Approved"
+                          select i.Amount).Sum();
+            if (amount==0) 
+            {
+                ViewBag.TotalSales = 0;
+            }
+            else
+            {
+                ViewBag.TotalSales = (from i in db.Applications
+                                      where i.PaymentStatus == "Approved"
+                                      select i.Amount).Sum();
+            }
 
             ViewBag.TotalStudents = db.Packages.Count();
 

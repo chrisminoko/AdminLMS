@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -16,6 +17,7 @@ namespace BackEnd.Models
         public string FromEmail { get; set; }
         [Required]
         public string Message { get; set; }
+        [NotMapped]
         public HttpPostedFileBase Upload { get; set; }
     }
 }

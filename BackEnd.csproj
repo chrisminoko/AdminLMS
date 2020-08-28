@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ApprovedInstitutionsController.cs" />
     <Compile Include="Controllers\DbDataPointsController.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbDataPoint.cs" />
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -223,7 +224,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Application.cs" />

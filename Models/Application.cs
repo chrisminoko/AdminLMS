@@ -21,7 +21,7 @@ namespace BackEnd.Models
         public DateTime? ExpiryDateDate { get; set; }
         public string Status { get; set; }
         public string PaymentStatus { get; set; }
-        public decimal Amount { get; set; }
+        public decimal ? Amount { get; set; }
 
        
     }

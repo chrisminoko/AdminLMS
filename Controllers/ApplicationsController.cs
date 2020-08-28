@@ -164,7 +164,7 @@ namespace BackEnd.Controllers
             double amount = 20/* Convert.ToDouble(db.Items.Select(x => x.CostPrice).FirstOrDefault())*/;
             var products = "Gold" /*db.Items.Select(x => x.Name).ToList()*/;
             // Transaction Details
-            decimal PackagePrice = (from p in db.Applications
+            decimal ? PackagePrice = (from p in db.Applications
                               where p.ApplicationID == id
                               select p.Amount).FirstOrDefault();
 
