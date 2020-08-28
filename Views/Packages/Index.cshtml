@@ -34,43 +34,50 @@
                         </tr>
                     </thead>
                     <tbody>
-                      
 
-                            @foreach (var item in Model)
-                            {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PackageType.PackageName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Storage)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NumTeachers)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NumStudents)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NumEmails)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PackageDescription)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PackagePrice)
-                            </td>
-                            @*<td><label class="label label-danger">Out Stock</label></td>*@
-                            <td class="">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.PackageID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.PackageID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.PackageID })
-                            </td>
-                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackageType.PackageName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Storage)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumTeachers)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumStudents)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumEmails)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackageDescription)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackagePrice)
+                                </td>
+                        
+                                <td class="">
+                              
+
+                                    <a href="@Url.Action("Delete", "Package", new { id = item.PackageID })" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
+                                    <a href="@Url.Action("Edit","Package", new { id=item.PackageID })" rel="tooltip" title="Edit" class="btn btn-success btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+
+                               
+
+                                </td>
+                            </tr>
                         }
-                        </tbody>
+                    </tbody>
+
                 </table>
             </div>
         </div>
+
     </div>
 </div>
+ 

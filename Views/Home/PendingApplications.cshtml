@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BackEnd.Models.Institution>
+
+@{
+    ViewBag.Title = "Index";
+    var message = TempData["AlertMessage"] ?? string.Empty;
+    Layout = null;
+}
+<script>
+    var msg = '@message';
+    if (msg)
+        alert(msg);
+</script>
+
+
+
+<div class="col-md-12">
+    <div class="card table-card">
+        <div class="card-header">
+            <h5>Pending Applications</h5>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                    <li><i class="feather icon-maximize full-card"></i></li>
+                    <li><i class="feather icon-minus minimize-card"></i></li>
+                    <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                    <li><i class="feather icon-trash close-card"></i></li>
+                    <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block p-b-0">
+            <div class="table-responsive">
+                <table class="table table-hover m-b-0">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FullName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Type)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.FileName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserPhoto)
+                        </th>
+                        <th></th>
+                    </tr>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Type)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FileName)
+                                </td>
+
+                                <td>
+                                    @if (item.UserPhoto != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(item.UserPhoto);
+                                        var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
+                                        <img src="@ImgSource" width="100" height="100" />
+                                    }
+                                </td>
+
+
+                                <td>
+
+
+                                    @Html.ActionLink("Downlaod File", "Download", new { id = item.InstitutionID })<br />
+                                    <a href="@Url.Action("Approve", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Approve, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Approve" class="btn btn-success btn-simple btn-xs"><i class="fa fa-check-square-o"></i></a>
+                                    <a href="@Url.Action("Reject", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Reject, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

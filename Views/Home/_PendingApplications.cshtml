@@ -1,0 +1,78 @@
+﻿@model IEnumerable<BackEnd.Models.Institution>
+
+@{ 
+    Layout = null;
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPhoto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPhoto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InstitutionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InstitutionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InstitutionID })
+        </td>
+    </tr>
+}
+
+</table>

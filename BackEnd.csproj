@@ -202,12 +202,14 @@
     <Compile Include="Contracts\IInstitution.cs" />
     <Compile Include="Contracts\IPackageType.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\ApprovedDepositsController.cs" />
     <Compile Include="Controllers\ApprovedInstitutionsController.cs" />
     <Compile Include="Controllers\DbDataPointsController.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\DbDataPoint.cs" />
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -1498,6 +1500,7 @@
     <Content Include="Content\bootstrap\variables.less" />
     <Content Include="Content\bootstrap\mixins.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -1608,6 +1611,14 @@
     <Content Include="Views\Emails\Edit.cshtml" />
     <Content Include="Views\Emails\Index.cshtml" />
     <Content Include="Views\Emails\Contact.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admins\graph.cshtml" />
+    <Content Include="Views\Home\_PendingApplications.cshtml" />
+    <Content Include="Views\Home\PendingApplications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

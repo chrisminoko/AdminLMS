@@ -58,11 +58,16 @@ namespace BackEnd.Controllers
 
             return View();
         }
-     
+
+        public ActionResult PendingApplications() 
+        {
+
+            return View(db.Institutions.ToList());
+        }
       
         public PartialViewResult Graph() 
         {
-            return PartialView("_graph");
+            return PartialView("_PendingApplications");
         }
         public ActionResult BarGraph()
         {
