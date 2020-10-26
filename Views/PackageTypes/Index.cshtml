@@ -18,7 +18,7 @@
                         <table class="table">
                             <tr>
                                 <th>
-                                   Package Type Name
+                                    Package Type Name
                                 </th>
                                 <th></th>
                             </tr>
@@ -43,4 +43,16 @@
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @{
+                Html.RenderAction("CreatePackage");
+            }
+        </div>
+    </div>
+
 </div>

@@ -21,6 +21,10 @@ namespace BackEnd.Controllers
         }
 
         // GET: PackageTypes/Details/5
+        public PartialViewResult CreatePackage()
+        {
+            return PartialView("_CreatePackageType");
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)

@@ -29,6 +29,7 @@ namespace BackEnd.Models
         [Display(Name = "Uploaded File")]
         public string FileName { get; set; }
         public byte[] FileContent { get; set; }
+        [Display(Name = "Photo")]
         public byte[] UserPhoto { get; set; }
     }
 }

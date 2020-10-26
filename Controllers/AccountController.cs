@@ -544,7 +544,7 @@ namespace BackEnd.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("CRM", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

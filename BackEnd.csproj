@@ -1619,6 +1619,7 @@
     <Content Include="Views\Admins\graph.cshtml" />
     <Content Include="Views\Home\_PendingApplications.cshtml" />
     <Content Include="Views\Home\PendingApplications.cshtml" />
+    <Content Include="Views\PackageTypes\_CreatePackageType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -110,6 +110,8 @@ namespace BackEnd
 
 
             //creating other roles
+      
+
             if (!roleManager.RoleExists("Institution"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
