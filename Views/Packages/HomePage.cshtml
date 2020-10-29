@@ -218,8 +218,9 @@
                                     <img src="~/HomePageAssets/wp-content/plugins/revslider/public/assets/assets/transparent.png" title="Home" data-parallax="off" class="rev-slidebg" data-no-retina>
                                     <!--
                                                                 -->
-                                    <rs-layer id="slider-2-slide-2-layer-3" data-type="image" data-rsp_ch="on" data-xy="xo:-4px,-3px,-2px,55px;yo:63px,52px,39px,30px;" data-text="w:normal;s:20,16,12,7;l:0,20,15,9;" data-dim="w:356px,293px,222px,182px;h:606px,500px,379px,310px;" data-frame_0="y:100%;" data-frame_0_mask="u:t;" data-frame_1="st:280;sp:1200;sR:280;" data-frame_1_mask="u:t;" data-frame_999="o:0;st:w;sR:7520;" style="z-index:8;font-family:Roboto;">
-                                        <img src="~/HomePageAssets/wp-content/uploads/revslider/youtube-hero/ngo-phone1.png" width="1577" height="2685" data-no-retina>
+                                    <rs-layer id="slider-2-slide-2-layer-3" data-type="image" data-rsp_ch="on" data-xy="xo:1px,-3px,-2px,55px;yo:63px,52px,39px,30px;" data-text="w:normal;s:20,16,12,7;l:0,20,15,9;" data-dim="w:356px,293px,222px,182px;h:606px,500px,379px,310px;" data-frame_0="y:100%;" data-frame_0_mask="u:t;" data-frame_1="st:280;sp:1200;sR:280;" data-frame_1_mask="u:t;" data-frame_999="o:0;st:w;sR:7520;" style="z-index:8;font-family:Roboto;">
+                                        <img src="~/HomePageAssets/wp-content/uploads/revslider/youtube-hero/phone.png" width="1577" height="1885" data-no-retina>
+                                        @*width="1577" height="2685"*@
                                     </rs-layer>
                                     <!--
 
@@ -236,8 +237,8 @@
                                     <!--
 
                                     -->
-                                    <rs-layer id="slider-2-slide-2-layer-8" data-type="text" data-color="#fff" data-rsp_ch="on" data-xy="x:l,l,l,c;xo:549px,453px,344px,-4px;yo:194px,160px,121px,345px;" data-text="w:normal;s:68,56,50,42;l:70,57,52,44;fw:700,600,600,600;a:left,left,left,center;" data-dim="minh:0px,none,none,none;" data-frame_999="o:0;st:w;sR:8700;" style="z-index:11;font-family:Raleway;">
-                                        <p id="body-title"> Best</p>  
+                                    <rs-layer  id="slider-2-slide-2-layer-8" data-type="text" data-color="#fff" data-rsp_ch="on" data-xy="x:l,l,l,c;xo:549px,453px,344px,-4px;yo:194px,160px,121px,345px;" data-text="w:normal;s:68,56,50,42;l:70,57,52,44;fw:700,600,600,600;a:left,left,left,center;" data-dim="minh:0px,none,none,none;" data-frame_999="o:0;st:w;sR:8700;" style="z-index:15;font-family:Raleway;">
+                                        <p id="body-title"> Best </p>  
                                         <p id="body-title"> Online learning </p>
                                        
                                     </rs-layer>
@@ -1269,6 +1270,9 @@
     </script>
     <style>
 
+        
+
+
          #body-title-1{
              
             color: #70c2ad;
@@ -1280,12 +1284,20 @@
      @@media only screen and (max-width : 540px) {
            #body-title{
              font-size: 20px;
+             padding-left: 5px;
+             padding-right:5px
              
             }
 
+           
+        #slider-2-slide-2-layer-8 {
+        color: green;
+        
+        
+        }
+
+
            #body-title-1{
-              
-              text-align:justify;
              font-size: 15px;
             }
     }
@@ -1296,7 +1308,7 @@
             margin-top: 15px;
           background-color: #4CAF50; 
           border: 2px solid #4CAF50;
-  border-radius: 8px;
+          border-radius: 8px;
           color: white;
           padding: 8px 10px 10px 10px;
           text-align: center;
