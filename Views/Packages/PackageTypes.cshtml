@@ -144,12 +144,10 @@
                             <div class="col-md-12 text-center">
                                 <div class="row">
                                     <div class="col-xs-4">
-                                        <a href="../index.html" title="Instant EFT Payment | Ozow"><img class="site-logo" src="~/HomePageAssets/wp-content/themes/sydney-child/images/ozow-white.png" alt="Instant EFT Payment | Ozow" /></a>
+                                        <a href="@Url.Action("HomePage", "Packages")" title="AcademyGo"><img class="site-logo" src="~/HomePageAssets/wp-content/themes/sydney-child/images/ozow-white.png" alt="Instant EFT Payment | Ozow" /></a>
 
                                     </div>
-                                    <div class="col-xs-5 text-center">
-                                        <a href="" class="get-started-menu">Register Company</a>
-                                    </div>
+                                
                                     <div class="col-xs-3">
                                         <span style="font-size:30px;cursor:pointer" onclick="openNavR()">
                                             <img src="~/HomePageAssets/wp-content/themes/sydney-child/images/menu-white.svg" />
@@ -177,34 +175,15 @@
                     </div>
                     <div id="mySidenavR" class="sidenavR">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNavR()">×</a>
-                        <a href="">Why AcademyGo</a>
-                        <a href="">Pricing</a>
-                        <a href="">Contact Us</a>
-                        <a href="">FAQs</a>
-                        <ul>
-                            <li>
-                                <a href="">Blog</a>
-                            </li>
-                            <li>
-                                <a href=""> FAQs</a>
-                            </li>
-                            <li>
-                                <a href=""> Careers</a>
-                            </li>
-                            <li>
-                                <a href="">Contact</a>
-                            </li>
-                        </ul>
+                        <a href="@Url.Action("HomePage", "Packages")">Why AcademyGo</a>
+                        <a href="@Url.Action("PackageTypes", "Packages")">Pricing</a>
 
                         <div class="ozow-actions-menu">
 
-                            <a href="" class="register-company-button">Register Company</a>
+                            <a href="@Url.Action("Register", "Account")" class="register-company-button">Register Company</a>
 
 
-                            <a href="" class="make-payment-button">Make Payment</a>
-
-
-                            <a href="" class="ozow-login">Merchant Login</a>
+                            <a href="@Url.Action("Login", "Account")" class="ozow-login">Merchant Login</a>
                         </div>
                         </ul>
                     </div>
@@ -214,31 +193,36 @@
                         <!-- Original site header styles -->
 
                         <div class="container">
+                            <div id="google_translate_element"></div>
                             <div class="row">
+
                                 <div class="col-md-2 col-sm-4 col-xs-12">
-                                    <a href="../index.html" title="Instant EFT Payment | Ozow"><img class="site-logo" src="~/HomePageAssets/wp-content/themes/sydney-child/images/ozow-white.png" alt="Instant EFT Payment | Ozow" /></a>
+                                    <a href="@Url.Action("HomePage", "Packages")" title="Academy Go"><img class="site-logo" src="~/HomePageAssets/wp-content/themes/sydney-child/images/ozow-white.png" alt="Academy Go" /></a>
                                 </div>
                                 <div class="col-md-6 col-sm-4 col-xs-12">
                                     <div class="btn-menu"></div>
                                     <nav id="mainnav" class="mainnav" role="navigation" style="margin-top: 10%;">
                                         <div class="menu-ozow-main-menu-container">
                                             <ul id="menu-ozow-main-menu" class="menu">
-                                                <li id="menu-item-235" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-235"><a href="">Why AcademyGo</a></li>
-                                                <li id="menu-item-232" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-224 current_page_item menu-item-232"><a href="index.html" aria-current="page">Pricing</a></li>
+                                                <li id="menu-item-235" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-235"><a href="@Url.Action("HomePage", "Packages")">Why AcademyGo</a></li>
+                                                <li id="menu-item-232" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-224 current_page_item menu-item-232"><a href="" aria-current="page">Pricing</a></li>
                                                 <li id="menu-item-234" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-234"><a href="">Contact Us</a></li>
                                                 <li id="menu-item-233" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-233"><a href="">FAQs</a></li>
+
                                             </ul>
                                         </div>
                                     </nav><!-- #site-navigation -->
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
+
                                     <nav class="ozow-actions">
                                         <ul style="margin-top: 10%; ">
+
                                             <li class="register-company-button">
-                                                <a href="" class="">Join Now</a>
+                                                <a href="@Url.Action("Register", "Account")" class="">Join Now</a>
                                             </li>
                                             <li class="make-payment-button">
-                                                <a href="" class="">Log In</a>
+                                                <a href="@Url.Action("Login", "Account")" class="">Log In</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -466,7 +450,7 @@
                                                                         </div>
                                                                         <div class="elementor-element elementor-element-8a07311 elementor-widget elementor-widget-heading" data-id="8a07311" data-element_type="widget" data-widget_type="heading.default">
                                                                             <div class="elementor-widget-container">
-                                                                                <h2 class="elementor-heading-title elementor-size-default">Ready to sign up with Ozow?</h2>
+                                                                                <h2 class="elementor-heading-title elementor-size-default">Ready to sign up with AcademyGo?</h2>
                                                                             </div>
                                                                         </div>
                                                                         <div class="elementor-element elementor-element-39978f1 elementor-widget elementor-widget-text-editor" data-id="39978f1" data-element_type="widget" data-widget_type="text-editor.default">
@@ -601,7 +585,7 @@
                             <table border="0">
                                 <tr>
                                     <td colspan="3" style="height: 110px;vertical-align: top;">
-                                        <a href="index.html"><img src="~/HomePageAssets/wp-content/uploads/2019/02/mono-colour%403x.png" width="110px" height="30px" alt="ozow logo" /></a>
+                                        <a href=""><img src="~/HomePageAssets/wp-content/uploads/2019/02/mono-colour%403x.png" width="110px" height="30px" alt="ozow logo" /></a>
                                     </td>
                                 </tr>
 
@@ -630,7 +614,7 @@
                                 Kwa-zulu natal<br>
                                 South Africa,8051
                             </p>
-                            @*<a href="https://www.google.com/maps/place/1st+floor,+39+Main+Rd,+Green+Point,+Cape+Town,+8051/@-33.9094172,18.4109597,17z/data=!3m1!4b1!4m5!3m4!1s0x1dcc6744fbdcdb63:0xd2c7afe1e33f9991!8m2!3d-33.9094217!4d18.4131484" target="blank" rel="noopener noreferrer">View on Google Maps</a>*@
+                        @*<a href="https://www.google.com/maps/place/1st+floor,+39+Main+Rd,+Green+Point,+Cape+Town,+8051/@-33.9094172,18.4109597,17z/data=!3m1!4b1!4m5!3m4!1s0x1dcc6744fbdcdb63:0xd2c7afe1e33f9991!8m2!3d-33.9094217!4d18.4131484" target="blank" rel="noopener noreferrer">View on Google Maps</a>*@
                         </div>
                     </aside>
                 </div>
@@ -642,7 +626,7 @@
                                     <td>
                                         <div class="menu-ozow-main-menu-container">
                                             <ul id="menu-ozow-main-menu-1" class="menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-218 current_page_item menu-item-235"><a href="why-ozow/index.html">Why AcademyGo</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-218 current_page_item menu-item-235"><a href="">Why AcademyGo</a></li>
                                                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-232"><a href="">Pricing Packages</a></li>
                                                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-234"><a href="">About Us</a></li>
 
@@ -653,7 +637,7 @@
                                     <td style="vertical-align: top;">
                                         <div class="menu-ozow-top-menu-container">
                                             <ul id="menu-ozow-top-menu-1" class="menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-651"><a href="">Blog</a></li>
+                                                
                                                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-651"><a href="" target="_blank" rel="noopener noreferrer">Training</a></li>
                                                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="">FAQ</a></li>
                                                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="">Contact</a></li>
@@ -663,11 +647,11 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h3 class="widget-title"><a href="ozow-legal/index.html" style="font-weight:bold;">Legal</a></h3>
+                                        <h3 class="widget-title"><a href="" style="font-weight:bold;">Legal</a></h3>
                                         <div class="menu-legal-container">
                                             <ul id="menu-legal" class="menu">
-                                                <li id="menu-item-1279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1279"><a href="privacy-policy/index.html">Privacy Policy</a></li>
-                                                <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1279"><a href="terms-and-conditions/index.html">Terms &amp; Conditions</a></li>
+                                                <li id="menu-item-1279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1279"><a href="">Privacy Policy</a></li>
+                                                <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1279"><a href="">Terms &amp; Conditions</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -678,7 +662,7 @@
                     </aside>
                 </div>
                 <div class="sidebar-column col-md-3">
-                    <aside id="sydney_contact_info-2" class="widget sydney_contact_info_widget"><div class="contact-phone"><span style="color: #2cdd9d;">t / </span><a href="tel:+27 79 055 6694 ">+27 79 055 6694 </a></div><div class="contact-email"><span style="color: #2cdd9d;">e / </span><a href="cdn-cgi/l/email-protection.html#0c65626a632a2f3a38376376632a2f3d3d35372a2f383a376f6361">info&#64;academygo&#46;com</a></div></aside><aside id="custom_html-3" class="widget_text widget widget_custom_html">
+                    <aside id="sydney_contact_info-2" class="widget sydney_contact_info_widget"><div class="contact-phone"><span style="color: #2cdd9d;">t / </span><a href="tel:+27 79 055 6694 ">+27 79 055 6694 </a></div><div class="contact-email"><span style="color: #2cdd9d;">e / </span><a href="">info&#64;academygo&#46;com</a></div></aside><aside id="custom_html-3" class="widget_text widget widget_custom_html">
                         <div class="textwidget custom-html-widget">
                             <table border="0" class="footer-social">
                                 <tbody>
@@ -709,10 +693,10 @@
                     <table border="0">
                         <tr>
                             <td>
-                                <img src="~/HomePageAssets/wp-content/uploads/2019/02/pci-seal.png" width="67px" height="38px" />
+                                <img src="" width="67px" height="38px" />
                             </td>
                             <td>
-                                <img src="~/HomePageAssets/wp-content/uploads/2019/02/secure-seal.png" width="126px" height="32px" style="padding-top: 5px;" />
+                                <img src="" width="126px" height="32px" style="padding-top: 5px;" />
                             </td>
                             <td><!--img src="./~/HomePageAssets/wp-content/uploads/2019/02/award-seal.png" width="59px" height="48px" /--></td>
                         </tr>
