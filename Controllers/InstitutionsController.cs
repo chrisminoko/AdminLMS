@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BackEnd.Controllers
 {
+    [Authorize]
     public class InstitutionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -21,13 +22,18 @@ namespace BackEnd.Controllers
         public ActionResult UserIndex()
         {
             var userName = User.Identity.GetUserName();
+            
             var institutions = db.Institutions.Where(x => x.Email == userName);
             return View(institutions.ToList());
         }
         // GET: Institutions
         public ActionResult Index()
         {
-            return View(db.Institutions.ToList());
+            if (User.IsInRole("Admin"))
+            {
+                return View(db.Institutions.ToList());
+            }
+            return View(db.Institutions.ToList().Where(x => x.Email == User.Identity.GetUserName()));
         }
 
         public ActionResult Approve(int? id)

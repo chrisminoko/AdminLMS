@@ -24,7 +24,7 @@ namespace BackEnd.Controllers
             }
             else 
             {
-                return View(db.ApprovedDeposits.ToList().Where(x=>x.UserEmail.Equals(User.Identity.GetUserId())));
+                return View(db.ApprovedDeposits.ToList().Where(x=>x.UserEmail.Equals(User.Identity.GetUserName())));
             }
          
         }
