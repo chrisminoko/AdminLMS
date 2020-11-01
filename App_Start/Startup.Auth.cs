@@ -105,7 +105,11 @@ namespace BackEnd
 
                 var User = userManager.Create(user, password);
                 if (User.Succeeded)
+                {
                     userManager.AddToRole(user.Id, "Admin");
+                    context.SaveChanges();
+                }
+                  
             }
             //populating initial roles
 

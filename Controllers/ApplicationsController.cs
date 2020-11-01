@@ -22,7 +22,7 @@ namespace BackEnd.Controllers
         // GET: Applications
         public ActionResult Index()
         {
-            var applications = db.Applications.Include(a => a.Package);
+            var applications = db.Applications.Include(a => a.Package.PackageTypeID);
             return View(applications.ToList());
         }
 

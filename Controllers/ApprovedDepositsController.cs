@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BackEnd.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BackEnd.Controllers
 {
@@ -17,7 +18,15 @@ namespace BackEnd.Controllers
         // GET: ApprovedDeposits
         public ActionResult Index()
         {
-            return View(db.ApprovedDeposits.ToList());
+            if (User.IsInRole("Admin")) 
+            {
+                return View(db.ApprovedDeposits.ToList());
+            }
+            else 
+            {
+                return View(db.ApprovedDeposits.ToList().Where(x=>x.UserEmail.Equals(User.Identity.GetUserId())));
+            }
+         
         }
 
         // GET: ApprovedDeposits/Details/5
