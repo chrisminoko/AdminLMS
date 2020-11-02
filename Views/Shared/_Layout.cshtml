@@ -272,31 +272,35 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                                            <span class="pcoded-mtext">Admin</span>
-                                        </a>
-                                        <ul class="pcoded-submenu">
-                                            <li class=" pcoded-hasmenu">
-                                                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                                    <span class="pcoded-mtext"> Settings</span>
-                                                </a>
-                                                <ul class="pcoded-submenu">
-                                                    <li class="">
-                                                        <a href="@Url.Action("Index", "Packages")" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Packages</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a href="@Url.Action("Index", "PackageTypes")" class="waves-effect waves-dark">
-                                                            <span class="pcoded-mtext">Package Types</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
+                                                <span class="pcoded-mtext">Admin</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" pcoded-hasmenu">
+                                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                                        <span class="pcoded-mtext"> Settings</span>
+                                                    </a>
+                                                    <ul class="pcoded-submenu">
+                                                        <li class="">
+                                                            <a href="@Url.Action("Index", "Packages")" class="waves-effect waves-dark">
+                                                                <span class="pcoded-mtext">Packages</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="@Url.Action("Index", "PackageTypes")" class="waves-effect waves-dark">
+                                                                <span class="pcoded-mtext">Package Types</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    }
+
 
                                 </ul>
 

@@ -19,6 +19,10 @@ namespace BackEnd.Controllers
         public ActionResult Index()
         {
             var email = User.Identity.GetUserName();
+            if (User.IsInRole("Admin")) 
+            {
+                return View(db.ApprovedInstitutions.ToList());
+            }
             return View(db.ApprovedInstitutions.ToList().Where(p => p.Email == email)); 
         }
 
