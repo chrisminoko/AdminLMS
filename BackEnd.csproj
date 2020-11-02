@@ -1141,6 +1141,7 @@
     <Content Include="Dashboard_ Assets\files\bower_components\switchery\js\switchery.min.js" />
     <Content Include="Dashboard_ Assets\files\bower_components\underscore\js\underscore-min.js" />
     <Content Include="EmailTemplate\Email.html" />
+    <Content Include="EmailTemplate\photo-1570616969692-54d6ba3d0397.jpg" />
     <Content Include="EmailTemplate\styles\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

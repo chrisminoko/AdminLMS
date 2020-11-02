@@ -66,7 +66,7 @@ namespace BackEnd
             //    ClientSecret = ""
             //});
 
-         CreateRolesAdmin();
+       CreateRolesAdmin();
         }
 
         public void CreateRolesAdmin()
@@ -76,7 +76,7 @@ namespace BackEnd
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
             //creating role
-            if (roleManager.RoleExists("Admin"))
+            if (!roleManager.RoleExists("Admin"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
@@ -84,6 +84,7 @@ namespace BackEnd
             }
 
             Admin ad = context.Admins.ToList().Find(x => x.Email == "Admin@gmail.com");
+            // SELECT * FROM ADMIN WHERE  EMAIL LIKE "%Admin@gmail.com" %"
             if (ad == null)
             {
                 Admin newAdmin = new Admin
@@ -104,13 +105,17 @@ namespace BackEnd
 
                 var User = userManager.Create(user, password);
                 if (User.Succeeded)
+                {
                     userManager.AddToRole(user.Id, "Admin");
+                    context.SaveChanges();
+                }
+                  
             }
             //populating initial roles
 
 
             //creating other roles
-      
+
 
             if (!roleManager.RoleExists("Institution"))
             {

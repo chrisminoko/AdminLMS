@@ -22,8 +22,12 @@ namespace BackEnd.Controllers
         // GET: Applications
         public ActionResult Index()
         {
-            var applications = db.Applications.Include(a => a.Package);
-            return View(applications.ToList());
+            var applications = db.Applications.Include(a => a.Package.PackageTypeID);
+            if (User.IsInRole("Admin")) 
+            {
+                return View(applications.ToList());
+            }
+            return View(applications.ToList().Where(x=>x.UserEmail.Equals(User.Identity.GetUserId())));
         }
 
         // GET: Applications/Details/5

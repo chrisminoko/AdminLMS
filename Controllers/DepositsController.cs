@@ -13,6 +13,7 @@ using BackEnd.Models;
 using Microsoft.AspNet.Identity;
 namespace BackEnd.Controllers
 {
+    [Authorize]
     public class DepositsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -42,7 +43,11 @@ namespace BackEnd.Controllers
         public ActionResult Index()
         {
             var deposits = db.Deposits.Include(d => d.Application);
-            return View(deposits.ToList());
+            if (User.IsInRole("Admin"))
+            {
+                return View(deposits.ToList());
+            }
+            return View(deposits.ToList().Where(x=>x.UserEmail==User.Identity.GetUserName()));
         }
 
         // GET: Deposits/Details/5
