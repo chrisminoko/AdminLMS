@@ -241,10 +241,42 @@
     <Compile Include="Models\Individual.cs" />
     <Compile Include="Models\Institution.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OnlineShop\Address.cs" />
+    <Compile Include="Models\OnlineShop\Affiliate.cs" />
+    <Compile Include="Models\OnlineShop\AffiliateEarning.cs" />
+    <Compile Include="Models\OnlineShop\Affiliate_Joiner.cs" />
+    <Compile Include="Models\OnlineShop\awe.cs" />
+    <Compile Include="Models\OnlineShop\Cart.cs" />
+    <Compile Include="Models\OnlineShop\Cart_Item.cs" />
+    <Compile Include="Models\OnlineShop\Category.cs" />
+    <Compile Include="Models\OnlineShop\Customer.cs" />
+    <Compile Include="Models\OnlineShop\Delivery.cs" />
+    <Compile Include="Models\OnlineShop\Department.cs" />
+    <Compile Include="Models\OnlineShop\Item.cs" />
+    <Compile Include="Models\OnlineShop\Order.cs" />
+    <Compile Include="Models\OnlineShop\OrderDetailModel.cs" />
+    <Compile Include="Models\OnlineShop\Order_Delivery.cs" />
+    <Compile Include="Models\OnlineShop\Order_Item.cs" />
+    <Compile Include="Models\OnlineShop\Order_Tracking.cs" />
+    <Compile Include="Models\OnlineShop\Payment.cs" />
+    <Compile Include="Models\OnlineShop\Review.cs" />
+    <Compile Include="Models\OnlineShop\Shipping_Address.cs" />
+    <Compile Include="Models\OnlineShop\Testdf.cs" />
     <Compile Include="Models\Package.cs" />
     <Compile Include="Models\PackageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IBaseRepository.cs" />
+    <Compile Include="Services\Address_Service.cs" />
+    <Compile Include="Services\Affiliate_Service.cs" />
+    <Compile Include="Services\Cart_Service.cs" />
+    <Compile Include="Services\Category_Service.cs" />
+    <Compile Include="Services\Customer_Service.cs" />
+    <Compile Include="Services\Department_Service.cs" />
+    <Compile Include="Services\Email_Service.cs" />
+    <Compile Include="Services\Item_Service.cs" />
+    <Compile Include="Services\Order_Service.cs" />
+    <Compile Include="Services\Payment_Service.cs" />
+    <Compile Include="Services\ss.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1621,6 +1653,8 @@
     <Content Include="Views\Home\_PendingApplications.cshtml" />
     <Content Include="Views\Home\PendingApplications.cshtml" />
     <Content Include="Views\PackageTypes\_CreatePackageType.cshtml" />
+    <Content Include="Views\Account\RegisterShopUser.cshtml" />
+    <Content Include="Views\Shared\_LayoutShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,6 +10,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BackEnd.Models;
 using System.IO;
+using BackEnd.Services;
+using BackEnd.Models.OnlineShop;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace BackEnd.Controllers
 {
@@ -19,6 +23,7 @@ namespace BackEnd.Controllers
         public static int PackageID = 0;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public const string AffiliateSessionKey = "Affiliate_Key";
         ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
@@ -148,8 +153,14 @@ namespace BackEnd.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string  id )
         {
+            if (!String.IsNullOrEmpty(id))
+            {
+                System.Web.HttpContext.Current.Session[AffiliateSessionKey] = id;
+            }
+            else
+                System.Web.HttpContext.Current.Session[AffiliateSessionKey] = "";
             var data = TempData["PackageID"];
             PackageID = Convert.ToInt32(data);
             return View();
@@ -161,6 +172,49 @@ namespace BackEnd.Controllers
 
             BinaryReader reader = new BinaryReader(files.InputStream);
             return reader.ReadBytes(files.ContentLength);
+        }
+        public async Task<ActionResult> RegisterShopUser(RegisterViewModelForShopUsers model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Full_Name = model.FirstName + " " + model.LastName };
+                Customer_Service customer = new Customer_Service();
+
+                if (customer.AddCustomer(new Customer()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    phone = model.phone
+                }, Session[AffiliateSessionKey].ToString()))
+                {
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        ApplicationDbContext db = new ApplicationDbContext();
+                        UserManager.AddToRole(user.Id, "Customer");
+
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        // Send an email with this link
+                        string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        var client = new SendGridClient("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");
+                        var from = new EmailAddress("no-reply@shopifyhere.com", "Shopify Here");
+                        var subject = "Confirm your account";
+                        var to = new EmailAddress(model.Email, model.FirstName + " " + model.LastName);
+                        var htmlContent = "Hello " + model.FirstName + " " + model.LastName + ", Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>";
+                        var msg = MailHelper.CreateSingleEmail(from, to, subject, null, htmlContent);
+                        var response = client.SendEmailAsync(msg);
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
+                }
+            }
+
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
         //
         // POST: /Account/Register
