@@ -1,7 +1,8 @@
-﻿@model CartTrackingg.Models.Item
+﻿@model BackEnd.Models.OnlineShop.Item
 
 @{
     ViewBag.Title = "Edit Item Details";
+    Layout = null;
 }
 
 <h2 class="title text-center">@ViewBag.Title</h2>
@@ -17,7 +18,7 @@
                 <tr>
                     <th width="80px">@Html.LabelFor(model => model.ItemCode)</th>
                     <td>
-                        @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })
+                        @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.ItemCode, "", new { @class = "text-danger" })
                     </td>
                 </tr>

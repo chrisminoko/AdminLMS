@@ -1,6 +1,7 @@
-﻿@model IEnumerable<CartTrackingg.Models.Item>
+﻿@model IEnumerable<BackEnd.Models.OnlineShop.Item>
 @{
     ViewBag.Title = "Shopping";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
     if (ViewBag.Department != null)
     {
         ViewBag.Title = ViewBag.Department.ToString();

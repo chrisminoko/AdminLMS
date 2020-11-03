@@ -1,6 +1,7 @@
-﻿@model CartTrackingg.Models.OrderDetailModel
+﻿@model  BackEnd.Models.OnlineShop.OrderDetailModel
 @{
     ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
 }
 
 <h2 class="title text-center">Review your Order Details </h2>
@@ -112,12 +113,13 @@ else
             {
                 <tr>
                     <td>
-                        @if (item.Item.Picture != null)
-                        {
-                            var base64 = Convert.ToBase64String(item.Item.Picture);
-                            var imgSrc = string.Format("Models:image/gif;base64,{0}", base64);
-                            <img src="@imgSrc" width="60" height="70" />
-                        }
+                        @*@if (item.Item.Picture != null)
+        {
+            var base64 = Convert.ToBase64String(item.Item.Picture);
+            var imgSrc = string.Format("Models:image/gif;base64,{0}", base64);
+            <img src="@imgSrc" width="60" height="70" />
+        }*@
+                        <img src="data:image/png;base64,@Convert.ToBase64String(item.Item.Picture, 0, item.Item.Picture.Length)" style="width: 40px; height: 40px" alt="" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Item.Name)

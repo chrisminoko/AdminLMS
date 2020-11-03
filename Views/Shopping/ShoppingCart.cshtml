@@ -1,7 +1,8 @@
-﻿@model List<CartTrackingg.Models.Cart_Item>
+﻿@model List<BackEnd.Models.OnlineShop.Cart_Item>
 
 @{
     ViewBag.Title = "Shopping Cart";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
 }
 <h2 class="title text-center">@ViewBag.Title</h2>
 <div class="row">
@@ -34,12 +35,13 @@
                         @Html.EditorFor(modelItem => Model[item].cart_item_id)
                     </td>
                     <td>
-                        @if (Model[item].Item.Picture != null)
-                    {
-                        var base64 = Convert.ToBase64String(Model[item].Item.Picture);
-                        var imgSrc = string.Format("Models:image/gif;base64,{0}", base64);
-                            <img src="@imgSrc" width="60" height="70" />
-                        }
+                        @*@if (Model[item].Item.Picture != null)
+        {
+         var base64 = Convert.ToBase64String(Model[item].Item.Picture);
+         var imgSrc = string.Format("Models:image/gif;base64,{0}", base64);
+             <img src="@imgSrc" width="60" height="70" />
+         }*@
+                        <img src="data:image/png;base64,@Convert.ToBase64String(Model[item].Item.Picture, 0, Model[item].Item.Picture.Length)" style="width: 40px; height: 40px" alt="" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => Model[item].Item.Name)
