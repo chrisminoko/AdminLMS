@@ -27,7 +27,7 @@ namespace BackEnd.Controllers
             {
                 return View(applications.ToList());
             }
-            return View(applications.ToList().Where(x=>x.UserEmail.Equals(User.Identity.GetUserId())));
+            return View(applications.ToList().Where(x=>x.UserEmail.Equals(User.Identity.GetUserName())));
         }
 
         // GET: Applications/Details/5

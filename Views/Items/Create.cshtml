@@ -35,6 +35,14 @@
                                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                                 </td>
                             </tr>
+
+                            <tr>
+                                <th>@Html.LabelFor(model => model.QuantityInStock)</th>
+                                <td>
+                                    @Html.EditorFor(model => model.QuantityInStock, new { htmlAttributes = new { @class = "form-control", @placeholder = "Description" } })
+                                    @Html.ValidationMessageFor(model => model.QuantityInStock, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
                             <tr>
                                 <th>@Html.LabelFor(model => model.Price)</th>
                                 <td width="180px">
@@ -44,8 +52,8 @@
                                         </div>
                                         @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @placeholder = "0.00" } })
                                         @*<div class="input-group-addon">
-                                                <b>.00</b>
-                                            </div>*@
+                        <b>.00</b>
+                    </div>*@
                                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                                     </div>
 
