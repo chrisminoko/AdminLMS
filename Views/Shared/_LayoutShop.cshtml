@@ -41,7 +41,7 @@
                             double total = 0; }
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
-                                <li>@Html.MenuLink("Home", "Index", "Home", null, "fa fa-home", null)</li>
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list"></span> Shop by Category <span class="caret"></span></a>
                                     <ul class="dropdown-menu mega scrollable-menu">
@@ -49,10 +49,10 @@
                                             <li><a href="@Url.Action("Index","Shopping",new { id = 0})">All Departments</a></li>
                                             @foreach (var department in department_Service.GetDepartments().OrderBy(x => x.Department_Name))
                                             {
-                                         <li>
-                                            <a href="@Url.Action("Index","Shopping",new { id = department.Department_ID })">@department.Department_Name</a>
-                                         </li>
-                                             }
+                                                <li>
+                                                    <a href="@Url.Action("Index","Shopping",new { id = department.Department_ID })">@department.Department_Name</a>
+                                                </li>
+                                            }
                                         </ul>
                                     </ul>
                                 </li>
@@ -78,37 +78,37 @@
                                                 </tr>
                                                 @if (cart_Service.GetCartItems().Count() == 0)
                                                 {
-                                <tr>
-                                    <th colspan="5" style="text-align:center">Your cart is empty</th>
-                                </tr>
-}
+                                                    <tr>
+                                                        <th colspan="5" style="text-align:center">Your cart is empty</th>
+                                                    </tr>
+                                                }
                                                 @foreach (var item in cart_Service.GetCartItems().OrderBy(x => x.Item.Name))
                                                 {
-                                <tr>
-                                    <td>
-                                        @if (item.Item.Picture != null)
-                                        {
-                                            var base64 = Convert.ToBase64String(item.Item.Picture);
-                                            var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
-                    <img src="@imgSrc" width="30" height="30" />}
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("Details","Items", new { id=item.Item.ItemCode })">@item.Item.Name</a>
-                                    </td>
-                                    <td style="text-align:center">
-                                        @item.quantity
-                                    </td>
-                                    <td>
-                                        @item.Item.Price.ToString("C")
-                                    </td>
-                                    <td style="text-align:center">
-                                        @{ var subtotal = item.quantity * item.Item.Price;
-                                            total += subtotal; }
+                                                    <tr>
+                                                        <td>
+                                                            @if (item.Item.Picture != null)
+                                                            {
+                                                                var base64 = Convert.ToBase64String(item.Item.Picture);
+                                                                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                                                                <img src="@imgSrc" width="30" height="30" />}
+                                                        </td>
+                                                        <td>
+                                                            <a href="@Url.Action("Details","Items", new { id=item.Item.ItemCode })">@item.Item.Name</a>
+                                                        </td>
+                                                        <td style="text-align:center">
+                                                            @item.quantity
+                                                        </td>
+                                                        <td>
+                                                            @item.Item.Price.ToString("C")
+                                                        </td>
+                                                        <td style="text-align:center">
+                                                            @{ var subtotal = item.quantity * item.Item.Price;
+                                                                total += subtotal; }
 
-                                        @subtotal.ToString("C")
-                                    </td>
-                                </tr>
-}
+                                                            @subtotal.ToString("C")
+                                                        </td>
+                                                    </tr>
+                                                }
                                                 <tr>
                                                     <td></td>
                                                     <td></td>
@@ -136,14 +136,14 @@
                                                     <td>
                                                         @if (cart_Service.GetCartItems().Count() == 0)
                                                         {
-                                        <a class="btn btn-default disabled" href="@Url.Action("Checkout","Shopping")">
-                                            <i class="fa fa-lock"></i> Checkout
-                                        </a> }
-                                    else
-                                    {
-                    <a class="btn btn-default" href="@Url.Action("Checkout","Shopping")">
-                        <i class="fa fa-lock"></i> Checkout
-                    </a>}
+                                                            <a class="btn btn-default disabled" href="@Url.Action("Checkout","Shopping")">
+                                                                <i class="fa fa-lock"></i> Checkout
+                                                            </a> }
+                                                        else
+                                                        {
+                                                            <a class="btn btn-default" href="@Url.Action("Checkout","Shopping")">
+                                                                <i class="fa fa-lock"></i> Checkout
+                                                            </a>}
 
                                                     </td>
                                                 </tr>
@@ -164,50 +164,51 @@
                                         </ul>
                                         <ul class="sub-menu">
                                             <li class="dropdown-header">Product Management</li>
-                                            <li>@Html.MenuLink("Add New Item", "Create", "Items", null, "fa fa-plus", null)</li>
-                                            <li>@Html.MenuLink("View all Items", "Index", "Items", null, "fa fa-list", null)</li>
-                                        </ul>                                    
-                                        <ul class="sub-menu">
-                                            <li class="dropdown-header">Orders</li>
-                                            <li>@Html.MenuLink("View all Orders", "Customer_Orders", "Orders", null, "fa fa-list", null)</li>
+
+                                            <li>@Html.ActionLink("Add New Item", "Create", "Items")</li>
+                                            <li>@Html.ActionLink("View all Items", "Index", "Items")</li>
 
                                         </ul>
                                         <ul class="sub-menu">
-                                            <li class="dropdown-header">Roles</li>
-                                            <li>@Html.MenuLink("List available Roles", "Index", "Roles", null, "fa fa-list", null)</li>
-                                            <li>@Html.MenuLink("Assign User To Role", "AddUserToRole", "Roles", null, "fa fa-retweet", null)</li>
-                                            <li>@Html.MenuLink("Search User Roles", "RolesForThisUser", "Roles", null, "fa fa-search", null)</li>
-                                            <li>@Html.MenuLink("Search Role Users", "UsersInRole", "Roles", null, "fa fa-search", null)</li>
+                                            <li class="dropdown-header">Orders</li>
+
+                                            <li>@Html.ActionLink("View all Orders", "Customer_Orders", "Orders")</li>
+
                                         </ul>
+
                                     </ul>
                                 </li>
                                 @using Microsoft.AspNet.Identity
                                 @if (Request.IsAuthenticated)
                                 {
-                <li class="dropdown">
-                    @{ BackEnd.Models.ApplicationDbContext db = new BackEnd.Models.ApplicationDbContext();  }
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> @db.Users.ToList().FirstOrDefault(x => x.UserName == @User.Identity.GetUserName()).Full_Name <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.MenuLink("Profile", "Details", "Account", null, "fa fa-user", null)</li>
-                        <li>@Html.MenuLink("Order History", "Order_History", "Orders", null, "fa fa-list", null)</li>
-                        <li>@Html.MenuLink("View Cart", "ShoppingCart", "Shopping", null, "fa fa-shopping-cart", null)</li>
-                        <li><a>Something else here</a></li>
-                        <li class="dropdown-header"></li>
-                        <li><a>Separated link</a></li>
-                        <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i> Sign out</a></li>
-                    </ul>
-                </li>
- }
-            else
-            {
-<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> My Account <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-        @Html.MenuLink("Create a new Account", "Register", "Account", null, "fa fa-pencil", null)
-        @Html.MenuLink("Sign in", "Login", "Account", null, "fa fa-lock", null)
-    </ul>
-</li>
-}
+                                    <li class="dropdown">
+                                        @{ BackEnd.Models.ApplicationDbContext db = new BackEnd.Models.ApplicationDbContext(); }
+                                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> @db.Users.ToList().FirstOrDefault(x => x.UserName == @User.Identity.GetUserName()).Full_Name <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+
+                                            <li>@Html.ActionLink("Profile", "Details", "Account")</li>
+                                            <li>@Html.ActionLink("Order History", "Order_History", "Orders")</li>
+                                            <li>@Html.ActionLink("View Cart", "ShoppingCart", "Shopping")</li>
+
+                                            <li><a>Something else here</a></li>
+                                            <li class="dropdown-header"></li>
+                                            <li><a>Separated link</a></li>
+                                            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i> Sign out</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> My Account <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Create a new Account", "Register", "Account")</li>
+                                            <li>@Html.ActionLink("Sign", "Login", "Account")</li>
+                                          
+
+                                        </ul>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>

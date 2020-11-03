@@ -1,0 +1,43 @@
+﻿@model CartTrackingg.Models.Category
+
+@{
+    ViewBag.Title = "Category Details";
+}
+
+<h2 class="title text-center">@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.LabelFor(model => model.Category_ID)</th>
+        <td>
+            @Html.DisplayFor(model => model.Category_ID)
+        </td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(model => model.Name)</th>
+        <td>
+            @Html.DisplayFor(model => model.Name)
+        </td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(model => model.Department_ID)</th>
+        <td>
+            @Html.DisplayFor(model=>model.Department_ID)
+            @Html.ValidationMessageFor(model => model.Department_ID, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a class="btn btn-default" href="@Url.Action("Index","Categories")">
+                <i class="fa fa-angle-left"></i>
+                Back to List
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-default" href="@Url.Action("Edit","Categories", new { id = Model.Category_ID })">
+                <i class="fa fa-edit"></i>
+                Edit
+            </a>
+        </td>
+    </tr>
+</table>

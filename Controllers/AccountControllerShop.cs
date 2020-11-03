@@ -5,35 +5,38 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BackEnd.Models;
+using BackEnd.Models.OnlineShop;
+using BackEnd.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BackEnd.Models;
-using System.IO;
-using BackEnd.Services;
-using BackEnd.Models.OnlineShop;
+
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
 namespace BackEnd.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountControllerShop : Controller
     {
-        public static int PackageID = 0;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        ApplicationDbContext db = new ApplicationDbContext();
-        public AccountController()
+        public const string AffiliateSessionKey = "Affiliate_Key";
+
+        public AccountControllerShop()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountControllerShop(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
-
+        public ActionResult Add() 
+        {
+            return View();
+        }
         public ApplicationSignInManager SignInManager
         {
             get
@@ -139,139 +142,69 @@ namespace BackEnd.Controllers
                     return View(model);
             }
         }
-        public Package GetSelectedPackage(int id) 
-        {
-               var SelectedPackage = db.Packages.Find(PackageID);
-                if (SelectedPackage!=null) 
-                {
-                    return SelectedPackage;
-                }
-                throw new HttpException(404, "Your error message");//RedirectTo NoFoundPage
-        }
 
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register( )
+        public ActionResult Register(string id)
         {
-         
-            var data = TempData["PackageID"];
-            PackageID = Convert.ToInt32(data);
+            if (!String.IsNullOrEmpty(id))
+            {
+                System.Web.HttpContext.Current.Session[AffiliateSessionKey] = id;
+            }
+            else
+                System.Web.HttpContext.Current.Session[AffiliateSessionKey] = "";
             return View();
         }
 
-     
-        public byte[] ConvertToBytes(HttpPostedFileBase files)
-        {
-
-            BinaryReader reader = new BinaryReader(files.InputStream);
-            return reader.ReadBytes(files.ContentLength);
-        }
-      
         //
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register([Bind(Exclude = "UserPhoto")]RegisterViewModel model, HttpPostedFileBase files)
-        { 
-            var results= GetSelectedPackage(PackageID);
-            ApplicationDbContext db = new ApplicationDbContext();
-           
+        public async Task<ActionResult> Register(RegisterViewModelForShopUsers model)
+        {
             if (ModelState.IsValid)
             {
-                byte[] imageData = null;
-                if (Request.Files.Count > 0)
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Full_Name = model.FirstName + " " + model.LastName };
+                Customer_Service customer = new Customer_Service();
+
+                if (customer.AddCustomer(new Customer()
                 {
-                    HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
-
-                    using (var binary = new BinaryReader(poImgFile.InputStream))
-                    {
-                        imageData = binary.ReadBytes(poImgFile.ContentLength);
-                    }
-                }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                user.UserPhoto = imageData;
-                var result = await UserManager.CreateAsync(user, model.Password);
-
-                if (model.Type == "Institution")
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    phone = model.phone
+                }, Session[AffiliateSessionKey].ToString()))
                 {
-       
-                    if (files != null && files.ContentLength > 0)
-                    {
-                        model.FileName = files.FileName;
-                        string[] bits = model.FileName.Split('\\');
-                        model.FileContent = ConvertToBytes(files);
-                    }
-
-                    Institution institution = new Institution();
-                    Application application = new Application();
-
-                    application.UserEmail = model.Email;
-                    application.PackageID = PackageID;
-                    application.ApplicationDate = DateTime.Parse(DateTime.Now.ToString("yyy.MM.dd")).Date;
-                    application.Status = "Inactive";
-                    application.PaymentStatus = "Awaiting Payment";
-
-
-                    decimal amount = (from p in db.Packages
-                                      where p.PackageID == PackageID
-                                      select p.PackagePrice).FirstOrDefault();
-
-                    
-
-                    application.Amount = amount;
-
-                    institution.FullName = model.FullName;
-                    institution.Email = model.Email;
-                    institution.Phone = model.Phone;
-                    institution.Type = model.Type;
-                    institution.Status = "Awaiting Approval";
-                    institution.UserId = user.Id;
-                    institution.FileContent = model.FileContent;
-                    institution.FileName = model.FileName;
-                    institution.UserPhoto = imageData;
-                    db.Applications.Add(application);
-                    db.Institutions.Add(institution);
-                   
-
-                    db.SaveChanges();
-                    
-
-
+                    var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
+                        ApplicationDbContext db = new ApplicationDbContext();
+                        UserManager.AddToRole(user.Id, "Customer");
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        //Activate It once you have an internet connection with no filters
+                        // Send an email with this link
                         string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", callbackUrl);
-                        UserManager.AddToRole(user.Id, "Institution");
-                        return RedirectToAction("ConfirmEmail", "Home");
-                        //return RedirectToAction("Login", "Account");
+                        var client = new SendGridClient("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");
+                        var from = new EmailAddress("no-reply@shopifyhere.com", "Shopify Here");
+                        var subject = "Confirm your account";
+                        var to = new EmailAddress(model.Email, model.FirstName + " " + model.LastName);
+                        var htmlContent = "Hello " + model.FirstName + " " + model.LastName + ", Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>";
+                        var msg = MailHelper.CreateSingleEmail(from, to, subject, null, htmlContent);
+                        var response = client.SendEmailAsync(msg);
+
+                        return RedirectToAction("Index", "Home");
                     }
                     AddErrors(result);
-                }else if (model.Type=="Individual")
-                {
-                    Individual individual = new Individual();
-                    individual.UserId = user.Id;
-                    individual.FullName = model.FullName;
-                    individual.Phone = model.Phone;
-                    individual.Email = user.UserName;
-                    individual.UserPhoto = imageData;
-                    db.Individuals.Add(individual);
-                    UserManager.AddToRole(user.Id, "Individual");
-                    db.SaveChanges();
-                   
                 }
-              
             }
+
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-
 
         //
         // GET: /Account/ConfirmEmail
@@ -283,7 +216,7 @@ namespace BackEnd.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "Login" : "Error");
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
         //
@@ -493,7 +426,7 @@ namespace BackEnd.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("HomePage", "Packages");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -550,7 +483,7 @@ namespace BackEnd.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("CRM", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

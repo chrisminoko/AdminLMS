@@ -135,6 +135,12 @@ namespace BackEnd
                 role.Name = "Individual";
                 roleManager.Create(role);
             }
+            if (!roleManager.RoleExists("Customer"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Customer";
+                roleManager.Create(role);
+            }
         }
     }
 }

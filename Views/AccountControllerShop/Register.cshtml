@@ -1,12 +1,11 @@
 ﻿@model BackEnd.Models.RegisterViewModelForShopUsers
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_LayoutShop.cshtml";
 }
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("RegisterShopUser", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
@@ -58,4 +57,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-

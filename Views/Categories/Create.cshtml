@@ -1,0 +1,47 @@
+﻿@model CartTrackingg.Models.Category
+
+@{
+    ViewBag.Title = "Create New Category";
+}
+
+<h2 class="title text-center">@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>@Html.LabelFor(model => model.Department_ID)</th>
+                <td>
+                    @Html.DropDownList("Department_ID", null, "--- Please Select ---", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Department_ID, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.Name)</th>
+                <td>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-default" href="@Url.Action("Index","Categories")">
+                        <i class="fa fa-angle-left"></i>
+                        Back to List
+                    </a>
+                </td>
+                <td>
+                    <input type="submit" value="Create New" class="btn btn-default" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

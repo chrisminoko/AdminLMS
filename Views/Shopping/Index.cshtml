@@ -1,0 +1,99 @@
+﻿@model IEnumerable<CartTrackingg.Models.Item>
+@{
+    ViewBag.Title = "Shopping";
+    if (ViewBag.Department != null)
+    {
+        ViewBag.Title = ViewBag.Department.ToString();
+    }
+}
+
+<h2 class="title text-center"> @ViewBag.Title </h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        @if (item.Picture != null)
+                        {
+                               var base64 = Convert.ToBase64String(inArray: item.Picture);
+                                var imgSrc = string.Format(format: "data:image/gif;base64,{0}", arg0: base64);
+                                  <img src="@imgSrc" width="200" height="249" />
+                        }
+                        @*<h2>@Html.DisplayFor(expression: modelItem => item.Price)</h2>
+                        <p><a href="@Url.Action("Details","Items", new { id=item.ItemCode })" rel="tooltip" title="View" style="color:black;">
+                            <b>
+                                  @Html.DisplayFor(expression: modelItem => item.Name)
+                            </b>
+                        </a></p>*@
+                       @*@if (item.QuantityInStock == 0)
+                    {
+                        <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-shopping-cart disabled"></i> Out of stock</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                    }*@
+                    </div>
+                    <div class="product-overlay">
+                        <div class="overlay-content">
+                            <h2>@Html.DisplayFor(expression: modelItem => item.Price)</h2>
+                            <p>
+                                <a href="@Url.Action("Details","Items", new { id=item.ItemCode })" rel="tooltip" title="View" style="color:black;">
+                                    <b>
+                                        @Html.DisplayFor(expression: modelItem => item.Name)
+                                    </b>
+                                </a>
+                            </p>
+                            @if (item.QuantityInStock == 0)
+                            {
+                    <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-cart-plus disabled"></i> Out of stock</a> }
+                else
+                {
+                    <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-cart-plus"></i> Add to cart</a>}
+                        </div>
+                        <br />
+                       @if (item.ReviewId >0 && item.ReviewId <20)
+                       {
+                        <i class="fa fa-star" aria-hidden="true"></i>                      
+                       }
+                       else if (item.ReviewId >=20 && item.ReviewId < 40)
+                       {
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                       }
+                       else if (item.ReviewId >=40 && item.ReviewId <= 69)
+                       {
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                       }
+                       else if (item.ReviewId >69 && item.ReviewId < 80)
+                       {
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                       }
+                       else if (item.ReviewId >=80 && item.ReviewId <=100)
+                       {
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                       }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@if (ViewBag.Err != null)
+{
+    
+}
