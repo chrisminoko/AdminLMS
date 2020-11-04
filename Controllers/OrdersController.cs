@@ -78,8 +78,9 @@ namespace BackEnd.Controllers
             else
                 return RedirectToAction("Not_Found", "Error");
         }
-        public ActionResult schedule_OrderDelivery(string id, DateTime date)
+        public ActionResult schedule_OrderDelivery(string id)
         {
+            var date = DateTime.Now;
             if (id == null)
                 return RedirectToAction("Bad_Request", "Error");
             if (order_Service.GetOrder(id) != null)
