@@ -23,20 +23,7 @@
                                 var imgSrc = string.Format(format: "data:image/gif;base64,{0}", arg0: base64);
                                   <img src="@imgSrc" width="200" height="249" />
                         }
-                        @*<h2>@Html.DisplayFor(expression: modelItem => item.Price)</h2>
-                        <p><a href="@Url.Action("Details","Items", new { id=item.ItemCode })" rel="tooltip" title="View" style="color:black;">
-                            <b>
-                                  @Html.DisplayFor(expression: modelItem => item.Name)
-                            </b>
-                        </a></p>*@
-                       @*@if (item.QuantityInStock == 0)
-                    {
-                        <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-shopping-cart disabled"></i> Out of stock</a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    }*@
+      
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
