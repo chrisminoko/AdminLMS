@@ -67,6 +67,26 @@ namespace BackEnd.Services
         {
             return ModelsContext.Order_Trackings.Where(x => x.order_ID == order_id).ToList();
         }
+        
+        public void MarkOrderAsPaid(string order_id)
+        {
+            var order = GetOrder(order_id);
+            order.packed = true;
+            if (ModelsContext.Shipping_Addresses.Where(p => p.Order_ID == order_id) != null)
+            {
+                order.status = "At WareHouse";
+                //order tracking
+                ModelsContext.Order_Trackings.Add(new Order_Tracking()
+                {
+                    order_ID = order.Order_ID,
+                    date = DateTime.Now,
+                    status = "Order Packed, Now with our courier",
+                    Recipient = ""
+                });
+            }
+
+            ModelsContext.SaveChanges();
+        }
         public void MarkOrderAsPacked(string order_id)
         {
             var order = GetOrder(order_id);

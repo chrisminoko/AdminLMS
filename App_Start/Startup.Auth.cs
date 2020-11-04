@@ -97,7 +97,7 @@ namespace BackEnd
                 };
                 context.Admins.Add(newAdmin);
                 context.SaveChanges();
-
+                
                 var user = new ApplicationUser();
                 user.UserName = newAdmin.Email;
                 user.Email = newAdmin.Email;

@@ -39,7 +39,7 @@
             </tr>
         </table>
 
-        @*<table>
+        <table>
             <tr>
                 <td>
                     <a href="@Url.Action("Order_Tracking","Orders",new {id = Model.order.Order_ID })" class="btn btn-primary">
@@ -52,13 +52,14 @@
                     {
                         if (Model.order.status != "With courier" && Model.order.status == "Awaiting Payment" || Model.order.status == "At warehouse")
                         {
-            <td>
-                <a href="@Url.Action("Mark_As_Packed","Orders",new {id = Model.order.Order_ID })" class="btn btn-primary">
-                    Mark as Packed
-                </a>
-            </td>}
-                            }
-                        }
+                            <td>
+                                <a href="@Url.Action("Mark_As_Packed","Orders",new {id = Model.order.Order_ID })" class="btn btn-primary">
+                                    Mark as Packed
+                                </a>
+                            </td>
+}
+                    }
+                }
                 @if (!User.IsInRole("Customer"))
                 {
                     if (Model.order.status != "Delivered")
@@ -73,16 +74,24 @@
                         }
 
                     }
+                    if (Model.order.status == "Scheduled for delivery")
+                    {
+                        <td>
+                            <a href="@Url.Action("schedule_OrderDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
+                                Schedule for Delivery
+                            </a>
+                        </td>
+                    }
                 }
             </tr>
-        </table>*@
+        </table>
     </div>
 
     <div class="col-md-4">
 
         @if (Model.shipping_method == "Standard delivery")
         {
-<h4>Receipt by Standard Delivery</h4>
+               <h4>Receipt by Standard Delivery</h4>
                 <table class="table">
                     <tr>
                         <th>@Html.DisplayNameFor(x => x.address.street_number)</th>

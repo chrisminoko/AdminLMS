@@ -147,7 +147,7 @@ else
                 <td></td>
               
                 <td>
-                    <a href="@Url.Action("Secure_Payment", "Shopping", new { id = Model.order.Order_ID})" class="btn btn-success"><i class="fa fa-lock"></i> Secure Payment</a>
+                   @* <a href="@Url.Action("Secure_Payment", "Shopping", new { id = Model.order.Order_ID})" class="btn btn-success"><i class="fa fa-lock"></i> Secure Payment</a>*@
                 </td>
             </tr>
         </table>
@@ -155,5 +155,53 @@ else
 
 
 </div>
+
+<div>
+    <h2>Choose Payment Method</h2>
+    <div class="row">
+        <div class="board">
+            <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+            <div class="board-inner">
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active" style="text-align:center">
+                        <a href="#home" data-toggle="tab" title="Collect at warehouse">
+                            <span class="round-tabs">
+                                <i class="fa fa-money"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#profile" data-toggle="tab" title="Standard Delivery">
+                            <span class="round-tabs">
+                                <i class="fa fa-credit-card"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <h4 class="head text-center">Cash On Delivery</h4>
+                    <h4> <i class="fa fa-map-marker"></i>  123 Sept St, Durban, 4001 </h4>
+                    <h4> <i class="fa fa-clock-o"></i>  Monday - Friday</h4>
+                    <h4> <i class="fa fa-clock-o"></i>  8:30 am - 17:00 pm working hours</h4>
+                    <a href="@Url.Action("PlaceOrder","Shopping", new {id = "collect" })" class="btn btn-default"> Continue</a>
+                </div>
+                @*Delivery*@
+            <div class="tab-pane fade" id="profile" style="align-content:center">
+                <h3 class="head text-center">Pay With Credit Card</h3>
+                <h5>Pay Fast Online Payment</h5>
+                <a href="@Url.Action("Secure_Payment", "Shopping", new { id = Model.order.Order_ID})" class="btn btn-success"><i class="fa fa-lock"></i> Secure Payment</a>
+
+                <div class="clearfix"></div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
