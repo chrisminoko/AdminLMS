@@ -52,133 +52,183 @@
   border-radius: 15px;
 }
 </style>
-<h2 class="title text-center">@ViewBag.Title</h2>
+<div class="container-fluid">
+    <div class="page-body">
 
-<div class="row">
-    <div>
-        <table class="table">
-            <tr >
-                <th>Order ID</th>
-                <th>
-                    @{
-                        var order = (BackEnd.Models.OnlineShop.Order)ViewBag.Order;
-                    }
-                    @order.Order_ID
-                </th>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td><i class="fa fa-calendar"></i> @order.date_created.ToLongDateString()  <i class="fa fa-clock-o"></i> @order.date_created.ToLongTimeString()</td>
-            </tr>
-            <tr>
-                <th>Delivered By</th>
-                <td>
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Zero config.table start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Products</h5>
 
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-<div class="row">
-    <div class="stepwizard">
-        <div class="stepwizard-row">
-            <div class="stepwizard-step">
-                @if (order.status.ToLower().Contains("Awaiting Payment".ToLower()))
-                {
-                    <button type="button" class="btn btn-primary btn-circle">1</button>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-default btn-circle">1</button>
-                }                
-                <p>Awaiting Payment</p>
-            </div>
-            <div class="stepwizard-step">
-                @if (order.status.ToLower().Contains("At warehouse".ToLower()))
-                {
-                    <button type="button" class="btn btn-primary btn-circle">2</button>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-default btn-circle">2</button>
-                }             
-                <p>At warehouse</p>
-            </div>
-            <div class="stepwizard-step">
-                @if (order.status.ToLower().Contains("With courier".ToLower()))
-                {
-                    <button type="button" class="btn btn-primary btn-circle">3</button>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-default btn-circle">3</button>
-                }    
-                <p>With courier</p>
-            </div>
-            <div class="stepwizard-step">
-                @if (order.status.ToLower().Contains("Scheduled for delivery".ToLower()))
-                {
-                    <button type="button" class="btn btn-primary btn-circle">4</button>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-default btn-circle">4</button>
-                }    
-                <p>Scheduled for delivery</p>
-            </div>
-            <div class="stepwizard-step">
-                @if (order.status.ToLower().Contains("En route for delivery".ToLower()))
-                {
-                    <button type="button" class="btn btn-primary btn-circle">5</button>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-default btn-circle">5</button>
-                }
-                <p>En route for delivery</p>
-            </div>
-            <div class="stepwizard-step">
-                @if (order.status.ToLower().Equals("Delivered".ToLower()))
-                {
-                    <button type="button" class="btn btn-primary btn-circle">6</button>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-default btn-circle">6</button>
-                }
-                <p>Delivered</p>
+                    </div>
+                    <div class="card-block">
+                        <div class="dt-responsive table-responsive">
+
+
+                            <div class="row">
+                                <div>
+                                    <table class="table">
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>
+                                                @{
+                                                    var order = (BackEnd.Models.OnlineShop.Order)ViewBag.Order;
+                                                }
+                                                @order.Order_ID
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>Date</th>
+                                            <td><i class="fa fa-calendar"></i> @order.date_created.ToLongDateString()  <i class="fa fa-clock-o"></i> @order.date_created.ToLongTimeString()</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Delivered By</th>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="stepwizard">
+                                    <div class="stepwizard-row">
+                                        <div class="stepwizard-step">
+                                            @if (order.status.ToLower().Contains("Awaiting Payment".ToLower()))
+                                            {
+                                                <button type="button" class="btn btn-primary btn-circle">1</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-default btn-circle">1</button>
+                                            }
+                                            <p>Awaiting Payment</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            @if (order.status.ToLower().Contains("At warehouse".ToLower()))
+                                            {
+                                                <button type="button" class="btn btn-primary btn-circle">2</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-default btn-circle">2</button>
+                                            }
+                                            <p>At warehouse</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            @if (order.status.ToLower().Contains("With courier".ToLower()))
+                                            {
+                                                <button type="button" class="btn btn-primary btn-circle">3</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-default btn-circle">3</button>
+                                            }
+                                            <p>With courier</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            @if (order.status.ToLower().Contains("Scheduled for delivery".ToLower()))
+                                            {
+                                                <button type="button" class="btn btn-primary btn-circle">4</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-default btn-circle">4</button>
+                                            }
+                                            <p>Scheduled for delivery</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            @if (order.status.ToLower().Contains("En route for delivery".ToLower()))
+                                            {
+                                                <button type="button" class="btn btn-primary btn-circle">5</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-default btn-circle">5</button>
+                                            }
+                                            <p>En route for delivery</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            @if (order.status.ToLower().Equals("Delivered".ToLower()))
+                                            {
+                                                <button type="button" class="btn btn-primary btn-circle">6</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-default btn-circle">6</button>
+                                            }
+                                            <p>Delivered</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <p></p>
-    <h2 class="title text-center">@ViewBag.Title Report</h2>
-    <table class="table">
-        <tr class="table-header-row">
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-            <th>Recipient</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                   @item.date.ToLongDateString()
-                </td>
-                <td>
-                   @item.date.ToLongTimeString()
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Recipient)
-                </td>            
-            </tr>
-        }
+<div class="container-fluid">
 
-    </table>
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Zero config.table start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Products</h5>
+
+                    </div>
+                    <div class="card-block">
+                        <div class="dt-responsive table-responsive">
+                            <div class="row">
+                                <p></p>
+                                <h2 class="title text-center">@ViewBag.Title Report</h2>
+                                <table class="table">
+                                    <tr class="table-header-row">
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Recipient</th>
+                                    </tr>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.date.ToLongDateString()
+                                            </td>
+                                            <td>
+                                                @item.date.ToLongTimeString()
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.status)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Recipient)
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
