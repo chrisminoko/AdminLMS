@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<BackEnd.Models.Application>
 
 
-
-
-
+<div class="container-fluid">
     <div class="page-body">
         <a href="@Url.Action("Create", "Applications")" button class="btn"><i class="fa fa-plus-circle"></i> Add New</a>
         <div class="row">
@@ -52,97 +50,97 @@
 
                                 @foreach (var item in Model)
                                 {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UniqApplicationCode)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Package.PackageType.PackageName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserEmail)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ApplicationDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StartDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ExpiryDateDate)
-                                </td>
-                                @if (item.Status == "Active")
-                                {
-                                    <td class="bg-success">
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td class="bg-danger">
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                }
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UniqApplicationCode)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Package.PackageType.PackageName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserEmail)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ApplicationDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ExpiryDateDate)
+                                        </td>
+                                        @if (item.Status == "Active")
+                                        {
+                                            <td class="bg-success">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="bg-danger">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                        }
 
-                                @if (item.PaymentStatus == "Approved")
-                                {
-                                    <td class="bg-info">
-                                        @Html.DisplayFor(modelItem => item.PaymentStatus)
-                                    </td>
-                                }
-                                else if (item.PaymentStatus == "Awaiting Payment")
-                                {
-                                    <td class="bg-warning">
-                                        @Html.DisplayFor(modelItem => item.PaymentStatus)
-                                    </td>
-                                }
+                                        @if (item.PaymentStatus == "Approved")
+                                        {
+                                            <td class="bg-info">
+                                                @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                            </td>
+                                        }
+                                        else if (item.PaymentStatus == "Awaiting Payment")
+                                        {
+                                            <td class="bg-warning">
+                                                @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                            </td>
+                                        }
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Amount)
-                                </td>
-                                @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ApplicationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationID })
-        </td>*@
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                @Html.DisplayFor(modelItem => item.Amount)
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Amount)
+                                        </td>
+                                        @*<td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationID }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.ApplicationID }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationID })
+                                            </td>*@
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @Html.DisplayFor(modelItem => item.Amount)
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @if (item.Status == "Awaiting Payment")
-                                {
-                                    <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                            Deposit
-                                        </button>
+                                        @if (item.Status == "Awaiting Payment")
+                                        {
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                    Deposit
+                                                </button>
 
-                                        @Html.ActionLink("Pay", "OnceOff", new { id = item.ApplicationID })
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <label class="label label-success">Awaiting Next Payment</label>
-                                    </td>
+                                                @Html.ActionLink("Pay", "OnceOff", new { id = item.ApplicationID })
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <label class="label label-success">Awaiting Next Payment</label>
+                                            </td>
 
-                                }
+                                        }
 
-                            </tr>
+                                    </tr>
                                 }
 
 
@@ -154,6 +152,10 @@
             </div>
         </div>
     </div>
+</div>
+
+
+
 
 
 

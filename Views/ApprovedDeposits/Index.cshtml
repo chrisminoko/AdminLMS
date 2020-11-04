@@ -1,83 +1,86 @@
 ﻿@model IEnumerable<BackEnd.Models.ApprovedDeposit>
 
-<div class="page-body">
-    <div class="row">
-        <div class="col-sm-12">
-            <!-- Zero config.table start -->
-            <div class="card">
-                <div class="card-header">
-                    <h5>Approved Deposits</h5>
+<div class="container">
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Zero config.table start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Approved Deposits</h5>
 
-                </div>
-                <div class="card-block">
-                    <div class="dt-responsive table-responsive">
-                        <table class="table">
-                            <tr>
-                                @*<th>
-                    @Html.DisplayNameFor(model => model.NameOnAccount)
-                </th>*@
-                                <th>
-                                    @Html.DisplayNameFor(model => model.AccountType)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.AccountNumber)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ApplicationID)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DepositAmount)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DepositDate)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ID)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th></th>
-                            </tr>
-
-                            @foreach (var item in Model)
-                            {
+                    </div>
+                    <div class="card-block">
+                        <div class="dt-responsive table-responsive">
+                            <table class="table">
                                 <tr>
-
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AccountType)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AccountNumber)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ApplicationID)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DepositAmount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DepositDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ID)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-    
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.ApprovedDepositID }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.ApprovedDepositID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ApprovedDepositID })
-                                    </td>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.NameOnAccount)
+                                        </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.AccountType)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.AccountNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ApplicationID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DepositAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DepositDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
 
-                        </table>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AccountType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AccountNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ApplicationID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DepositAmount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DepositDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ApprovedDepositID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.ApprovedDepositID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.ApprovedDepositID })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
