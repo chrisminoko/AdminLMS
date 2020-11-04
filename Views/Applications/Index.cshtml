@@ -19,7 +19,11 @@
                             <table class="table table-striped table-bordered nowrap">
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Package.Storage)
+                                        @Html.DisplayNameFor(model => model.UniqApplicationCode)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Package.PackageType.PackageName)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.UserEmail)
@@ -50,7 +54,10 @@
                                 {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Package.Storage)
+                                    @Html.DisplayFor(modelItem => item.UniqApplicationCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Package.PackageType.PackageName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.UserEmail)
@@ -132,7 +139,7 @@
                                     <td>
                                         <label class="label label-success">Awaiting Next Payment</label>
                                     </td>
-                                    
+
                                 }
 
                             </tr>

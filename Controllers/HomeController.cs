@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using BackEnd.Models;
+using BackEnd.Models.OnlineShop;
+using BackEnd.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
@@ -14,6 +17,7 @@ namespace BackEnd.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        Order_Service _order_Service = new Order_Service();
         public ActionResult Index()
         {
             return View();
@@ -23,6 +27,17 @@ namespace BackEnd.Controllers
              var amount= (from i in db.Applications
                           where i.PaymentStatus == "Approved"
                           select i.Amount).Sum();
+
+                         
+                        
+            double total = 0;
+           
+            foreach (var item in db.Order_Items) 
+            {
+                 total += item.price * item.quantity;
+            
+            }
+            ViewBag.totalShopSales = total;
             if (amount==0) 
             {
                 ViewBag.TotalSales = 0;

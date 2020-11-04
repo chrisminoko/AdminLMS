@@ -141,7 +141,7 @@ namespace BackEnd.Controllers
         // GET: Deposits/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail");
+            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UniqApplicationCode");
             return View();
         }
 
@@ -166,8 +166,9 @@ namespace BackEnd.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //var applications= db.Applications
 
-            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail", deposit.ApplicationID);
+            ViewBag.ApplicationID = new SelectList(db.Applications.Where(x => x.UserEmail == User.Identity.GetUserName()), "ApplicationID", "UniqApplicationCode", deposit.ApplicationID);
             return View(deposit);
         }
 
@@ -183,7 +184,7 @@ namespace BackEnd.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail", deposit.ApplicationID);
+            ViewBag.ApplicationID = new SelectList(db.Applications.Where(x=>x.UserEmail== User.Identity.GetUserName()), "ApplicationID", "UserEmail", deposit.ApplicationID);
             return View(deposit);
         }
 

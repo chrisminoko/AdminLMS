@@ -41,6 +41,8 @@ namespace BackEnd.Controllers
             return View(application);
         }
 
+
+
         // GET: Applications/Create
         public ActionResult Create()
         {
@@ -67,13 +69,15 @@ namespace BackEnd.Controllers
                                   where p.PackageID == application.PackageID
                                   select p.PackagePrice).FirstOrDefault();
                 application.Amount = amount;
+                var code = User.Identity.GetUserName().Substring(2, 5);
+                application.UniqApplicationCode = application.GenerateOrderNumber()+code;
 
                 db.Applications.Add(application);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "Storage", application.PackageID);
+            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "PackageType.PackageName", application.PackageID);
             return View(application);
         }
 
@@ -94,7 +98,7 @@ namespace BackEnd.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "Storage", application.PackageID);
+            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "PackageType.PackageName", application.PackageID);
             return View(application);
         }
 

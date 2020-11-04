@@ -22,7 +22,18 @@ namespace BackEnd.Models
         public string Status { get; set; }
         public string PaymentStatus { get; set; }
         public decimal ? Amount { get; set; }
+        public string UniqApplicationCode { get; set; }
 
-       
+
+        public string GenerateOrderNumber()
+        {
+            var random = new Random();
+            string number = string.Empty;
+            for (int i = 0; i < 10; i++)
+                number = String.Concat(number, random.Next(10).ToString());
+
+            return number;
+        }
+
     }
 }
