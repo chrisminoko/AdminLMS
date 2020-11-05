@@ -1,6 +1,11 @@
-﻿ @model  BackEnd.Models.OnlineShop.OrderDetailModel
+﻿@model  BackEnd.Models.OnlineShop.OrderDetailModel
 
-@{ ViewBag.Title = "Order Details"; }
+@{ ViewBag.Title = "Order Details";
+
+    Layout = null;
+    }
+
+@*<a href="~/Views/Shared/_Layout.cshtml">~/Views/Shared/_Layout.cshtml</a>*@
 
 <h2 class="title text-center">@ViewBag.Title</h2>
 
@@ -25,10 +30,10 @@
                 <td>
                     @if (Model.order.shipped)
                     {
-        <i class="fa fa-check"></i> }
+                        <i class="fa fa-check"></i> }
                     else
                     {
-        <i class="fa fa-ellipsis-h"></i>}
+                        <i class="fa fa-ellipsis-h"></i>}
                 </td>
             </tr>
             <tr>
@@ -57,7 +62,7 @@
                                     Mark as Packed
                                 </a>
                             </td>
-}
+                        }
                     }
                 }
                 @if (!User.IsInRole("Customer"))
@@ -66,11 +71,16 @@
                     {
                         if (Model.order.status == "With courier")
                         {
-                            <td>
-                                <a href="@Url.Action("schedule_OrderDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
-                                    Schedule for Delivery
-                                </a>
-                            </td>
+            <td>
+                @*<a href="@Url.Action("schedule_OrderDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
+            Schedule for Delivery
+        </a>*@
+                <input type="button" value=" Schedule for Delivery" class="btnDelivery btn btn-primary" id="btnDelivery" />
+                @*<button type="button" class="btn btn-primary" id="btnDelivery">
+                    Schedule for Delivery
+                </button>*@
+            </td>
+
                         }
 
                     }
@@ -91,56 +101,57 @@
 
         @if (Model.shipping_method == "Standard delivery")
         {
-               <h4>Receipt by Standard Delivery</h4>
-                <table class="table">
-                    <tr>
-                        <th>@Html.DisplayNameFor(x => x.address.street_number)</th>
-                        <td>
-                            @Html.DisplayFor(x => x.address.street_number)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(x => x.address.street_name)</th>
-                        <td>
-                            @Html.DisplayFor(x => x.address.street_name)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(x => x.address.City)</th>
-                        <td>
-                            @Html.DisplayFor(x => x.address.City)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(x => x.address.State)</th>
-                        <td>
-                            @Html.DisplayFor(x => x.address.State)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(x => x.address.ZipCode)</th>
-                        <td>
-                            @Html.DisplayFor(x => x.address.ZipCode)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>@Html.DisplayNameFor(x => x.address.Country)</th>
-                        <td>
-                            @Html.DisplayFor(x => x.address.Country)
-                        </td>
-                    </tr>
-                </table> }
-                            else
-                            {
-                <hr />
-                                <p>
-                                    Collection at our warehouse.
-                                    <br />
-                                    <i class="fa fa-map-marker"></i>  21 May St, Durban, 4001
-                                    <br />
-                                    <i class="fa fa-clock-o"></i>  8:30 am - 17:00 working hours
-                                    <br />
-                                </p>}
+            <h4>Receipt by Standard Delivery</h4>
+            <table class="table">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.address.street_number)</th>
+                    <td>
+                        @Html.DisplayFor(x => x.address.street_number)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.address.street_name)</th>
+                    <td>
+                        @Html.DisplayFor(x => x.address.street_name)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.address.City)</th>
+                    <td>
+                        @Html.DisplayFor(x => x.address.City)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.address.State)</th>
+                    <td>
+                        @Html.DisplayFor(x => x.address.State)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.address.ZipCode)</th>
+                    <td>
+                        @Html.DisplayFor(x => x.address.ZipCode)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.address.Country)</th>
+                    <td>
+                        @Html.DisplayFor(x => x.address.Country)
+                    </td>
+                </tr>
+            </table> }
+        else
+        {
+            <hr />
+            <p>
+                Collection at our warehouse.
+                <br />
+                <i class="fa fa-map-marker"></i>  21 May St, Durban, 4001
+                <br />
+                <i class="fa fa-clock-o"></i>  8:30 am - 17:00 working hours
+                <br />
+            </p>
+        }
     </div>
 </div>
 <div class="row">
@@ -164,30 +175,31 @@
 
         @foreach (var item in Model.order_items)
         {
-    <tr>
-        <th>
-            @Html.DisplayFor(modelItem => item.Item.Name)
-        </th>
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Item.Name)
+                </th>
 
-        <th>
-            @Html.DisplayFor(modelItem => item.quantity)
-        </th>
-        <th>
-            @Html.DisplayFor(modelItem => item.price)
-        </th>
-        <th>
-            <a href="@Url.Action("Create", "Reviews", new { id = item.item_id })" class="btn btn-primary">
-                Rate
-            </a>
-        </th>
-        <th>
-            @if (Model.order.status == "Delivered")
-            {
-    <a href="@Url.Action("Log_New","Exchange_n_Returns", new { id= Model.order.Order_ID,item_ID =item.item_id })" class="btn btn-default">
-        Return Item
-    </a>}
-        </th>
-    </tr>}
+                <th>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.price)
+                </th>
+                <th>
+                    <a href="@Url.Action("Create", "Reviews", new { id = item.item_id })" class="btn btn-primary">
+                        Rate
+                    </a>
+                </th>
+                <th>
+                    @if (Model.order.status == "Delivered")
+                    {
+                        <a href="@Url.Action("Log_New","Exchange_n_Returns", new { id= Model.order.Order_ID,item_ID =item.item_id })" class="btn btn-default">
+                            Return Item
+                        </a>}
+                </th>
+            </tr>
+        }
         <tr>
             <td></td>
             <td></td>
@@ -197,16 +209,65 @@
     <div class="row text-center">
         @if (User.IsInRole("Customer"))
         {
-<a class="btn btn-default" href="@Url.Action("Order_History", "Orders")">
-    <i class="fa fa-angle-left"></i>
-    Back to List
-</a> }
-            else
-            {
-<a class="btn btn-default" href="@Url.Action("Customer_Orders", "Orders")">
-    <i class="fa fa-angle-left"></i>
-    Back to List
-</a>}
+            <a class="btn btn-default" href="@Url.Action("Order_History", "Orders")">
+                <i class="fa fa-angle-left"></i>
+                Back to List
+            </a> }
+        else
+        {
+            <a class="btn btn-default" href="@Url.Action("Customer_Orders", "Orders")">
+                <i class="fa fa-angle-left"></i>
+                Back to List
+            </a>}
     </div>
 </div>
 
+
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.js">
+      $(document).ready(function () {
+        console.log("I got clicked");
+        $(function () {
+            $('#btnDelivery').click(function (event) {
+                console.log("I got clicked");
+                event.preventDefault();
+                var deliveryModel = { DeliveryId: 1, OrderId: "", DeliveryDate: "" };
+                $.ajax({
+                    type: "Post",
+                    url: "/Orders/schedule_OrderDelivery",
+                    data: JSON.stringify(deliveryModel),
+                    dataType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        alert(data.msg);
+                    },
+                    error: function () {
+                        console.log(student);
+                        alert("Error occured !!")
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+@*$(document).ready(function () {
+        $(function () {
+            $('#btnDelivery').click(function (event) {
+                event.preventDefault();
+                var deliveryModel = { ID: '1001', Name: 'Test Student', Age: 31 };
+                $.ajax({
+                    type: "Post",
+                    url: "/Home/JqAJAX",
+                    data: JSON.stringify(student),
+                    dataType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        alert(data.msg);
+                    },
+                    error: function () {
+                        console.log(student);
+                        alert("Error occured !!")
+                    }
+                });
+            });
+        });
+    });*@

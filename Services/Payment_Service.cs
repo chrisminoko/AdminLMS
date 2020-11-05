@@ -23,5 +23,14 @@ namespace BackEnd.Services
         {
             return GetPayments().FirstOrDefault(x => x.Order_ID == order_Id);
         }
+
+        public void AddPayment(Payment payment)
+        {
+            ModelsContext.Payments.Add(payment);
+            ModelsContext.SaveChanges();
+        }
+
+
+       
     }
 }

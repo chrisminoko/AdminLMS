@@ -45,9 +45,5 @@ namespace BackEnd.Models.OnlineShop
         public virtual Category Category { get; set; }
         public virtual ICollection<Cart_Item> Cart_Items { get; set; }
 
-        //public int getAverage()
-        //{
-
-        //}
     }
 }

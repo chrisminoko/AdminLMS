@@ -14,10 +14,35 @@ using Newtonsoft.Json;
 
 namespace BackEnd.Controllers
 {
+    public class Student
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public double Age { get; set; }
+    }
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         Order_Service _order_Service = new Order_Service();
+
+
+        // GET: Home/JqAJAX  
+        [HttpPost]
+        [Route("JqAJAXs")]
+        public ActionResult JqAJAX(Student st)
+        {
+            try
+            {
+                return Json(new
+                {
+                    msg = "Successfully added " + st.Name
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public ActionResult Index()
         {
             return View();

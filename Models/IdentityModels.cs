@@ -70,5 +70,7 @@ namespace BackEnd.Models
 
         public System.Data.Entity.DbSet<Review> Reviews { get; set; }
 
+        public DbSet<DeliveryModel> DeliveryModels { get; set; }
+
     }
 }

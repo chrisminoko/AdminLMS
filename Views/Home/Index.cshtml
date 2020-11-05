@@ -31,3 +31,45 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+<div>
+    <input type="submit" value="Create" class="btn btn-default" id="btnSubmit"/>
+
+
+    <script type="text/javascript" >
+        //var mytBtn = document.getElementById('btnSubmit');
+        //mytBtn.addEventListener('click', function (e) {
+        //    e.preventDefault();  //This prevents the default action
+        //    alert('Hellow');
+        //})
+
+        ////jQuery
+        //$('#btnSubmit').click(function (event) {
+        //    event.preventDefault();
+        //    alert('Hellow');
+        //});
+
+
+        $(document).ready(function () {
+            $(function () {
+                $('#btnSubmit').click(function (event) {
+                    event.preventDefault();
+                    var student = { ID: '1001', Name: 'Test Student', Age: 31 };
+                    $.ajax({
+                        type: "Post",
+                        url: "/Home/JqAJAX",
+                        data: JSON.stringify(student),
+                        dataType: 'application/json;charset=utf-8',
+                        success: function (data) {
+                            alert(data.msg);
+                        },
+                        error: function () {
+                            console.log(student);
+                            alert("Error occured !!")
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</div>
