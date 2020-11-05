@@ -18,10 +18,16 @@ namespace BackEnd.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         Order_Service _order_Service = new Order_Service();
+        private Order_Service order_Service = new Order_Service();
         public ActionResult Index()
         {
             return View();
         }
+        public ActionResult AutoCalculatedBarWidth()
+        {
+            return View();
+        }
+
         public ActionResult CRM()
         {
              var amount= (from i in db.Applications
@@ -31,7 +37,11 @@ namespace BackEnd.Controllers
                          
                         
             double total = 0;
-           
+            var totalCustomer = (from c in db.Customers
+                                 select c.Email).Count();
+            ViewBag.Allcustomers = totalCustomer;
+
+
             foreach (var item in db.Order_Items) 
             {
                  total += item.price * item.quantity;
@@ -79,7 +89,32 @@ namespace BackEnd.Controllers
 
             return View(db.Institutions.ToList());
         }
-      
+
+        public ActionResult ShopCustomers()
+        {
+
+            return View(db.Customers.ToList());
+        }
+        public ActionResult PendingDeposit()
+        {
+
+            return View(db.Deposits.ToList());
+        }
+        public ActionResult ShopTracking(string id)
+        {
+
+            if (String.IsNullOrEmpty(id) || id == "all")
+            {
+                ViewBag.Status = "All";
+                return View(order_Service.GetOrders());
+            }
+            else
+            {
+                ViewBag.Status = id;
+                return View(order_Service.GetOrders(id));
+            }
+        }
+
         public PartialViewResult Graph() 
         {
             return PartialView("_PendingApplications");
