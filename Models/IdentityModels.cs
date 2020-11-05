@@ -46,7 +46,7 @@ namespace BackEnd.Models
 
         public DbSet<DbDataPoint> dbDataPoints { get; set; }
         public DbSet<Email> Emails { get; set; }
-
+        public DbSet<DisplayImages> displayImages { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Item> Items { get; set; }

@@ -1,0 +1,51 @@
+﻿@model BackEnd.Models.DisplayImages
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DisplayImages</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thirdImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thirdImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fouthImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fouthImage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
