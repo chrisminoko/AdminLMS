@@ -19,12 +19,16 @@
                         </div>
                         <div class="col-md-12 pull-right">
                             <table class="table">
-                                <tr>
-                                    <th>@Html.LabelFor(model => Model.ItemCode)</th>
-                                    <td>
-                                        @Html.DisplayFor(model => model.ItemCode)
-                                    </td>
-                                </tr>
+                                @if (!User.IsInRole("Customer"))
+                                {
+                                    <tr>
+                                        <th>@Html.LabelFor(model => Model.ItemCode)</th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.ItemCode)
+                                        </td>
+                                    </tr>
+                                }
+
                                 <tr>
                                     <th>@Html.LabelFor(model => Model.Name)</th>
                                     <td>
@@ -38,11 +42,11 @@
                                     </td>
                                 </tr>
                                 @*<tr>
-                                        <th>@Html.LabelFor(model => Model.Description)</th>
-                                        <td>
-                                            @Html.DisplayFor(model => model.Description)
-                                        </td>
-                                    </tr>*@
+                                    <th>@Html.LabelFor(model => Model.Description)</th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Description)
+                                    </td>
+                                </tr>*@
                                 <tr>
                                     <th>@Html.LabelFor(model => Model.QuantityInStock)</th>
                                     <th>
@@ -62,18 +66,31 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <a class="btn btn-default" href="@Url.Action("Index","Items")">
-                                            <i class="fa fa-angle-left"></i>
-                                            Back to List
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-default" href="@Url.Action("Edit","Items", new { id = Model.ItemCode })">
-                                            <i class="fa fa-edit"></i>
-                                            Edit
-                                        </a>
-                                    </td>
+                                    @if (!User.IsInRole("Customer"))
+                                    {
+                                        <td>
+                                            <a class="btn btn-default" href="@Url.Action("Index","Items")">
+                                                <i class="fa fa-angle-left"></i>
+                                                Back to List
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-default" href="@Url.Action("Edit","Items", new { id = Model.ItemCode })">
+                                                <i class="fa fa-edit"></i>
+                                                Edit
+                                            </a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a class="btn btn-default" href="@Url.Action("Index","Shopping")">
+                                                <i class="fa fa-angle-left"></i>
+                                                Back to Shopping
+                                            </a>
+                                        </td>
+                                    }
+
                                 </tr>
                             </table>
                         </div>

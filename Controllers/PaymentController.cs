@@ -25,6 +25,7 @@ namespace BackEnd.Controllers
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
         private Order_Service order_Service;
+        private Payment_Service payment_Service;
 
 
 
@@ -52,6 +53,7 @@ namespace BackEnd.Controllers
                 NotifyUrl = ConfigurationManager.AppSettings["NotifyUrl"]
             };
             order_Service = new Order_Service();
+            payment_Service = new Payment_Service();
 
         }
 
@@ -211,6 +213,14 @@ namespace BackEnd.Controllers
         {
             var order = order_Service.GetOrder(id);
             var onceOffRequest = new PayFastRequest(this.payFastSettings.PassPhrase);
+            var payment = new Payment();
+            payment.AmountPaid = order_Service.GetOrderTotal(order.Order_ID);
+            payment.PaymentFor = order.Order_ID;
+            payment.PaymentMethod = "Pay Fast Payment";
+            payment.Email = User.Identity.GetUserName();
+            payment.Order_ID = order.Order_ID;
+            payment.Date = DateTime.Now;
+            payment_Service.AddPayment(payment);
             order_Service.MarkOrderAsPaid(id);
 
             //SendMail(id);

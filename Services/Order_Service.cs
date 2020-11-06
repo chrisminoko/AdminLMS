@@ -211,6 +211,14 @@ namespace BackEnd.Services
             }
             catch (Exception) { }
         }
+        public string GetOrderId(string userName)
+        {
+            var orderId = (from o in ModelsContext.Orders.OrderBy(x=>x.Order_ID)
+                           where o.Email == userName
+                           select o.Order_ID
+                           ).FirstOrDefault();
+            return orderId;
+        }
         public void UpdateOrderReport(string order_id)
         {
             var order = ModelsContext.Orders.Find(order_id);

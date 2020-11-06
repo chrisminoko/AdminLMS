@@ -1,103 +1,110 @@
 ﻿
 @{ 
     ViewBag.Title = "How would you like to receive your order?";
-    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+    //Layout = "~/Views/Shared/_LayoutShop.cshtml";
 
 }
 
 <h2 class="title text-center">@ViewBag.Title</h2>
 
-<form method="post">
+<div class="container-fluid">
     <div class="row">
-        <div class="board">
-            <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
-            <div class="board-inner">
-                <ul class="nav nav-tabs" id="myTab">
-                    <li class="active" style="text-align:center">
-                        <a href="#home" data-toggle="tab" title="Collect at warehouse">
-                            <span class="round-tabs">
-                                <i class="fa fa-home"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#profile" data-toggle="tab" title="Standard Delivery">
-                            <span class="round-tabs">
-                                <i class="fa fa-truck"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
-                    <h4 class="head text-center">Collect your order at our warehouse.</h4>
-                    <h4> <i class="fa fa-map-marker"></i>  123 Sept St, Durban, 4001 </h4>
-                    <h4> <i class="fa fa-clock-o"></i>  Monday - Friday</h4>
-                    <h4> <i class="fa fa-clock-o"></i>  8:30 am - 17:00 pm working hours</h4>
-                    <a href="@Url.Action("PlaceOrder","Shopping", new {id = "collect" })" class="btn btn-default"> Continue</a>
-                </div>
-                <div class="tab-pane fade" id="profile">
-                    <h3 class="head text-center">Deliver the order to my address</h3>
-                    <div class="input_field">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-map-marker"></i>
-                            </div>
-                            @*<textarea type="text" class="form-control" id="Physical_Address" ng-model="PropertyModel.Physical_Address" required ng-minlength="3" ng-maxlength="255" style="min-height:100px; resize:none" placeholder="Physical Address"></textarea>*@
-                            <div id="locationField">
-                                <input id="autocomplete" name="autocomplete" placeholder="Enter your address here" required class="form-control" onFocus="geolocate()" type="text" style="min-width:360px" />
-                            </div>
-                            <br />
-                            <table id="address">
-                                <tr>
-                                    <td style="color:black;width:70px"><i>Street</i></td>
-                                    <td style="min-width:460px" colspan="2">
-                                        <input id="street_number" name="street_number" class="field form-control disabled" required="required" style="max-width:60px" />
-                                        <input class="field form-control " id="route" name="street_name" required="required" style="max-width:220px" />
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td style="color:black;width:70px"><i>City</i></td>
-                                    <td class="wideField" colspan="3">
-                                        <input class="field  form-control" id="locality" name="City" required="required" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="color:black;width:70px"><i>State</i></td>
-                                    <td style="min-width:460px" colspan="2">
-                                        <input class="field form-control " id="administrative_area_level_1" name="State" style="max-width:80px" />
-                                        &nbsp;&nbsp;&nbsp;
-                                        <i>Zip Code</i>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <input class="field form-control " id="postal_code" name="ZipCode" required="required" style="max-width:102px" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="color:black;width:70px"><i>Country</i></td>
-                                    <td colspan="3">
-                                        <input class="field  form-control " name="Country" id="country" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <input type="submit" value="Continue" class="btn btn-default" />
-                                    </td>
-                                </tr>
-                            </table>
-
+        <div class="col-md-12">
+            <form method="post">
+                <div class="row">
+                    <div class="board">
+                        <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+                        <div class="board-inner">
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="active" style="text-align:center">
+                                    <a href="#home" data-toggle="tab" title="Collect at warehouse">
+                                        <span class="round-tabs">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#profile" data-toggle="tab" title="Standard Delivery">
+                                        <span class="round-tabs">
+                                            <i class="fa fa-truck"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="home">
+                                <h4 class="head text-center">Collect your order at our warehouse.</h4>
+                                <h4> <i class="fa fa-map-marker"></i>  123 Sept St, Durban, 4001 </h4>
+                                <h4> <i class="fa fa-clock-o"></i>  Monday - Friday</h4>
+                                <h4> <i class="fa fa-clock-o"></i>  8:30 am - 17:00 pm working hours</h4>
+                                <a href="@Url.Action("PlaceOrder","Shopping", new {id = "collect" })" class="btn btn-default"> Continue</a>
+                            </div>
+                            <div class="tab-pane fade" id="profile">
+                                <h3 class="head text-center">Deliver the order to my address</h3>
+                                <div class="input_field">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        @*<textarea type="text" class="form-control" id="Physical_Address" ng-model="PropertyModel.Physical_Address" required ng-minlength="3" ng-maxlength="255" style="min-height:100px; resize:none" placeholder="Physical Address"></textarea>*@
+                                        <div id="locationField">
+                                            <input id="autocomplete" name="autocomplete" placeholder="Enter your address here" required class="form-control" onFocus="geolocate()" type="text" style="min-width:360px" />
+                                        </div>
+                                        <br />
+                                        <table id="address">
+                                            <tr>
+                                                <td style="color:black;width:70px"><i>Street</i></td>
+                                                <td style="min-width:460px" colspan="2">
+                                                    <input id="street_number" name="street_number" class="field form-control disabled" required="required" style="max-width:60px" />
+                                                    <input class="field form-control " id="route" name="street_name" required="required" style="max-width:220px" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:black;width:70px"><i>City</i></td>
+                                                <td class="wideField" colspan="3">
+                                                    <input class="field  form-control" id="locality" name="City" required="required" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:black;width:70px"><i>State</i></td>
+                                                <td style="min-width:460px" colspan="2">
+                                                    <input class="field form-control " id="administrative_area_level_1" name="State" style="max-width:80px" />
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <i>Zip Code</i>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <input class="field form-control " id="postal_code" name="ZipCode" required="required" style="max-width:102px" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:black;width:70px"><i>Country</i></td>
+                                                <td colspan="3">
+                                                    <input class="field  form-control " name="Country" id="country" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <input type="submit" value="Continue" class="btn btn-default" />
+                                                </td>
+                                            </tr>
+                                        </table>
 
+                                    </div>
+
+                                </div>
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-
                 </div>
-            </div>
+            </form>
+
         </div>
     </div>
-</form>
+</div>
 
 <script type="text/javascript">
     $(function () {

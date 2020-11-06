@@ -14,6 +14,12 @@ using Newtonsoft.Json;
 
 namespace BackEnd.Controllers
 {
+    public class Student
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public double Age { get; set; }
+    }
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -21,9 +27,9 @@ namespace BackEnd.Controllers
         private Order_Service order_Service = new Order_Service();
         Item_Service item_Service = new Item_Service();
         Department_Service department_Service = new Department_Service();
-        public ActionResult Index(int? id )
+        public ActionResult Index(int? id)
         {
-           
+
 
             var items_results = new List<Item>();
             try
@@ -118,7 +124,7 @@ namespace BackEnd.Controllers
             return View();
 
         }
-        [Authorize]
+    
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
