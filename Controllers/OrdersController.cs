@@ -84,21 +84,22 @@ namespace BackEnd.Controllers
             else
                 return RedirectToAction("Not_Found", "Error");
         }
-        public ActionResult schedule_OrderDelivery()
+     
+
+
+        public ActionResult SetDelivery(string id)
         {
+            Session["OrderId"] = id;
             return View();
         }
 
-
-
         [HttpPost]
-        [Route("c")]
         public ActionResult SetDelivery(DeliveryModel deliveryModel)
         {
             try
             {
                 var date = DateTime.Now;
-                deliveryModel.OrderID = order_Service.GetOrderId(User.Identity.GetUserName());
+                deliveryModel.OrderID = Session["OrderId"].ToString();
                 if (deliveryModel == null)
                     return Json(new  { CertReqMsg = "Null Object Passed" });
                 if (order_Service.GetOrder(deliveryModel.OrderID) != null)
@@ -118,19 +119,19 @@ namespace BackEnd.Controllers
             }
         }
 
-        public ActionResult schedule_OrderDelivery(DeliveryModel deliveryModel)
+        public ActionResult schedule_OrderDelivery()
         {
             var date = DateTime.Now;
-            deliveryModel.OrderID = order_Service.GetOrderId(User.Identity.GetUserName());
-            if (deliveryModel == null)
-                return RedirectToAction("Bad_Request", "Error");
-            if (order_Service.GetOrder(deliveryModel.OrderID) != null)
-            {
-                order_Service.schedule_OrderDelivery(deliveryModel.OrderID, deliveryModel.DeliveryDate);
-                return RedirectToAction("Order_Details", new { id = deliveryModel.OrderID});
-            }
-            else
-                return RedirectToAction("Not_Found", "Error");
+            var orderId = order_Service.GetOrderId(User.Identity.GetUserName());
+            //if (deliveryModel == null)
+            //    return RedirectToAction("Bad_Request", "Error");
+            //if (order_Service.GetOrder(deliveryModel.OrderID) != null)
+            //{
+            //    order_Service.schedule_OrderDelivery(deliveryModel.OrderID, deliveryModel.DeliveryDate);
+            //    return RedirectToAction("Order_Details", new { id = deliveryModel.OrderID});
+            //}
+            //else
+                return RedirectToAction("SetDelivery",new { id=orderId});
         }
 
         public PartialViewResult DeliveryDate()

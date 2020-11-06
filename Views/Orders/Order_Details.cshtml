@@ -2,7 +2,6 @@
 
 @{ ViewBag.Title = "Order Details";
 
-    Layout = null;
     }
 
 @*<a href="~/Views/Shared/_Layout.cshtml">~/Views/Shared/_Layout.cshtml</a>*@
@@ -72,13 +71,10 @@
                         if (Model.order.status == "With courier")
                         {
             <td>
-                @*<a href="@Url.Action("schedule_OrderDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
+                <a href="@Url.Action("SetDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
             Schedule for Delivery
-        </a>*@
-                <input type="button" value=" Schedule for Delivery" class="btnDelivery btn btn-primary" id="btnDelivery" />
-                @*<button type="button" class="btn btn-primary" id="btnDelivery">
-                    Schedule for Delivery
-                </button>*@
+        </a>
+    
             </td>
 
                         }

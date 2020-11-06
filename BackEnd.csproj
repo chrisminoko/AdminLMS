@@ -1764,6 +1764,7 @@
     <Content Include="ShopAsset\fonts\themify.woff" />
     <Content Include="Views\Orders\schedule_OrderDelivery.cshtml" />
     <Content Include="Views\Orders\_Delivery.cshtml" />
+    <Content Include="Views\Orders\SetDelivery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Payment\" />
