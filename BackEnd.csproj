@@ -2154,6 +2154,19 @@
     <Content Include="Views\Orders\SetDelivery.cshtml" />
     <Content Include="Views\Orders\schedule_OrderDelivery.cshtml" />
     <Content Include="Views\Orders\_Delivery.cshtml" />
+    <Content Include="Views\AccountControllerShop\LoginShop.cshtml" />
+    <Content Include="Views\AccountControllerShop\Login.cshtml" />
+    <Content Include="Views\ShopAccount\Login.cshtml" />
+    <Content Include="Views\ShopAccount\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\ShopAccount\ForgotPassword.cshtml" />
+    <Content Include="Views\ShopAccount\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\ShopAccount\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\ShopAccount\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\ShopAccount\VerifyCode.cshtml" />
+    <Content Include="Views\ShopAccount\SendCode.cshtml" />
+    <Content Include="Views\ShopAccount\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\ShopAccount\ResetPassword.cshtml" />
+    <Content Include="Views\ShopAccount\ConfirmEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Payment\" />

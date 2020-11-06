@@ -27,7 +27,7 @@ namespace BackEnd.Controllers
         public AccountControllerShop()
         {
         }
-
+        
         public AccountControllerShop(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;

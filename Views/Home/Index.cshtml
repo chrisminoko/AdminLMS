@@ -282,17 +282,19 @@
         <div class="title-section margin-bottom-41">
             <h2 class="title">@ViewBag.Title</h2>
         </div>
-        @foreach (var item in Model)
-        {
+        <div class="row">
+            @foreach (var item in Model)
+            {
 
-            <div class="divider h54"></div>
-            <div class="row">
-                <div class="col-md-12">
+                <div class="divider h54"></div>
+
+                <div class="col-md-6">
 
 
                     <div class="product-content product-fourcolumn clearfix">
 
                         <ul class="product style2 isotope-product clearfix">
+                           
                             <li class="product-item kid woman">
                                 <div class="product-thumb clearfix">
                                     <a href="#">
@@ -357,7 +359,8 @@
                                             <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-cart-plus disabled"></i> Out of stock</a> }
                                         else
                                         {
-                                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-cart-plus"></i> Add to cart</a>}
+                                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-cart-plus"></i> Add to cart</a>
+                                            }
 
                                     </a>
                                 </div>
@@ -368,11 +371,12 @@
 
                     </div>
 
-                   
+
                 </div>
 
-            </div>
-        }
+
+            }
+        </div>
         </div>
 
 </section>
