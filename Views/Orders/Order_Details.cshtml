@@ -87,7 +87,7 @@
                                                         {
 
                                                             <td>
-                                                                <a href="@Url.Action("schedule_OrderDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
+                                                                <a href="@Url.Action("SetDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
                                                                     Schedule for Delivery
                                                                 </a>
 
@@ -99,7 +99,7 @@
                                                     if (Model.order.status == "Scheduled for delivery")
                                                     {
                                                         <td>
-                                                            <a href="@Url.Action("schedule_OrderDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
+                                                            <a href="@Url.Action("SetDelivery", "Orders", new { id = Model.order.Order_ID })" class="btn btn-primary">
                                                                 Schedule for Delivery
                                                             </a>
                                                         </td>
