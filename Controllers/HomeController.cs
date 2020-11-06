@@ -73,7 +73,7 @@ namespace BackEnd.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult CRM()
         {
              var amount= (from i in db.Applications
@@ -118,7 +118,7 @@ namespace BackEnd.Controllers
             return View();
 
         }
-    
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -137,23 +137,25 @@ namespace BackEnd.Controllers
 
             return View();
         }
-
+        [Authorize]
         public ActionResult PendingApplications() 
         {
 
             return View(db.Institutions.ToList());
         }
-
+        [Authorize]
         public ActionResult ShopCustomers()
         {
 
             return View(db.Customers.ToList());
         }
+        [Authorize]
         public ActionResult PendingDeposit()
         {
 
             return View(db.Deposits.ToList());
         }
+        [Authorize]
         public ActionResult ShopTracking(string id)
         {
 

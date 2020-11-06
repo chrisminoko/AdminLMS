@@ -52,6 +52,7 @@
                     <div id="logo" class="logo float-left">
                         <a href="Index" title="logo">
                             <img src="~/ShopLayoutAsset/images/logo.png" alt="image" width="107" height="24" data-retina="images/logo@2x.png" data-width="107" data-height="24">
+
                         </a>
                     </div><!-- /.logo -->
                     <div class="mobile-button"><span></span></div>
@@ -67,18 +68,8 @@
                             <a class="icon_login" href="#"></a>
                         </li>
                         <li class="box-cart nav-top-cart-wrapper">
-                            <a class="icon_cart nav-cart-trigger active" href="#"><span>@Html.Action(actionName: "countCartItems", controllerName: "Shopping")</span></a>
-                            <div class="nav-shop-cart">
-                                <div class="widget_shopping_cart_content">
-                                    <div class="woocommerce-min-cart-wrap">
-                                        <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                            <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                <span>No Items in Shopping Cart</span>
-                                            </li>
-                                        </ul>
-                                    </div><!-- /.widget_shopping_cart_content -->
-                                </div>
-                            </div><!-- /.nav-shop-cart -->
+                            <a class="icon_cart nav-cart-trigger active" data-toggle="modal" data-target="#exampleModal" href="#"><span>@Html.Action(actionName: "countCartItems", controllerName: "Shopping")</span></a>
+
                         </li>
                     </ul><!-- /.menu-extra -->
                     <div class="nav-wrap">
@@ -91,7 +82,7 @@
                             <nav id="mainnav" class="mainnav">
                                 <ul class="menu">
                                     <li class="active">
-                                        <a href="Index">HOME</a>
+                                        <a href="@Url.Action("Index", "Home")">HOME</a>
                                     </li>
                                     <li>
                                         <a href="">SHOP</a>
@@ -113,21 +104,21 @@
                                     @using Microsoft.AspNet.Identity
                                     @if (Request.IsAuthenticated)
                                     {
-                                <li>
-                                    @{ BackEnd.Models.ApplicationDbContext db = new BackEnd.Models.ApplicationDbContext(); }
-                                    <a href="">Account</a>
-                                    <ul class="submenu">
                                         <li>
+                                            @{ BackEnd.Models.ApplicationDbContext db = new BackEnd.Models.ApplicationDbContext(); }
+                                            <a href="">Account</a>
+                                            <ul class="submenu">
+                                                <li>
 
-                                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span>  @User.Identity.GetUserName() <span class="caret"></span></a>
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span>  @User.Identity.GetUserName() <span class="caret"></span></a>
 
+                                                </li>
+                                                <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i> Sign out</a></li>
+                                                <li>@Html.ActionLink("Order History", "Order_History", "Orders")</li>
+                                                <li>@Html.ActionLink("View Cart", "ShoppingCart", "Shopping")</li>
+                                                <li>@Html.ActionLink("Order Tracking", "Customer_Orders", "Orders")</li>
+                                            </ul>
                                         </li>
-                                        <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i> Sign out</a></li>
-                                        <li>@Html.ActionLink("Order History", "Order_History", "Orders")</li>
-                                        <li>@Html.ActionLink("View Cart", "ShoppingCart", "Shopping")</li>
-                                        <li>@Html.ActionLink("Order Tracking", "Customer_Orders", "Orders")</li>
-                                    </ul>
-                                </li>
                                     }
 
 
@@ -139,11 +130,118 @@
                 </div><!-- /.container-fluid -->
             </header><!-- /header -->
         </div><!-- /#site-header-wrap -->
-   
+
         <div class="container-fluid">
             @RenderBody()
         </div>
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cart Items</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <tr style="background: #f3f3f3;">
+                                <th>Item</th>
+                                <th>
+
+                                </th>
+                                <th style="text-align:center">
+                                    Quantity
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th style="text-align:center">
+                                    Sub-Total
+                                </th>
+                            </tr>
+                            @if (cart_Service.GetCartItems().Count() == 0)
+                            {
+                                <tr>
+                                    <th colspan="5" style="text-align:center">Your cart is empty</th>
+                                </tr>
+                            }
+                            @foreach (var item in cart_Service.GetCartItems().OrderBy(x => x.Item.Name))
+                            {
+                                <tr>
+                                    <td>
+                                        @if (item.Item.Picture != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Item.Picture);
+                                            var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                                            <img src="@imgSrc" width="30" height="30" />}
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Details","Items", new { id=item.Item.ItemCode })">@item.Item.Name</a>
+                                    </td>
+                                    <td style="text-align:center">
+                                        @item.quantity
+                                    </td>
+                                    <td>
+                                        @item.Item.Price.ToString("C")
+                                    </td>
+                                    <td style="text-align:center">
+                                        @{ var subtotal = item.quantity * item.Item.Price;
+                                            total += subtotal; }
+
+                                        @subtotal.ToString("C")
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="text-align:center">
+                                    Total
+                                </td>
+                                <th style="text-align:center">
+                                    @total.ToString("C")
+                                </th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a class="btn btn-default" href="@Url.Action("Index","Shopping")">
+                                        <i class="fa fa-list"></i> Shop More
+                                    </a>
+
+                                </td>
+                                <td>
+                                    <a class="btn btn-default" href="@Url.Action("ShoppingCart", "Shopping")">
+                                        <i class="fa fa-shopping-cart"></i> View Cart
+                                    </a>
+                                </td>
+                                <td>
+                                    @if (cart_Service.GetCartItems().Count() == 0)
+                                    {
+                                        <a class="btn btn-default disabled" href="@Url.Action("Checkout","Shopping")">
+                                            <i class="fa fa-lock"></i> Checkout
+                                        </a> }
+                                    else
+                                    {
+                                        <a class="btn btn-default" href="@Url.Action("Checkout","Shopping")">
+                                            <i class="fa fa-lock"></i> Checkout
+                                        </a>}
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <a data-dismiss="modal" class="themesflat-button has-padding-36 bg-accent has-shadow"><span style="color:white">Close</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Go Top -->
@@ -152,6 +250,7 @@
         </a>
 
     </div>
+    <script id="mcjs">!function (c, h, i, m, p) { m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p) }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/4f354d8da90711e04a82efc5f/0fd81ea3ad928629a00c5d069.js");</script>
 
     <!-- Javascript -->
     <script src="~/ShopLayoutAsset/javascript/jquery.min.js"></script>
@@ -172,7 +271,7 @@
     <script src="~/ShopLayoutAsset/javascript/gmap3.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIEU6OT3xqCksCetQeNLIPps6-AYrhq-s&amp;region=GB"></script>
     <script src="~/ShopLayoutAsset/javascript/jquery-ui.js"></script>
-    <script src="~/ShopLayoutAsset/javascript/switcher.js"></script>
+    @*<script src="~/ShopLayoutAsset/javascript/switcher.js"></script>*@
     <script src="~/ShopLayoutAsset/javascript/jquery.cookie.js"></script>
     <script src="~/ShopLayoutAsset/javascript/main.js"></script>
 
@@ -190,7 +289,7 @@
     <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.video.min.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 

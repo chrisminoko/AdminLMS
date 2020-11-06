@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BackEnd.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         Category_Service Category_Service = new Category_Service();
@@ -47,6 +48,7 @@ namespace BackEnd.Controllers
 
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             ViewBag.Department_ID = new SelectList(department_Service.GetDepartments(), "Department_ID", "Department_Name");
@@ -69,6 +71,7 @@ namespace BackEnd.Controllers
             ViewBag.Department_ID = new SelectList(department_Service.GetDepartments(), "Department_ID", "Department_Name");
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

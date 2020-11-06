@@ -94,9 +94,6 @@
                             @if (User.IsInRole("Admin"))
                             {
                                 <td>
-
-
-                                    @Html.ActionLink("Downlaod File", "Download", new { id = item.InstitutionID })<br />
                                     <a href="@Url.Action("Approve", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Approve, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Approve" class="btn btn-success btn-simple btn-xs"><i class="fa fa-check-square-o"></i></a>
                                     <a href="@Url.Action("Reject", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Reject, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
                                 </td>

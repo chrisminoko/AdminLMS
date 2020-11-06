@@ -31,6 +31,7 @@ namespace BackEnd.Controllers
             else
                 return RedirectToAction("Not_Found", "Error");
         }
+   
         public ActionResult Create()
         {
             ViewBag.Category_ID = new SelectList(category_Service.GetCategories(), "Category_ID", "Name");
@@ -53,6 +54,7 @@ namespace BackEnd.Controllers
             }
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             ViewBag.Category_ID = new SelectList(category_Service.GetCategories(), "Category_ID", "Name");
@@ -79,6 +81,7 @@ namespace BackEnd.Controllers
             ViewBag.Category_ID = new SelectList(category_Service.GetCategories(), "Category_ID", "Name");
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

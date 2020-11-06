@@ -3,87 +3,103 @@
 @{
 
 
- }
+}
 
+<div class="container-fluid">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Product Details</h5>
+                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                    </div>
+                    <div class="card-block col-md-12 test">
+                        @using (Html.BeginForm(actionName: "Create", controllerName: "Items", routeValues: null, method: FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
 
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Name </label>
 
-<div class="main-body">
-    <div class="page-wrapper">
-        <!-- Page-body start -->
-        <div class="page-body">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Product Details</h5>
-                    <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
-                </div>
-                <div class="card-block col-md-12 test">
-                    @using (Html.BeginForm(actionName: "Create", controllerName: "Items", routeValues: null, method: FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">Category</label>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Name </label>
+                                    @Html.DropDownList("Category_ID", null, "--- Please Select ---", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
 
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Category</label>
+                            <div class="form-group">
+                                <label for="inputAddress">Description</label>
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Quantity</label>
+                                @Html.EditorFor(model => model.QuantityInStock, new { htmlAttributes = new { @class = "form-control", min = 0, max = 1000 } })
+                                @Html.ValidationMessageFor(model => model.QuantityInStock, "", new { @class = "text-danger" })
+                            </div>
 
-                                @Html.DropDownList("Category_ID", null, "--- Please Select ---", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label for="inputAddress">Price</label>
+
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Product Selling Price" } })
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputZip">Files</label>
+                                <input type="file" id="photoUpload" name="photoUpload" required="required" />
 
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Description</label>
-                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Quantity</label>
-                            @Html.EditorFor(model => model.QuantityInStock, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.QuantityInStock, "", new { @class = "text-danger" })
-                        </div>
 
-                        <div class="form-group">
-                            <label for="inputAddress">Price</label>
-
-                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Product Selling Price" } })
-                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputZip">Files</label>
-                            <input type="file"  id="photoUpload" name="photoUpload" required="required" />
-                            
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                            <button onclick="return validateData();" type="submit" class="btn btn-primary">Submit</button>
 
                         }
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 
-                    <script type="text/javascript">
-                        //image preview
-                        function readURL(input) {
-                            if (input.files && input.files[0]) {
-                                var reader = new FileReader();
 
-                                reader.onload = function (e) {
-                                    $('#image_preview')
-                                        .attr('src', e.target.result)
-                                        .width(300)
-                                        .height(300);
 
-                                };
 
-                                reader.readAsModelsURL(input.files[0]);
-                            }
-                        }
-                    </script>
+<script type="text/javascript">
+    //image preview
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_preview')
+                    .attr('src', e.target.result)
+                    .width(300)
+                    .height(300);
+
+            };
+
+            reader.readAsModelsURL(input.files[0]);
+        }
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    function validateData() {
+        swal({
+            title: "Product Added",
+            text: "You add a new Product",
+            icon: "success",
+            button: "Aww yiss!",
+        });
+    }
+</script>

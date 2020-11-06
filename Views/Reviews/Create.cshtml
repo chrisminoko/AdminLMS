@@ -35,7 +35,7 @@
                 <div class="form-group">
 
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                        <input  onclick="return validateData();" type="submit" value="Create" class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -44,6 +44,18 @@
     </div>
 </div>
 
+
+
+<script type="text/javascript">
+    function validateData() {
+        swal({
+            title: "Review Added",
+            text: "You add a new product review",
+            icon: "success",
+            button: "Aww yiss!",
+        });
+    }
+</script>
 
 
 

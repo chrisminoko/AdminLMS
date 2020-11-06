@@ -13,7 +13,7 @@ using BackEnd.Models;
 using Microsoft.AspNet.Identity;
 namespace BackEnd.Controllers
 {
-    [Authorize]
+   
     public class DepositsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -171,7 +171,7 @@ namespace BackEnd.Controllers
             ViewBag.ApplicationID = new SelectList(db.Applications.Where(x => x.UserEmail == User.Identity.GetUserName()), "ApplicationID", "UniqApplicationCode", deposit.ApplicationID);
             return View(deposit);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Deposits/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -204,7 +204,7 @@ namespace BackEnd.Controllers
             ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail", deposit.ApplicationID);
             return View(deposit);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Deposits/Delete/5
         public ActionResult Delete(int? id)
         {

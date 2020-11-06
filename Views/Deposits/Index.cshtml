@@ -3,7 +3,7 @@
 
 
 
-<a href="@Url.Action("Create", "Deposits")" button class="btn"><i class="fa fa-plus-circle"></i> Add New</a>
+<a href="@Url.Action("Create", "Deposits")" button class="btn"><i class="fa fa-plus-circle"></i> Add New Deposit</a>
 
 <div class="page-body">
     <div class="row">
@@ -63,7 +63,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.DepositDate)
                             </td>
-                            @if (item.Status=="Approved")
+                            @if (item.Status == "Approved")
                             {
                                 <td><label class="label label-success">Approved</label></td>
 
@@ -76,11 +76,15 @@
                                 @Html.DisplayFor(modelItem => item.FileName)
                             </td>
 
-                            <td>
-                                @Html.ActionLink("Approve", "Approve", new { id = item.DepositID }) |
-                                @Html.ActionLink("Downlaod File", "Download", new { id = item.ApplicationID })<br />
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    @Html.ActionLink("Approve", "Approve", new { id = item.DepositID }) |
+                                    @Html.ActionLink("Downlaod File", "Download", new { id = item.ApplicationID })<br />
 
-                            </td>
+                                </td>
+                            }
+
                         </tr>
                             }
 

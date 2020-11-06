@@ -276,18 +276,19 @@
 
 
 <!-- PRODUCT -->
+
 <section class="flat-row row-product-project style-1">
     <div class="container-fluid">
         <div class="title-section margin-bottom-41">
             <h2 class="title">@ViewBag.Title</h2>
         </div>
+        @foreach (var item in Model)
+        {
 
-        <div class="divider h54"></div>
-        <div class="row">
-            <div class="col-md-12">
+            <div class="divider h54"></div>
+            <div class="row">
+                <div class="col-md-12">
 
-                @foreach (var item in Model)
-                {
 
                     <div class="product-content product-fourcolumn clearfix">
 
@@ -367,12 +368,12 @@
 
                     </div>
 
-                }
+                   
+                </div>
+
             </div>
-
+        }
         </div>
-
-    </div>
 
 </section>
 <!-- END PRODUCT -->
@@ -530,8 +531,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="copyright text-center">Copyright  <a href="#"></a></p>
+                <p  class="copyright text-center">Copyright  <a href="#"></a></p>
             </div>
         </div>
     </div>
 </div>
+

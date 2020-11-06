@@ -4,50 +4,68 @@
     ViewBag.Title = "Edit Category";
 }
 
-<h2 class="title text-center">@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <table class="table">
-            <tr>
-                <th>@Html.LabelFor(model => model.Category_ID)</th>
-                <td>
-                    @Html.EditorFor(model => model.Category_ID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.LabelFor(model => model.Department_ID)</th>
-                <td>
-                    @Html.DropDownList("Department_ID", null, "--- Please Select ---", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Department_ID, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.LabelFor(model => model.Name)</th>
-                <td>
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a class="btn btn-default" href="@Url.Action("Index","Categories")">
-                        <i class="fa fa-angle-left"></i>
-                        Back to List
-                    </a>
-                </td>
-                <td>
-                    <input type="submit" value="Save Changes" class="btn btn-default" />
-                </td>
-            </tr>
-        </table>
+<div class="container-fluid">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Edit Category</h5>
+                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                    </div>
+                    <div class="card-block col-md-12 test">
+
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="row">
+                                <table class="table">
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Category_ID)</th>
+                                        <td>
+                                            @Html.EditorFor(model => model.Category_ID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Department_ID)</th>
+                                        <td>
+                                            @Html.DropDownList("Department_ID", null, "--- Please Select ---", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Department_ID, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Name)</th>
+                                        <td>
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a class="btn btn-default" href="@Url.Action("Index","Categories")">
+                                                <i class="fa fa-angle-left"></i>
+                                                Back to List
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <input type="submit" value="Save Changes" class="btn btn-warning" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-}
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                        @section Scripts {
+                            @Scripts.Render("~/bundles/jqueryval")
+                        }

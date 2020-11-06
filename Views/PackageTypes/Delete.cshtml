@@ -4,29 +4,46 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="container-fluid">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Package Type Details</h5>
+                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                    </div>
+                    <div class="card-block col-md-12 test">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>PackageType</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PackageName)
-        </dt>
+                        <h3>Are you sure you want to delete this?</h3>
+                        <div>
+                            <h4>PackageType</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PackageName)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PackageName)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PackageName)
+                                </dd>
 
-    </dl>
+                            </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                    @Html.ActionLink("Back to List", "Index")
+                                </div>
+                            }
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    }
-</div>
+    </div>

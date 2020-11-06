@@ -13,6 +13,7 @@ using PayFast;
 using PayFast.AspNet;
 namespace BackEnd.Controllers
 {
+
     
     public class PackagesController : Controller
     {
@@ -83,6 +84,7 @@ namespace BackEnd.Controllers
         }
 
         // GET: Packages/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -125,6 +127,7 @@ namespace BackEnd.Controllers
         }
 
         // GET: Packages/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
