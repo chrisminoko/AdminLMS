@@ -109,7 +109,7 @@ namespace BackEnd.Controllers
                 }
                 else
                 {
-                    return Json(new { msg = "There was an  error while trying to process your request" });
+                    return Json(new { msg = "There was an  error while trying to process your request, please try again" });
                 }
             }
             catch (Exception ex)
