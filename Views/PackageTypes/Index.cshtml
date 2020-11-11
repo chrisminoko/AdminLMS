@@ -1,58 +1,37 @@
-﻿@model IEnumerable<BackEnd.Models.PackageType>
+﻿
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Employee Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="page-body">
+<div id="dataModel"></div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <!-- Zero config.table start -->
-            <div class="card">
-                <div class="card-header">
-                    <h5>Package Types</h5>
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script type="text/javascript">
+        $(function () {
+            var hubNotify = $.connection.employeesHub;
 
-                </div>
-                <div class="card-block">
-                    <div class="dt-responsive table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    Package Type Name
-                                </th>
-                                <th></th>
-                            </tr>
+            $.connection.hub.start().done(function () {
+                getAll();
+            });
 
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PackageName)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.PackageTypeID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.PackageTypeID })
-                                    </td>
-                                </tr>
-                            }
+            hubNotify.client.refreshEmployeeData = function () {
+                getAll();
+            };
+        });
 
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            @{
-                Html.RenderAction("CreatePackage");
-            }
-        </div>
-    </div>
-
-</div>
+        function getAll() {
+            var model = $('#dataModel');
+            $.ajax({
+                url: '/PackageTypes/GetPackagetypeData',
+                contentType: 'application/html ; charset:utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) { model.empty().append(result); }
+            });
+        }
+    </script>
+}

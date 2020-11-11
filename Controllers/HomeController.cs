@@ -143,6 +143,7 @@ namespace BackEnd.Controllers
 
             return View();
         }
+
         [Authorize]
         public ActionResult PendingApplications() 
         {

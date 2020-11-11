@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using BackEnd.Hubs;
 using BackEnd.Models;
 
 namespace BackEnd.Controllers
@@ -18,7 +19,11 @@ namespace BackEnd.Controllers
         // GET: PackageTypes
         public ActionResult Index()
         {
-            return View(db.PackageTypes.ToList());
+            return View();
+        }
+        public ActionResult GetPackagetypeData()
+        {
+            return PartialView("_PackagetypeData", db.PackageTypes.ToList());
         }
 
         // GET: PackageTypes/Details/5
@@ -57,6 +62,7 @@ namespace BackEnd.Controllers
             {
                 db.PackageTypes.Add(packageType);
                 db.SaveChanges();
+                EmployeesHub.BroadcastData();
                 return RedirectToAction("Index");
             }
 
@@ -91,6 +97,7 @@ namespace BackEnd.Controllers
             {
                 db.Entry(packageType).State = EntityState.Modified;
                 db.SaveChanges();
+                EmployeesHub.BroadcastData();
                 return RedirectToAction("Index");
             }
             return View(packageType);
@@ -119,6 +126,7 @@ namespace BackEnd.Controllers
             PackageType packageType = db.PackageTypes.Find(id);
             db.PackageTypes.Remove(packageType);
             db.SaveChanges();
+            EmployeesHub.BroadcastData();
             return RedirectToAction("Index");
         }
 

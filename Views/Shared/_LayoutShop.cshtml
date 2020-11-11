@@ -51,8 +51,7 @@
                 <div class="container clearfix" id="site-header-inner">
                     <div id="logo" class="logo float-left">
                         <a href="Index" title="logo">
-                            <img src="~/ShopLayoutAsset/images/logo.png" alt="image" width="107" height="24" data-retina="images/logo@2x.png" data-width="107" data-height="24">
-
+                            <img src="~/ShopLayoutAsset/images/logo.png" alt="image" width="107" height="24">
                         </a>
                     </div><!-- /.logo -->
                     <div class="mobile-button"><span></span></div>
@@ -64,9 +63,7 @@
                                 <button type="submit" class="header-search-submit" title="Search">Search</button>
                             </form>
                         </li>
-                        <li class="box-login">
-                            <a class="icon_login" href="#"></a>
-                        </li>
+                      
                         <li class="box-cart nav-top-cart-wrapper">
                             <a class="icon_cart nav-cart-trigger active" data-toggle="modal" data-target="#exampleModal" href="#"><span>@Html.Action(actionName: "countCartItems", controllerName: "Shopping")</span></a>
 
@@ -83,6 +80,9 @@
                                 <ul class="menu">
                                     <li class="active">
                                         <a href="@Url.Action("Index", "Home")">HOME</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="@Url.Action("ShoppingCart", "Shopping")">Cart</a>
                                     </li>
                                     <li>
                                         <a href="">SHOP</a>
@@ -126,7 +126,7 @@
                                             <a href="@Url.Action("Register", "ShopAccount")">Sign In</a>
 
                                         </li>
-
+                                  
                                     }
 
 

@@ -1,6 +1,15 @@
 ﻿@model BackEnd.Models.OnlineShop.DeliveryModel
 
 
+@if (User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else
+{
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
 <div class="container-fluid">
     <div class="main-body">
         <div class="page-wrapper">

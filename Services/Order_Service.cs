@@ -3,6 +3,7 @@ using BackEnd.Models;
 using BackEnd.Models.OnlineShop;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +14,7 @@ namespace BackEnd.Services
         private ApplicationDbContext ModelsContext;
         private Address_Service address_Service;
         private Payment_Service payment_Service;
+        SqlConnection con = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         public Order_Service()
         {
             this.ModelsContext = new ApplicationDbContext();
