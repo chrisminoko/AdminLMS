@@ -2,97 +2,160 @@
     ViewBag.Title = "About";
 }
 
-<div class="page-header card">
-    <div class="row align-items-end">
-        <div class="col-lg-12">
-            <div class="page-header-title">
-                <i class="feather icon-home bg-c-blue"></i>
-                <div class="d-inline">
-                    <h5>Dashboard CRM</h5>
-                    <span style="color:white">lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+@*<div class="page-header card">
+        <div class="row align-items-end">
+            <div class="col-lg-12">
+                <div class="page-header-title">
+                    <i class="feather icon-home bg-c-blue"></i>
+                    <div class="d-inline">
+                        <h5>Dashboard CRM</h5>
+                        <span style="color:white">lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xl-3 col-md-6">
-        <div class="card prod-p-card card-red">
-            <div class="card-body">
-                <div class="row align-items-center m-b-30">
-                    <div class="col">
-                        <h6 class="m-b-5 text-white">Total Profit</h6>
-                        <h3 class="m-b-0 f-w-700 text-white">$@ViewBag.TotalSales</h3>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-money-bill-alt text-c-red f-18"></i>
-                    </div>
-                </div>
-                <p class="m-b-0 text-white"><span class="label label-danger m-r-10">+11%</span>From Previous Month</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6">
-        <div class="card prod-p-card card-blue">
-            <div class="card-body">
-                <div class="row align-items-center m-b-30">
-                    <div class="col">
-                        <h6 class="m-b-5 text-white">Total Orders</h6>
-                        <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-database text-c-blue f-18"></i>
-                    </div>
-                </div>
-                <p class="m-b-0 text-white"><span class="label label-primary m-r-10">+12%</span>From Previous Month</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6">
-        <div class="card prod-p-card card-green">
-            <div class="card-body">
-                <div class="row align-items-center m-b-30">
-                    <div class="col">
-                        <h6 class="m-b-5 text-white"> Deposits</h6>
-                        <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-dollar-sign text-c-green f-18"></i>
-                    </div>
-                </div>
-                <p class="m-b-0 text-white"><span class="label label-success m-r-10">+52%</span>From Previous Month</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6">
-        <div class="card prod-p-card card-yellow">
-            <div class="card-body">
-                <div class="row align-items-center m-b-30">
-                    <div class="col">
-                        <h6 class="m-b-5 text-white">Packages Sold</h6>
-                        <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-tags text-c-yellow f-18"></i>
-                    </div>
-                </div>
-                <p class="m-b-0 text-white"><span class="label label-warning m-r-10">+52%</span>From Previous Month</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+    </div>*@
 <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-3 col-md-6">
+            <div class="card prod-p-card card-red">
+                <div class="card-body">
+                    <div class="row align-items-center m-b-30">
+                        <div class="col">
+                            <h6 class="m-b-5 text-white">Total Profit</h6>
+                            <h3 class="m-b-0 f-w-700 text-white">$@ViewBag.totalShopSales</h3>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-money-bill-alt text-c-red f-18"></i>
+                        </div>
+                    </div>
+                    <p class="m-b-0 text-white"><span class="label label-danger m-r-10">+11%</span>From Previous Month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card prod-p-card card-blue">
+                <div class="card-body">
+                    <div class="row align-items-center m-b-30">
+                        <div class="col">
+                            <h6 class="m-b-5 text-white">Total Orders</h6>
+                            <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-database text-c-blue f-18"></i>
+                        </div>
+                    </div>
+                    <p class="m-b-0 text-white"><span class="label label-primary m-r-10">+12%</span>From Previous Month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card prod-p-card card-green">
+                <div class="card-body">
+                    <div class="row align-items-center m-b-30">
+                        <div class="col">
+                            <h6 class="m-b-5 text-white"> Deposits</h6>
+                            <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign text-c-green f-18"></i>
+                        </div>
+                    </div>
+                    <p class="m-b-0 text-white"><span class="label label-success m-r-10">+52%</span>From Previous Month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card prod-p-card card-yellow">
+                <div class="card-body">
+                    <div class="row align-items-center m-b-30">
+                        <div class="col">
+                            <h6 class="m-b-5 text-white">Packages Sold</h6>
+                            <h3 class="m-b-0 f-w-700 text-white">@ViewBag.TotalStudents</h3>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-tags text-c-yellow f-18"></i>
+                        </div>
+                    </div>
+                    <p class="m-b-0 text-white"><span class="label label-warning m-r-10">+52%</span>From Previous Month</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             @{
                 Html.RenderAction("PendingApplications");
             }
         </div>
+        <div class="col-xl-4 col-md-12">
+            <div class="card comp-card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="m-b-25">Number of Products</h6>
+                            <h3 class="f-w-700 text-c-blue">@ViewBag.Products</h3>
+                            <p class="m-b-0">@DateTime.Now</p>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-eye bg-c-blue"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card comp-card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="m-b-25">Products out of Stocks</h6>
+                            <h3 class="f-w-700 text-c-green">@ViewBag.lowstock</h3>
+                            <p class="m-b-0">@DateTime.Now</p>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-bullseye bg-c-green"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card comp-card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="m-b-25">Total Customers</h6>
+                            <h3 class="f-w-700 text-c-yellow">@ViewBag.Allcustomers</h3>
+                            <p class="m-b-0">@DateTime.Now</p>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hand-paper bg-c-yellow"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            @{
+                Html.RenderAction("ShopTracking");
+            }
+        </div>
+        <div class="col-md-12">
+            @{
+                Html.RenderAction("ShopCustomers");
+            }
+            @*@{
+                Html.RenderAction("PendingDeposit");
+            }*@
+        </div>
+   
     </div>
 
 </div>
-
-

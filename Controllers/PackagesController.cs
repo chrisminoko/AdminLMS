@@ -8,11 +8,14 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BackEnd.Hubs;
 using BackEnd.Models;
 using PayFast;
 using PayFast.AspNet;
 namespace BackEnd.Controllers
 {
+
+    
     public class PackagesController : Controller
     {
             
@@ -74,6 +77,7 @@ namespace BackEnd.Controllers
             {
                 db.Packages.Add(package);
                 db.SaveChanges();
+                EmployeesHub.BroadcastData();
                 return RedirectToAction("Index");
             }
 
@@ -82,6 +86,7 @@ namespace BackEnd.Controllers
         }
 
         // GET: Packages/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -117,6 +122,7 @@ namespace BackEnd.Controllers
             {
                 db.Entry(package).State = EntityState.Modified;
                 db.SaveChanges();
+                EmployeesHub.BroadcastData();
                 return RedirectToAction("Index");
             }
             ViewBag.PackageTypeID = new SelectList(db.PackageTypes, "PackageTypeID", "PackageName", package.PackageTypeID);
@@ -124,6 +130,7 @@ namespace BackEnd.Controllers
         }
 
         // GET: Packages/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -304,6 +311,7 @@ namespace BackEnd.Controllers
             Package package = db.Packages.Find(id);
             db.Packages.Remove(package);
             db.SaveChanges();
+            EmployeesHub.BroadcastData();
             return RedirectToAction("Index");
         }
 

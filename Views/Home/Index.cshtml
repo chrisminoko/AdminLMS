@@ -1,8 +1,542 @@
-﻿@*<h1>
-    <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
-    margin: auto;
-    -moz-border-radius: 60px;
-    border-radius: 100px;
-    padding: 6px;
-    box-shadow: 0px 0px 20px #888;" />
-</h1>*@ 
+﻿@model IEnumerable<BackEnd.Models.OnlineShop.Item>
+@{
+    ViewBag.Title = "Shopping";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+    if (ViewBag.Department != null)
+    {
+        ViewBag.Title = ViewBag.Department.ToString();
+    }
+}
+
+
+
+<!-- SLIDER -->
+<div class="rev_slider_wrapper fullwidthbanner-container">
+    <div id="rev-slider1" class="rev_slider fullwidthabanner">
+        <ul>
+            <!-- Slide 1 -->
+            <li data-transition="random">
+                <!-- Main Image -->
+                <img src="@ViewBag.FirstImage" alt="" data-bgposition="center center" data-no-retina>
+
+                <!-- Layers -->
+                <div class="tp-caption tp-resizeme text-white font-weight-300"
+                     data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['-93','-93','-93','-93']"
+                     data-fontsize="['24','24','24','18']"
+                     data-lineheight="['72','72','72','36']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="700"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    NEW TREND 2018
+                </div>
+
+                <div class="tp-caption tp-resizeme text-white font-weight-500"
+                     data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['-42','-42','-42','-42']"
+                     data-fontsize="['52','52','52','40']"
+                     data-lineheight="['60','60','60','40']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="1000"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    New Collection
+                </div>
+
+                <div class="tp-caption tp-resizeme text-white font-weight-400 "
+                     data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['12','12','12','12']"
+                     data-fontsize="['18','18','18','16']"
+                     data-lineheight="['72','72','72','38']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="1000"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    BIG SALE OF THIS WEEK UP TO 30%
+                </div>
+
+                <div class="tp-caption"
+                     data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['80','80','80','80']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="1000"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    <a href="#" class="themesflat-button has-padding-36 bg-accent has-shadow"><span>SHOP NOW</span></a>
+                </div>
+            </li>
+            <!-- /End Slide 1 -->
+            <!-- Slide 2 -->
+            <li data-transition="random">
+                <!-- Main Image -->
+
+                <img src="@ViewBag.SecondImage" alt="" data-bgposition="center center" data-no-retina>
+
+                <!-- Layers -->
+                <div class="tp-caption tp-resizeme text-333 font-weight-400 text-right"
+                     data-x="['right','right','right','center']" data-hoffset="['33','33','33','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['-115','-115','-115','-115']"
+                     data-fontsize="['22','22','22','22']"
+                     data-lineheight="['60','60','60','60']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="700"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    <span class="text-line left"></span>Summer Fashion<span class="text-line right"></span>
+                </div>
+
+                <div class="tp-caption tp-resizeme text-333 font-weight-500 letter-spacing-10 text-right"
+                     data-x="['right','right','right','center']" data-hoffset="['13','13','13','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['-39','-39','-39','-59']"
+                     data-fontsize="['130','130','130','60']"
+                     data-lineheight="['130','130','130','60']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="1000"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    SALE
+                </div>
+
+                <div class="tp-caption tp-resizeme text-333 font-weight-400 text-right"
+                     data-x="['right','right','right','center']" data-hoffset="['13','13','13','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['50','50','50','5']"
+                     data-fontsize="['48','48','48','28']"
+                     data-lineheight="['60','60','60','40']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="1000"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    UP TO <span class="text-accent">30%</span> OFF
+                </div>
+
+                <div class="tp-caption text-right"
+                     data-x="['right','right','right','center']" data-hoffset="['105','105','105','0']"
+                     data-y="['middle','middle','middle','middle']" data-voffset="['138','138','138','80']"
+                     data-width="full"
+                     data-height="none"
+                     data-whitespace="normal"
+                     data-transform_idle="o:1;"
+                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                     data-mask_in="x:0px;y:[100%];"
+                     data-mask_out="x:inherit;y:inherit;"
+                     data-start="1000"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-responsive_offset="on">
+                    <a href="#" class="themesflat-button bg-accent has-shadow"><span>BY NOW</span></a>
+                </div>
+            </li>
+            <!-- /End Slide 2 -->
+        </ul>
+    </div>
+</div>
+<!-- END SLIDER -->
+<!-- IMAGE BOX -->
+<section class="flat-row row-image-box">
+    <div class="container">
+        <div class="row gutter-10">
+            <div class="col-sm-6 col-md-4">
+                <div class="flat-image-box style-1 data-effect div-h22 clearfix">
+                    <div class="item data-effect-item">
+                        <div class="inner">
+                            <div class="thumb">
+                                <img src="~/ShopLayoutAsset/images/image-box/imgbox-1-375x500.jpg" alt="Image">
+                                <div class="elm-btn">
+                                    <a href="#" class="themesflat-button bg-white width-150">For Men’s</a>
+                                </div>
+                                <div class="overlay-effect bg-color-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-4 -->
+            <div class="col-sm-6 col-md-4">
+                <div class="flat-image-box style-1 row2 data-effect clearfix">
+                    <div class="item data-effect-item">
+                        <div class="inner">
+                            <div class="thumb">
+                                <img src="~/ShopLayoutAsset/images/image-box/imgbox-1-375x240.jpg" alt="Image">
+                                <div class="elm-btn">
+                                    <a href="#" class="themesflat-button bg-white width-150">For Kid’s</a>
+                                </div>
+                                <div class="overlay-effect bg-color-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item data-effect-item">
+                        <div class="inner">
+                            <div class="thumb">
+                                <img src="~/ShopLayoutAsset/images/image-box/imgbox-2-375x240.jpg" alt="Image">
+                                <div class="elm-btn">
+                                    <a href="#" class="themesflat-button bg-white width-150">accessories</a>
+                                </div>
+                                <div class="overlay-effect bg-color-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-4 -->
+            <div class="col-sm-6 col-md-4">
+                <div class="flat-image-box style-1 data-effect div-h20 clearfix">
+                    <div class="item data-effect-item">
+                        <div class="inner">
+                            <div class="thumb">
+                                <img src="~/ShopLayoutAsset/images/image-box/imgbox-2-375x500.jpg" alt="Image">
+                                <div class="elm-btn">
+                                    <a href="#" class="themesflat-button bg-white width-150">For woMen’s</a>
+                                </div>
+                                <div class="overlay-effect bg-color-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-4 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>
+<!-- END IMAGE BOX -->
+<!-- ANIMATION BOX -->
+<section class="flat-row row-animation-box bg-section row-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="flat-animation-block">
+                    <div class="title-section width-before-17 bg-before-white margin-bottom-14">
+                        <div class="sup-title"><span>NEW TREND 2018</span></div>
+                        <h2 class="title font-size-52 line-height-76">Women‘s Collection</h2>
+                        <div class="sub-title"><span>Big Sale of this Week</span></div>
+                    </div>
+                    <div class="elm-btn text-center">
+                        <a href="#" class="themesflat-button bg-accent has-padding-36">Shop Now</a>
+                    </div>
+                </div><!-- /.flat-animation-block -->
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>
+
+
+<!-- PRODUCT -->
+
+<section class="flat-row row-product-project style-1">
+    <div class="container-fluid">
+        <div class="title-section margin-bottom-41">
+            <h2 class="title">@ViewBag.Title</h2>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="divider h54"></div>
+
+                <div class="col-md-6">
+
+
+                    <div class="product-content product-fourcolumn clearfix">
+
+                        <ul class="product style2 isotope-product clearfix">
+                           
+                            <li class="product-item kid woman">
+                                <div class="product-thumb clearfix">
+                                    <a href="#">
+                                        @if (item.Picture != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(inArray: item.Picture);
+                                            var imgSrc = string.Format(format: "data:image/gif;base64,{0}", arg0: base64);
+                                            <img src="@imgSrc" width="200" height="249" />
+                                        }
+                                    </a>
+                                </div>
+                                <div class="product-info clearfix">
+                                    <span class="product-title">
+                                        <a href="@Url.Action("Details","Items", new { id=item.ItemCode })" rel="tooltip" title="View" style="color:black;">
+                                            <b>
+                                                @Html.DisplayFor(expression: modelItem => item.Name)
+                                            </b>
+                                        </a>
+                                    </span>
+                                    <div class="price">
+                                        <ins>
+                                            <span class="amount">@Html.DisplayFor(expression: modelItem => item.Price)</span>
+                                        </ins>
+                                        <br />
+                                        @if (item.ReviewId > 0 && item.ReviewId < 20)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId >= 20 && item.ReviewId < 40)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId >= 40 && item.ReviewId <= 69)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId > 69 && item.ReviewId < 80)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId >= 80 && item.ReviewId <= 100)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                    </div>
+
+                                </div>
+                                <div class="add-to-cart text-center">
+                                    <a href="#">
+                                        @if (item.QuantityInStock == 0)
+                                        {
+                                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-cart-plus disabled"></i> Out of stock</a> }
+                                        else
+                                        {
+                                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-cart-plus"></i> Add to cart</a>
+                                            }
+
+                                    </a>
+                                </div>
+                                <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+            }
+        </div>
+        </div>
+
+</section>
+<!-- END PRODUCT -->
+<!-- END ANIMATION BOX -->
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- ICON BOX -->
+
+<section class="flat-row row-icon-box bg-section bg-color-f5f">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="flat-icon-box icon-top style-1 clearfix text-center">
+                    <div class="inner no-margin">
+                        <div class="icon-wrap">
+                            <i class="fa fa-truck"></i>
+                        </div>
+                        <div class="text-wrap">
+                            <h5 class="heading"><a href="#">Free Shipping</a></h5>
+                            <p class="desc">Free Shipping on order over $99</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-3 -->
+            <div class="col-md-3">
+                <div class="flat-icon-box icon-top style-1 clearfix text-center">
+                    <div class="inner">
+                        <div class="icon-wrap">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <div class="text-wrap">
+                            <h5 class="heading"><a href="#">Cash On Delivery</a></h5>
+                            <p class="desc">The Internet Trend To Repeat</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-3 -->
+            <div class="col-md-3">
+                <div class="flat-icon-box icon-top style-1 clearfix text-center">
+                    <div class="inner">
+                        <div class="icon-wrap">
+                            <i class="fa fa-gift"></i>
+                        </div>
+                        <div class="text-wrap">
+                            <h5 class="heading"><a href="#">Gift For All</a></h5>
+                            <p class="desc">Receive Gift When Subscribe</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-3 -->
+            <div class="col-md-3">
+                <div class="flat-icon-box icon-top style-1 clearfix text-center">
+                    <div class="inner">
+                        <div class="icon-wrap">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                        <div class="text-wrap">
+                            <h5 class="heading"><a href="#">Opening All Week</a></h5>
+                            <p class="desc">6.00 am - 17.00pm</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-md-3 -->
+        </div>
+    </div>
+</section>
+<!-- END ICON BOX -->
+
+
+<section class="flat-row mail-chimp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text">
+                    <h3>Sign up for Send Newsletter</h3>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="subscribe clearfix">
+                    <form action="#" method="post" accept-charset="utf-8" id="subscribe-form">
+                        <div class="subscribe-content">
+                            <div class="input">
+                                <input type="email" name="subscribe-email" placeholder="Your Email">
+                            </div>
+                            <div class="button">
+                                <button type="button">SUBCRIBE</button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul class="flat-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google"></i></a></li>
+                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul><!-- /.flat-social -->
+                </div><!-- /.subscribe -->
+            </div>
+        </div>
+    </div>
+</section><!-- /.mail-chimp -->
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-link">
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Online Store</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-link link-login">
+                    <ul>
+                        <li><a href="#">Login/ Register</a></li>
+                        <li><a href="#">Your Cart</a></li>
+                        <li><a href="#">Your checkout</a></li>
+                    </ul>
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-link link-faq">
+                    <ul>
+                        <li><a href="#">Term of service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-brand">
+                    <div class="logo logo-footer">
+                        <a href=""><img src="~/ShopLayoutAsset/images/logo%402x.png" alt="image" width="107" height="24"></a>
+                    </div>
+                    <ul class="flat-contact">
+                        <li class="address">112 Kingdom, NA 12, New York</li>
+                        <li class="phone">+12 345 678 910</li>
+                        <li class="email">infor.deercreative@gmail.com</li>
+                    </ul><!-- /.flat-contact -->
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer><!-- /.footer -->
+
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p  class="copyright text-center">Copyright  <a href="#"></a></p>
+            </div>
+        </div>
+    </div>
+</div>

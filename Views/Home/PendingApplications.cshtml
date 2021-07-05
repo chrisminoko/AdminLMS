@@ -61,45 +61,46 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
+                        <tr>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FullName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Type)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Phone)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FileName)
-                                </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Type)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileName)
+                            </td>
 
+                            <td>
+                                @if (item.UserPhoto != null)
+                                {
+                                    var base64 = Convert.ToBase64String(item.UserPhoto);
+                                    var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
+                                    <img src="@ImgSource" width="100" height="100" />
+                                }
+                            </td>
+
+                            @if (User.IsInRole("Admin"))
+                            {
                                 <td>
-                                    @if (item.UserPhoto != null)
-                                    {
-                                        var base64 = Convert.ToBase64String(item.UserPhoto);
-                                        var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
-                                        <img src="@ImgSource" width="100" height="100" />
-                                    }
-                                </td>
-
-
-                                <td>
-
-
-                                    @Html.ActionLink("Downlaod File", "Download", new { id = item.InstitutionID })<br />
                                     <a href="@Url.Action("Approve", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Approve, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Approve" class="btn btn-success btn-simple btn-xs"><i class="fa fa-check-square-o"></i></a>
                                     <a href="@Url.Action("Reject", "Institutions",new { id = item.InstitutionID })" onclick="return confirm('Are you sure you want to Reject, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
                                 </td>
-                            </tr>
+
+                            }
+
+                        </tr>
                         }
 
 

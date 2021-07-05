@@ -1,0 +1,207 @@
+﻿@model  BackEnd.Models.OnlineShop.OrderDetailModel
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<h2 class="title text-center">Review your Order Details </h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <b>Order Details</b>
+        <table class="table">
+            <tr>
+                <th width="140px">Order Number</th>
+                <th>
+                    @Html.DisplayFor(x => x.order.Order_ID)
+                </th>
+            </tr>
+            <tr>
+                <th>Date Requested</th>
+                <th>
+                    @Model.order.date_created.ToLongDateString()
+                </th>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <th>
+                    @Model.order.status
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+
+        @if (Model.shipping_method == "Standard delivery")
+    {
+        <h4>Receipt by Standard Delivery</h4>
+        <table class="table">
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.address.street_number)</td>
+                <td>
+                    @Html.DisplayFor(x => x.address.street_number)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.address.street_name)</td>
+                <td>
+                    @Html.DisplayFor(x => x.address.street_name)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.address.City)</td>
+                <td>
+                    @Html.DisplayFor(x => x.address.City)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.address.State)</td>
+                <td>
+                    @Html.DisplayFor(x => x.address.State)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.address.ZipCode)</td>
+                <td>
+                    @Html.DisplayFor(x => x.address.ZipCode)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.address.Country)</th>
+                <td>
+                    @Html.DisplayFor(x => x.address.Country)
+                </td>
+            </tr>
+        </table>
+}
+else
+{
+    <hr />
+    <p>
+        Collect your order at our warehouse.
+        <br />
+        <i class="fa fa-map-marker"></i>  21 May St, Durban, 4001
+        <br />
+        <i class="fa fa-clock-o"></i>  8:30 am - 17:00 working hours
+        <br />
+    </p>
+}
+
+    </div>
+    <div class="col-md-6">
+
+        <b>Items in this Order</b>
+        <table class="table">
+            <tr>
+                <th>
+                    Picture
+                </th>
+                <th>
+                    Item
+                </th>
+                <th>
+                    Qty
+                </th>
+                <th>
+                    Price
+                </th>
+            </tr>
+
+            @foreach (var item in Model.order_items)
+            {
+                <tr>
+                    <td>
+                        @*@if (item.Item.Picture != null)
+        {
+            var base64 = Convert.ToBase64String(item.Item.Picture);
+            var imgSrc = string.Format("Models:image/gif;base64,{0}", base64);
+            <img src="@imgSrc" width="60" height="70" />
+        }*@
+                        <img src="data:image/png;base64,@Convert.ToBase64String(item.Item.Picture, 0, item.Item.Picture.Length)" style="width: 40px; height: 40px" alt="" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                </tr>
+            }
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>
+                    @Html.DisplayFor(x=>x.order_total)
+                </th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              
+                <td>
+                   @* <a href="@Url.Action("Secure_Payment", "Shopping", new { id = Model.order.Order_ID})" class="btn btn-success"><i class="fa fa-lock"></i> Secure Payment</a>*@
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+
+<div>
+    <h2>Choose Payment Method</h2>
+    <div class="row">
+        <div class="board">
+            <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+            <div class="board-inner">
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active" style="text-align:center">
+                        <a href="#home" data-toggle="tab" title="Collect at warehouse">
+                            <span class="round-tabs">
+                                <i class="fa fa-money"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#profile" data-toggle="tab" title="Standard Delivery">
+                            <span class="round-tabs">
+                                <i class="fa fa-credit-card"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <h4 class="head text-center">Cash On Delivery</h4>
+                    <h4> <i class="fa fa-map-marker"></i>  123 Sept St, Durban, 4001 </h4>
+                    <h4> <i class="fa fa-clock-o"></i>  Monday - Friday</h4>
+                    <h4> <i class="fa fa-clock-o"></i>  8:30 am - 17:00 pm working hours</h4>
+                    <a href="@Url.Action("PlaceOrder","Shopping", new {id = "collect" })" class="btn btn-default"> Continue</a>
+                </div>
+                @*Delivery*@
+            <div class="tab-pane fade" id="profile" style="align-content:center">
+                <h3 class="head text-center">Pay With Credit Card</h3>
+                <h5>Pay Fast Online Payment</h5>
+                <a href="@Url.Action("OnceOff", "Payment", new { id = Model.order.Order_ID})" class="btn btn-success"><i class="fa fa-lock"></i> Secure Payment</a>
+
+                <div class="clearfix"></div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

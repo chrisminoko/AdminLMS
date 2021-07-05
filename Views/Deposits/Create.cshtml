@@ -13,11 +13,11 @@
             <div class="card">
                 <div class="card-header">
                     <h5>Deposit Request</h5>
-                    <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                   
                 </div>
                 <div class="card-block col-md-12 test">
 
-                    @using (Html.BeginForm( new
+                    @using (Html.BeginForm(new
                     {
                         @class = "form-horizontal",
                         role = "form",
@@ -28,13 +28,13 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Name on account</label>
-                               
+
                                 @Html.EditorFor(model => model.NameOnAccount, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.NameOnAccount, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Account Number</label>
-                           
+
                                 @Html.EditorFor(model => model.AccountNumber, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "text-danger" })
 
@@ -47,13 +47,13 @@
                         </div>
                         <div class="form-group">
                             <label for="inputAddress">Account Type</label>
-                     
+
                             @Html.EditorFor(model => model.AccountType, new { htmlAttributes = new { @class = "form-control", placeholder = "Savings,Cheque etc" } })
                             @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <label for="inputAddress2">Email</label>
-                            @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control " ,@readonly = "readonly"}})
+                            @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control ", @readonly = "readonly" } })
                             @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
@@ -64,7 +64,7 @@
                         <div class="form-row">
 
                             <div class="form-group col-md-8">
-                                <label for="inputState">Package</label>
+                                <label for="inputState">Application code</label>
                                 @Html.DropDownList("ApplicationID", null, htmlAttributes: new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.ApplicationID, "", new { @class = "text-danger" })
                             </div>
@@ -80,15 +80,30 @@
                                 @Html.ValidationMessageFor(m => m.FileContent, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button onclick="return validateData();" type="submit" class="btn btn-primary">Submit</button>
                     }
 
 
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 
 
-       
+
+
+<script type="text/javascript">
+    function validateData() {
+        swal({
+            title: "Deposit Added",
+            text: "You add a new deposit",
+            icon: "success",
+            button: "Aww yiss!",
+        });
+    }
+</script>
+
+
+
+

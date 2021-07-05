@@ -1,88 +1,103 @@
 ﻿@model BackEnd.Models.Package
 
-@{
-    ViewBag.Title = "Delete";
-}
 
-<h2>Delete</h2>
+<div class="container-fluid">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Product Details</h5>
+                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                    </div>
+                    <div class="card-block col-md-12 test">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Package</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PackageType.PackageName)
-        </dt>
+                        <h3>Are you sure you want to delete this?</h3>
+                        <div>
+                            <h4>Package</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PackageType.PackageName)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PackageType.PackageName)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PackageType.PackageName)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Storage)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Storage)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Storage)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Storage)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumTeachers)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NumTeachers)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumTeachers)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.NumTeachers)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumStudents)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NumStudents)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumStudents)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.NumStudents)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumEmails)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NumEmails)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumEmails)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.NumEmails)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PackageDescription)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PackageDescription)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PackageDescription)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PackageDescription)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PackagePrice)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PackagePrice)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PackagePrice)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PackagePrice)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserPhoto)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.UserPhoto)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserPhoto)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.UserPhoto)
+                                </dd>
 
-    </dl>
+                            </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                    @Html.ActionLink("Back to List", "Index")
+                                </div>
+                            }
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    }
-</div>
+    </div>
+

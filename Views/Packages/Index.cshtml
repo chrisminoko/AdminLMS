@@ -4,7 +4,9 @@
 
 
 <div class="col-md-12">
+    <a href="@Url.Action("Create", "Packages")" button class="btn"><i class="fa fa-plus-circle"></i> Add New</a>
     <div class="card table-card">
+
         <div class="card-header">
             <h5>Packages</h5>
             <div class="card-header-right">
@@ -60,14 +62,14 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.PackagePrice)
                                 </td>
-                        
+
                                 <td class="">
-                              
 
-                                    <a href="@Url.Action("Delete", "Package", new { id = item.PackageID })" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
-                                    <a href="@Url.Action("Edit","Package", new { id=item.PackageID })" rel="tooltip" title="Edit" class="btn btn-success btn-simple btn-xs"><i class="fa fa-edit"></i></a>
 
-                               
+                                    <a href="@Url.Action("Delete", "Packages", new { id = item.PackageID })" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
+                                    <a href="@Url.Action("Edit","Packages", new { id=item.PackageID })" rel="tooltip" title="Edit" class="btn btn-success btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+
+
 
                                 </td>
                             </tr>

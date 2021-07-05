@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BackEnd.Models.OnlineShop.Category>
+
+<a class="btn btn-default" href="@Url.Action("Create","Categories")">
+    <i class="fa fa-plus"></i>
+    Create New
+</a>
+<div class="container-fluid">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Category</h5>
+                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                    </div>
+                    <div class="card-block col-md-12 test">
+                        <table class="table table-hover table-striped" id="my_list">
+                            <thead>
+                                <tr class="table-header-row">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Category_ID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Department_ID)
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Category_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Department.Department_Name)
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Details","Categories", new { id=item.Category_ID })" rel="tooltip" title="View" class="btn btn-info btn-simple btn-xs"><i class="fa fa-eye"></i></a>
+                                            <a href="@Url.Action("Edit","Categories", new { id=item.Category_ID })" rel="tooltip" title="Edit" class="btn btn-success btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+                                            <a href="@Url.Action("Delete", "Categories", new { id = item.Category_ID })" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $('#my_list').ModelsTable(
+        {
+            dom: 'Bfrtip',
+            lengthMenu: [
+                [10, 25, 50, -1],
+                ['10 rows', '25 rows', '50 rows', 'Show all']
+            ],
+            buttons: [
+                'pageLength', 'pdf', 'print'
+            ]
+        }
+    );
+    $('#my_list')
+        .removeClass('display')
+        .addClass('table table-striped table-hover');
+</script>

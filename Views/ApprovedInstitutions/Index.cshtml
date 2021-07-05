@@ -1,99 +1,102 @@
 ﻿@model IEnumerable<BackEnd.Models.ApprovedInstitution>
 
-<div class="pcoded-inner-content">
-    <!-- Main-body start -->
-    <div class="main-body">
-        <div class="page-wrapper">
-            <!-- Page-body start -->
-            <div class="page-body">
+<div class="container">
+    <div class="pcoded-inner-content">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Page-body start -->
+                <div class="page-body">
 
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Approved Institutions</h5>
-                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
-                    </div>
-                    <div class="card-block col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Approved Institutions</h5>
+                            <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                        </div>
+                        <div class="card-block col-md-12">
 
-                        <table class="table table-striped table-bordered nowrap">
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.FullName)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Type)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Email)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Phone)
-                                </th>
-
-                                <th>
-                                    @Html.DisplayNameFor(model => model.FileName)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.UserPhoto)
-                                </th>
-                                <th></th>
-                            </tr>
-
-                            @foreach (var item in Model)
-                            {
+                            <table class="table table-striped table-bordered nowrap">
                                 <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FullName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Type)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Phone)
+                                    </th>
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FullName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Type)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Email)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Phone)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FileName)
-                                    </td>
-
-                                    <td>
-                                        @if (item.UserPhoto != null)
-                                        {
-                                            var base64 = Convert.ToBase64String(item.UserPhoto);
-                                            var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
-                                            <img src="@ImgSource" width="100" height="100" />
-                                        }
-                                    </td>
-                                    <td>
-
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID } , new { @class = "glyphicon glyphicon-trash" }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.InstitutionID } , new { @class = "glyphicon glyphicon-trash" }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.InstitutionID } , new { @class = "glyphicon glyphicon-trash" })
-                                    </td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FileName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserPhoto)
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
 
-                        </table>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
 
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FullName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Type)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Phone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FileName)
+                                        </td>
+
+                                        <td>
+                                            @if (item.UserPhoto != null)
+                                            {
+                                                var base64 = Convert.ToBase64String(item.UserPhoto);
+                                                var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
+                                                <img src="@ImgSource" width="100" height="100" />
+                                            }
+                                        </td>
+                                        <td>
+
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID }, new { @class = "glyphicon glyphicon-trash" }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.InstitutionID }, new { @class = "glyphicon glyphicon-trash" }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.InstitutionID }, new { @class = "glyphicon glyphicon-trash" })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+
+                        </div>
                     </div>
                 </div>
+                <!-- Page-body end -->
             </div>
-            <!-- Page-body end -->
+        </div>
+        <!-- Main-body end -->
+        <div id="styleSelector">
+
         </div>
     </div>
-    <!-- Main-body end -->
-    <div id="styleSelector">
-
-    </div>
 </div>
+
 
 
 

@@ -13,6 +13,7 @@ using BackEnd.Models;
 using Microsoft.AspNet.Identity;
 namespace BackEnd.Controllers
 {
+   
     public class DepositsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -42,7 +43,11 @@ namespace BackEnd.Controllers
         public ActionResult Index()
         {
             var deposits = db.Deposits.Include(d => d.Application);
-            return View(deposits.ToList());
+            if (User.IsInRole("Admin"))
+            {
+                return View(deposits.ToList());
+            }
+            return View(deposits.ToList().Where(x=>x.UserEmail==User.Identity.GetUserName()));
         }
 
         // GET: Deposits/Details/5
@@ -136,7 +141,7 @@ namespace BackEnd.Controllers
         // GET: Deposits/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail");
+            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UniqApplicationCode");
             return View();
         }
 
@@ -161,11 +166,12 @@ namespace BackEnd.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //var applications= db.Applications
 
-            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail", deposit.ApplicationID);
+            ViewBag.ApplicationID = new SelectList(db.Applications.Where(x => x.UserEmail == User.Identity.GetUserName()), "ApplicationID", "UniqApplicationCode", deposit.ApplicationID);
             return View(deposit);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Deposits/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -178,7 +184,7 @@ namespace BackEnd.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail", deposit.ApplicationID);
+            ViewBag.ApplicationID = new SelectList(db.Applications.Where(x=>x.UserEmail== User.Identity.GetUserName()), "ApplicationID", "UserEmail", deposit.ApplicationID);
             return View(deposit);
         }
 
@@ -198,7 +204,7 @@ namespace BackEnd.Controllers
             ViewBag.ApplicationID = new SelectList(db.Applications, "ApplicationID", "UserEmail", deposit.ApplicationID);
             return View(deposit);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Deposits/Delete/5
         public ActionResult Delete(int? id)
         {

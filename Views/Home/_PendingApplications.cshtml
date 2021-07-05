@@ -39,40 +39,44 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FileName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FileContent)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserPhoto)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
         <td>
-            @Html.DisplayFor(modelItem => item.FullName)
+            @Html.ActionLink("Edit", "Edit", new { id = item.InstitutionID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.InstitutionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.InstitutionID })
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileContent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserPhoto)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.InstitutionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.InstitutionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.InstitutionID })
-        </td>
-    </tr>
+    }
+
+</tr>
 }
 
 </table>

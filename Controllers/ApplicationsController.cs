@@ -41,6 +41,8 @@ namespace BackEnd.Controllers
             return View(application);
         }
 
+
+
         // GET: Applications/Create
         public ActionResult Create()
         {
@@ -61,19 +63,21 @@ namespace BackEnd.Controllers
                 application.ApplicationDate = DateTime.Parse(DateTime.Now.ToString("yyy.MM.dd")).Date;
                 application.Status = "Inactive";
                 application.PaymentStatus = "Awaiting Payment";
-           
+
 
                 decimal amount = (from p in db.Packages
                                   where p.PackageID == application.PackageID
                                   select p.PackagePrice).FirstOrDefault();
                 application.Amount = amount;
+                var code = User.Identity.GetUserName().Substring(2, 5);
+                application.UniqApplicationCode = application.GenerateOrderNumber()+code;
 
                 db.Applications.Add(application);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "Storage", application.PackageID);
+            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "PackageType.PackageName", application.PackageID);
             return View(application);
         }
 
@@ -94,7 +98,7 @@ namespace BackEnd.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "Storage", application.PackageID);
+            ViewBag.PackageID = new SelectList(db.Packages, "PackageID", "PackageType.PackageName", application.PackageID);
             return View(application);
         }
 
@@ -164,13 +168,13 @@ namespace BackEnd.Controllers
             double amount = 20/* Convert.ToDouble(db.Items.Select(x => x.CostPrice).FirstOrDefault())*/;
             var products = "Gold" /*db.Items.Select(x => x.Name).ToList()*/;
             // Transaction Details
-            decimal ? PackagePrice = (from p in db.Applications
-                              where p.ApplicationID == id
-                              select p.Amount).FirstOrDefault();
+            decimal? PackagePrice = (from p in db.Applications
+                                     where p.ApplicationID == id
+                                     select p.Amount).FirstOrDefault();
 
-            var PackageName= (from p in db.Applications
-                              where p.ApplicationID == id
-                              select p.Package.PackageType.PackageName).FirstOrDefault();
+            var PackageName = (from p in db.Applications
+                               where p.ApplicationID == id
+                               select p.Package.PackageType.PackageName).FirstOrDefault();
 
             var Description = (from p in db.Applications
                                where p.ApplicationID == id
@@ -213,7 +217,7 @@ namespace BackEnd.Controllers
             var products = "Gold"/* db.FoodOrders.Select(x => x.UserEmail).ToList()*/;
             // Transaction Details
 
- 
+
             adHocRequest.m_payment_id = "";
             adHocRequest.amount = 70;
             adHocRequest.item_name = "Adhoc Agreement";

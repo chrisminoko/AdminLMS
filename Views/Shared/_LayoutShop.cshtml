@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+<!-- Mirrored from themesflat.com/html/modaz/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Nov 2020 19:14:00 GMT -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>AcademyGo Store</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/ShopLayoutAsset/stylesheets/bootstrap.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="~/ShopLayoutAsset/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="~/ShopLayoutAsset/stylesheets/responsive.css">
+
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="~/ShopLayoutAsset/stylesheets/colors/color1.css" id="colors">
+
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/ShopLayoutAsset/stylesheets/animate.css">
+
+
+    <!-- Favicon and touch icons  -->
+    <link href="~/ShopLayoutAsset/icon/favicon.png" rel="shortcut icon">
+
+    <!--[if lt IE 9]>
+        <script src="javascript/html5shiv.js"></script>
+        <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="header_sticky header-style-1 has-menu-extra">
+    <!-- Preloader -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Boxed -->
+    <div class="boxed">
+        <div id="site-header-wrap">
+            <!-- Header -->
+            <header id="header" class="header header-container clearfix">
+                <div class="container clearfix" id="site-header-inner">
+                    <div id="logo" class="logo float-left">
+                        <a href="Index" title="logo">
+                            <img src="~/ShopLayoutAsset/images/logo.png" alt="image" width="107" height="24">
+                        </a>
+                    </div><!-- /.logo -->
+                    <div class="mobile-button"><span></span></div>
+                    <ul class="menu-extra">
+                        <li class="box-search">
+                            <a class="icon_search header-search-icon" href="#"></a>
+                            <form role="search" method="get" class="header-search-form" action="#">
+                                <input type="text" value="" name="s" class="header-search-field" placeholder="Search...">
+                                <button type="submit" class="header-search-submit" title="Search">Search</button>
+                            </form>
+                        </li>
+                      
+                        <li class="box-cart nav-top-cart-wrapper">
+                            <a class="icon_cart nav-cart-trigger active" data-toggle="modal" data-target="#exampleModal" href="#"><span>@Html.Action(actionName: "countCartItems", controllerName: "Shopping")</span></a>
+
+                        </li>
+                    </ul><!-- /.menu-extra -->
+                    <div class="nav-wrap">
+                        @{ var department_Service = new BackEnd.Services.Department_Service();
+                            var cart_Service = new BackEnd.Services.Cart_Service();
+                            double total = 0; }
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <nav id="mainnav" class="mainnav">
+                                <ul class="menu">
+                                    <li class="active">
+                                        <a href="@Url.Action("Index", "Home")">HOME</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="@Url.Action("ShoppingCart", "Shopping")">Cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="">SHOP</a>
+                                        <ul class="submenu">
+                                            <li>
+                                                <a href="">Categories</a>
+                                                <ul class="submenu">
+                                                    @foreach (var department in department_Service.GetDepartments().OrderBy(x => x.Department_Name))
+                                                    {
+                                                        <li>
+                                                            <a href="@Url.Action("Index","Shopping",new { id = department.Department_ID })">@department.Department_Name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    @using Microsoft.AspNet.Identity
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <li>
+                                            @{ BackEnd.Models.ApplicationDbContext db = new BackEnd.Models.ApplicationDbContext(); }
+                                            <a href="">Account</a>
+                                            <ul class="submenu">
+                                                <li>
+
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span>  @User.Identity.GetUserName() <span class="caret"></span></a>
+
+                                                </li>
+                                                <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-lock"></i> Sign out</a></li>
+                                                <li>@Html.ActionLink("Order History", "Order_History", "Orders")</li>
+                                                <li>@Html.ActionLink("View Cart", "ShoppingCart", "Shopping")</li>
+                                                <li>@Html.ActionLink("Order Tracking", "Customer_Orders", "Orders")</li>
+                                            </ul>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Register", "ShopAccount")">Sign In</a>
+
+                                        </li>
+                                  
+                                    }
+
+
+                                </ul>
+                            </nav><!-- /.mainnav -->
+                        }
+
+                    </div><!-- /.nav-wrap -->
+                </div><!-- /.container-fluid -->
+            </header><!-- /header -->
+        </div><!-- /#site-header-wrap -->
+
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cart Items</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <tr style="background: #f3f3f3;">
+                                <th>Item</th>
+                                <th>
+
+                                </th>
+                                <th style="text-align:center">
+                                    Quantity
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th style="text-align:center">
+                                    Sub-Total
+                                </th>
+                            </tr>
+                            @if (cart_Service.GetCartItems().Count() == 0)
+                            {
+                                <tr>
+                                    <th colspan="5" style="text-align:center">Your cart is empty</th>
+                                </tr>
+                            }
+                            @foreach (var item in cart_Service.GetCartItems().OrderBy(x => x.Item.Name))
+                            {
+                                <tr>
+                                    <td>
+                                        @if (item.Item.Picture != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Item.Picture);
+                                            var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                                            <img src="@imgSrc" width="30" height="30" />}
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Details","Items", new { id=item.Item.ItemCode })">@item.Item.Name</a>
+                                    </td>
+                                    <td style="text-align:center">
+                                        @item.quantity
+                                    </td>
+                                    <td>
+                                        @item.Item.Price.ToString("C")
+                                    </td>
+                                    <td style="text-align:center">
+                                        @{ var subtotal = item.quantity * item.Item.Price;
+                                            total += subtotal; }
+
+                                        @subtotal.ToString("C")
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="text-align:center">
+                                    Total
+                                </td>
+                                <th style="text-align:center">
+                                    @total.ToString("C")
+                                </th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a class="btn btn-default" href="@Url.Action("Index","Shopping")">
+                                        <i class="fa fa-list"></i> Shop More
+                                    </a>
+
+                                </td>
+                                <td>
+                                    <a class="btn btn-default" href="@Url.Action("ShoppingCart", "Shopping")">
+                                        <i class="fa fa-shopping-cart"></i> View Cart
+                                    </a>
+                                </td>
+                                <td>
+                                    @if (cart_Service.GetCartItems().Count() == 0)
+                                    {
+                                        <a class="btn btn-default disabled" href="@Url.Action("Checkout","Shopping")">
+                                            <i class="fa fa-lock"></i> Checkout
+                                        </a> }
+                                    else
+                                    {
+                                        <a class="btn btn-default" href="@Url.Action("Checkout","Shopping")">
+                                            <i class="fa fa-lock"></i> Checkout
+                                        </a>}
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <a data-dismiss="modal" class="themesflat-button has-padding-36 bg-accent has-shadow"><span style="color:white">Close</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Go Top -->
+        <a class="go-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+
+    </div>
+    <script id="mcjs">!function (c, h, i, m, p) { m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p) }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/4f354d8da90711e04a82efc5f/0fd81ea3ad928629a00c5d069.js");</script>
+
+    <!-- Javascript -->
+    <script src="~/ShopLayoutAsset/javascript/jquery.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/tether.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/bootstrap.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery.easing.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/parallax.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery-waypoints.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery-countTo.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery.countdown.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery.flexslider-min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/images-loaded.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery.isotope.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/magnific.popup.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery.hoverdir.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/owl.carousel.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/equalize.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/gmap3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIEU6OT3xqCksCetQeNLIPps6-AYrhq-s&amp;region=GB"></script>
+    <script src="~/ShopLayoutAsset/javascript/jquery-ui.js"></script>
+    @*<script src="~/ShopLayoutAsset/javascript/switcher.js"></script>*@
+    <script src="~/ShopLayoutAsset/javascript/jquery.cookie.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/main.js"></script>
+
+    <!-- Revolution Slider -->
+    <script src="~/ShopLayoutAsset/rev-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/ShopLayoutAsset/javascript/rev-slider.js"></script>
+    <!-- Load Extensions only on Local File Systems ! The following part can be removed on Server for On Demand Loading -->
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="~/ShopLayoutAsset/rev-slider/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+
+<!-- Mirrored from themesflat.com/html/modaz/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Nov 2020 19:15:47 GMT -->
+</html>
+@RenderSection("scripts", required: false)                 

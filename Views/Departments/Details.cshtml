@@ -1,0 +1,63 @@
+﻿@model BackEnd.Models.OnlineShop.Department
+
+@{
+    ViewBag.Title = "Department Details";
+}
+<div class="container">
+    <div class="page-body">
+        <a href="@Url.Action("Create", "Departments")" button class="btn"><i class="fa fa-plus-circle"></i> Add New</a>
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Zero config.table start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Department</h5>
+
+                    </div>
+                    <div class="card-block">
+                        <div class="dt-responsive table-responsive">
+                            <table class="table table-striped table-bordered nowrap">
+                                <tr>
+                                    <th>@Html.LabelFor(model => model.Department_ID)</th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Department_ID)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.LabelFor(model => model.Department_Name)</th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Department_Name)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.LabelFor(model => model.Description)</th>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Description)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-default" href="@Url.Action("Index","Departments")">
+                                            <i class="fa fa-angle-left"></i>
+                                            Back to List
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-default" href="@Url.Action("Edit","Departments", new { id = Model.Department_ID })">
+                                            <i class="fa fa-edit"></i>
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                      
+                

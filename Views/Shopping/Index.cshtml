@@ -1,0 +1,264 @@
+﻿@model IEnumerable<BackEnd.Models.OnlineShop.Item>
+@{
+    ViewBag.Title = "Shopping";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+    if (ViewBag.Department != null)
+    {
+        ViewBag.Title = ViewBag.Department.ToString();
+    }
+}
+
+
+
+<!-- PRODUCT -->
+<section class="flat-row row-product-project style-1">
+    <div class="container-fluid">
+        <div class="title-section margin-bottom-41">
+            <h2 class="title">@ViewBag.Title</h2>
+        </div>
+
+        <div class="divider h54"></div>
+        <div class="row">
+            <div class="col-md-12">
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="product-content product-fourcolumn clearfix">
+
+                        <ul class="product style2 isotope-product clearfix">
+                            <li class="product-item kid woman">
+                                <div class="product-thumb clearfix">
+                                    <a href="#">
+                                        @if (item.Picture != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(inArray: item.Picture);
+                                            var imgSrc = string.Format(format: "data:image/gif;base64,{0}", arg0: base64);
+                                            <img src="@imgSrc" width="200" height="249" />
+                                        }
+                                    </a>
+                                </div>
+                                <div class="product-info clearfix">
+                                    <span class="product-title">
+                                        <a href="@Url.Action("Details","Items", new { id=item.ItemCode })" rel="tooltip" title="View" style="color:black;">
+                                            <b>
+                                                @Html.DisplayFor(expression: modelItem => item.Name)
+                                            </b>
+                                        </a>
+                                    </span>
+                                    <div class="price">
+                                        <ins>
+                                            <span class="amount">@Html.DisplayFor(expression: modelItem => item.Price)</span>
+                                        </ins>
+                                        <br />
+                                        @if (item.ReviewId > 0 && item.ReviewId < 20)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId >= 20 && item.ReviewId < 40)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId >= 40 && item.ReviewId <= 69)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId > 69 && item.ReviewId < 80)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                        else if (item.ReviewId >= 80 && item.ReviewId <= 100)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        }
+                                    </div>
+
+                                </div>
+                                <div class="add-to-cart text-center">
+                                    <a href="#">
+                                        @if (item.QuantityInStock == 0)
+                                        {
+                                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-cart-plus disabled"></i> Out of stock</a> }
+                                        else
+                                        {
+                                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-cart-plus"></i> Add to cart</a>}
+
+                                    </a>
+                                </div>
+                                <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- END PRODUCT -->
+
+<section class="flat-row mail-chimp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text">
+                    <h3>Sign up for Send Newsletter</h3>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="subscribe clearfix">
+                    <form action="#" method="post" accept-charset="utf-8" id="subscribe-form">
+                        <div class="subscribe-content">
+                            <div class="input">
+                                <input type="email" name="subscribe-email" placeholder="Your Email">
+                            </div>
+                            <div class="button">
+                                <button type="button">SUBCRIBE</button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul class="flat-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google"></i></a></li>
+                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul><!-- /.flat-social -->
+                </div><!-- /.subscribe -->
+            </div>
+        </div>
+    </div>
+</section><!-- /.mail-chimp -->
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-link">
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Online Store</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-link link-login">
+                    <ul>
+                        <li><a href="#">Login/ Register</a></li>
+                        <li><a href="#">Your Cart</a></li>
+                        <li><a href="#">Your checkout</a></li>
+                    </ul>
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-link link-faq">
+                    <ul>
+                        <li><a href="#">Term of service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="widget widget-brand">
+                    <div class="logo logo-footer">
+                        <a href=""><img src="~/ShopLayoutAsset/images/logo%402x.png" alt="image" width="107" height="24"></a>
+                    </div>
+                    <ul class="flat-contact">
+                        <li class="address">112 Kingdom, NA 12, New York</li>
+                        <li class="phone">+12 345 678 910</li>
+                        <li class="email">infor.deercreative@gmail.com</li>
+                    </ul><!-- /.flat-contact -->
+                </div><!-- /.widget -->
+            </div><!-- /.col-md-3 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer><!-- /.footer -->
+
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright text-center">Copyright  <a href="#"></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+﻿@model BackEnd.Models.OnlineShop.Department
+
+<div class="container-fluid">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Department</h5>
+                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                    </div>
+                    <div class="card-block col-md-12 test">
+
+                        <div class="row">
+                            <div class="col-md-10 col-sm-6 col-xs-12">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-red"><i class="fa fa-warning"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-number">Please Note</span>
+                                        <br />
+                                        <b>This information and all its sub-content will be permanently removed.</b>
+                                    </div><!-- /.info-box-content -->
+                                </div><!-- /.info-box -->
+                            </div><!-- /.col -->
+                        </div>
+
+                        <div class="row">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <table class="table">
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Department_ID)</th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Department_ID)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Department_Name)</th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Department_Name)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Description)</th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Description)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a class="btn btn-default" href="@Url.Action("Index","Departments")">
+                                                <i class="fa fa-angle-left"></i>
+                                                Back to List
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <input type="submit" value="Delete" class="btn btn-danger" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            }
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

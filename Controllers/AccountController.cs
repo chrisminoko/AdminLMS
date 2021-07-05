@@ -10,6 +10,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BackEnd.Models;
 using System.IO;
+using BackEnd.Services;
+using BackEnd.Models.OnlineShop;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace BackEnd.Controllers
 {
@@ -148,8 +152,9 @@ namespace BackEnd.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register( )
         {
+         
             var data = TempData["PackageID"];
             PackageID = Convert.ToInt32(data);
             return View();
@@ -162,6 +167,7 @@ namespace BackEnd.Controllers
             BinaryReader reader = new BinaryReader(files.InputStream);
             return reader.ReadBytes(files.ContentLength);
         }
+      
         //
         // POST: /Account/Register
         [HttpPost]
